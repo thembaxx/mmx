@@ -11,7 +11,11 @@ import { ProfileMenu } from "./profile-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import QrDialog from "./qr-dialog";
 import { ablyClient } from "@/lib/ably-client";
-import Chat from "./chat";
+import dynamic from "next/dynamic";
+
+const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
+  ssr: false,
+});
 
 function Channel() {
   const [channel, setChannel] = useState("default");

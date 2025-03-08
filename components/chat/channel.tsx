@@ -1,9 +1,5 @@
 "use client";
 
-const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
-  ssr: false,
-});
-
 import { useState } from "react";
 import { AblyProvider, ChannelProvider } from "ably/react";
 
@@ -15,7 +11,7 @@ import { ProfileMenu } from "./profile-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import QrDialog from "./qr-dialog";
 import { ablyClient } from "@/lib/ably-client";
-import dynamic from "next/dynamic";
+import Chat from "./chat";
 
 function Channel() {
   const [channel, setChannel] = useState("default");

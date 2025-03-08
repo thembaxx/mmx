@@ -26,7 +26,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body
         className={cn(
-          `antialiased h-screen overflow-y-auto font-sans ${fontSans.className}`
+          `antialiased h-screen overflow-hidden font-sans ${fontSans.className}`
         )}
       >
         <Providers
@@ -37,7 +37,7 @@ export default function RootLayout({
             disableTransitionOnChange: false,
           }}
         >
-          <main className="h-full w-full">{children}</main>
+          <main className="h-full w-full overflow-hidden">{children}</main>
         </Providers>
       </body>
     </html>

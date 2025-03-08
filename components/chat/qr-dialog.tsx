@@ -42,12 +42,7 @@ const CopyIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 function QrDialog({ children, channel }: Props) {
-  const baseUrl =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : siteConfig.url;
-
-  const link = `${baseUrl}?channel=${channel}`;
+  const link = `${siteConfig.baseUrl}?channel=${channel}`;
 
   return (
     <Dialog>

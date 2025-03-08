@@ -41,8 +41,8 @@ function Chat({ channelName }: Props) {
   });
 
   return (
-    <div className="w-full h-full bg-background">
-      <div className="h-full w-full">
+    <div className="w-full h-full flex flex-col bg-background">
+      <div className="w-full grow">
         {messages.length === 0 && (
           <div className="flex flex-col gap-4 h-full items-center justify-center">
             <div className="p-4 opacity-60 flex flex-col items-center justify-center">
@@ -62,24 +62,26 @@ function Chat({ channelName }: Props) {
           </div>
         )}
 
-        <ul className="p-4">
-          {messages.map((message) => (
-            <li key={message.id}>
-              <div className="py-2 px-4 space-y-1 rounded-2xl max-w-[75%] dark:bg-[#1E1E1E]/75 text-foreground/90">
-                <p>{message.data}</p>
-                {message.timestamp && (
-                  <p className="text-xs text-muted-foreground">
-                    {formatDistanceToNow(new Date(message.timestamp), {
-                      includeSeconds: true,
-                    })}
-                  </p>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
+        {messages.length > 0 && (
+          <ul className="p-4">
+            {messages.map((message) => (
+              <li key={message.id}>
+                <div className="py-2 px-4 space-y-1 rounded-2xl max-w-[75%] dark:bg-[#1E1E1E]/75 text-foreground/90">
+                  <p>{message.data}</p>
+                  {message.timestamp && (
+                    <p className="text-xs text-muted-foreground">
+                      {formatDistanceToNow(new Date(message.timestamp), {
+                        includeSeconds: true,
+                      })}
+                    </p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <footer className="p-4 fixed bottom-0 left-0 w-full">
+      <footer className="p-4 sticky bottom-0 left-0 w-full">
         <ChatInput channel={channel} />
       </footer>
     </div>

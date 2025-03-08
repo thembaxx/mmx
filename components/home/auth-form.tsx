@@ -11,18 +11,18 @@ function AuthForm() {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState("");
+  const [channelId, setChannelId] = useState("");
 
   return (
     <div className="w-full space-y-3">
       <Input
-        value={username}
-        className="h-11 text-base placeholder:text-sm bg-[#333333]"
-        placeholder="Room id"
+        value={channelId}
+        className="h-11 text-base placeholder:text-sm dark:bg-[#333333]"
+        placeholder="Enter Channel id"
         type="text"
         name="username"
         onChange={(e) => {
-          setUsername(e.target.value);
+          setChannelId(e.target.value);
         }}
       />
       <div className="space-y-2">
@@ -33,8 +33,8 @@ function AuthForm() {
           onClick={() => {
             setLoading(true);
 
-            if (username && username !== "") {
-              router.replace(`/chat?username=${username}`);
+            if (channelId && channelId !== "") {
+              router.replace(`/chat?channelId=${channelId}`);
             }
 
             setLoading(false);
@@ -45,7 +45,7 @@ function AuthForm() {
               <Spinner />
             </div>
           )}
-          <span>Join room</span>
+          <span>Join channel</span>
         </Button>
         <Button
           className="w-full relative"
@@ -55,8 +55,8 @@ function AuthForm() {
           onClick={() => {
             setLoading(true);
 
-            if (username && username !== "") {
-              router.replace(`/chat?username=${username}`);
+            if (channelId && channelId !== "") {
+              router.replace(`/chat?channelId=${channelId}`);
             }
 
             setLoading(false);
@@ -67,7 +67,7 @@ function AuthForm() {
               <Spinner />
             </div>
           )}
-          <span>Community rooms</span>
+          <span>Public channels</span>
         </Button>
       </div>
     </div>

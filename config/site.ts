@@ -4,6 +4,10 @@ export const siteConfig = {
   name: "Pulse Chat",
   description: "Messaging, channels",
   version: "0.0.4",
+  baseUrl:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://mmx.vercel.app",
   url: "https://mmx.vercel.app",
   links: {
     github: "https://github.com/thembaxx",

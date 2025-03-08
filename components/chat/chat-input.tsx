@@ -5,6 +5,7 @@ interface Props {
 }
 
 import { useState } from "react";
+import { RealtimeChannel } from "ably";
 import { AnimatePresence, motion } from "motion/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,17 +21,12 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import Gallery from "./gallery";
 
 import {
-  AiIcon,
-  AttachmentIcon,
   CompactIcon,
   ExpandIcon,
   GalleryIcon,
   SendIcon,
-  SimileCircleIcon,
   SoundwaveIcon,
-  StickerIcon,
 } from "@/config/icons";
-import { RealtimeChannel } from "ably";
 
 const FormSchema = z.object({
   text: z.string(),
@@ -164,7 +160,7 @@ function ChatInput({ channel }: Props) {
                     <Button size="icon" type="button" variant="ghost">
                       <SoundwaveIcon className="!h-5 !w-5 p-0 text-icon" />
                     </Button>
-                    <motion.div whileTap={{ scale: 0.95 }}>
+                    {/* <motion.div whileTap={{ scale: 0.95 }}>
                       <Button
                         className="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 h-8 w-8 ml-2 rounded-full"
                         size="icon"
@@ -173,7 +169,7 @@ function ChatInput({ channel }: Props) {
                       >
                         <AiIcon className="!h-4 !w-4 p-0 text-white" />
                       </Button>
-                    </motion.div>
+                    </motion.div> */}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -205,7 +201,7 @@ function ChatInput({ channel }: Props) {
           </motion.form>
         </Form>
       </motion.div>
-      <motion.div
+      {/* <motion.div
         className="flex items-center gap-2"
         variants={container}
         initial="hidden"
@@ -241,7 +237,7 @@ function ChatInput({ channel }: Props) {
             <span className="text-xs mr-1">Other</span>
           </Button>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }

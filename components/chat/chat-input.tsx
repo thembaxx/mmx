@@ -1,5 +1,9 @@
 "use client";
 
+interface Props {
+  channel: RealtimeChannel;
+}
+
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -26,6 +30,7 @@ import {
   SoundwaveIcon,
   StickerIcon,
 } from "@/config/icons";
+import { RealtimeChannel } from "ably";
 
 const FormSchema = z.object({
   text: z.string(),
@@ -47,7 +52,7 @@ const item = {
   show: { opacity: 1, x: 0, scale: 1 },
 };
 
-function ChatInput() {
+function ChatInput({ channel }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -59,8 +64,9 @@ function ChatInput() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    const { text } = data;
+    await channel.publish("first", text);
   }
 
   function handleFilesChange(filesList: FileList | null) {
@@ -206,19 +212,31 @@ function ChatInput() {
         animate="show"
       >
         <motion.div variants={item} whileTap={{ scale: 0.9 }}>
-          <Button className="rounded-lg" size="sm" variant="secondary">
+          <Button
+            className="rounded-lg dark:bg-[#1E1E1E]"
+            size="sm"
+            variant="secondary"
+          >
             <StickerIcon />
             <span className="text-xs mr-1">Stickers</span>
           </Button>
         </motion.div>
         <motion.div variants={item} whileTap={{ scale: 0.9 }}>
-          <Button className="rounded-lg" size="sm" variant="secondary">
+          <Button
+            className="rounded-lg dark:bg-[#1E1E1E]"
+            size="sm"
+            variant="secondary"
+          >
             <SimileCircleIcon />
             <span className="text-xs mr-1">Emoji</span>
           </Button>
         </motion.div>
         <motion.div variants={item} whileTap={{ scale: 0.9 }}>
-          <Button className="rounded-lg" size="sm" variant="secondary">
+          <Button
+            className="rounded-lg dark:bg-[#1E1E1E]"
+            size="sm"
+            variant="secondary"
+          >
             <AttachmentIcon />
             <span className="text-xs mr-1">Other</span>
           </Button>

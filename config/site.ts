@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "mmx",
   description: "Messaging, channels",
-  version: "0.0.1",
+  version: "0.0.2",
   url: "https://mmx.vercel.app",
   links: {
     github: "https://github.com/thembaxx",

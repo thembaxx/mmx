@@ -5,6 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-icon: var(--icon);
+  --color-icon-secondary: var(--icon-secondary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -46,6 +48,8 @@
 }
 
 :root {
+  --icon: oklch(0.3791 0 0);
+  --icon-secondary: oklch(0.683 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -82,6 +86,8 @@
 }
 
 .dark {
+  --icon: oklch(0.8483 0 0);
+  --icon-secondary: oklch(0.5761 0 0);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);

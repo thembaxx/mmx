@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  serverExternalPackages: ["ably"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.tapback.co",
+        pathname: "**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

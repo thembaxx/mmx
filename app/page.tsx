@@ -1,9 +1,15 @@
-import Chat from "@/components/chat/chat";
+"use client";
+
+import Channel from "@/components/chat/channel";
+import { ablyClient } from "@/lib/ably-client";
+import { AblyProvider } from "ably/react";
 
 export default function Home() {
   return (
-    <div className="h-full w-full">
-      <Chat />
-    </div>
+    <AblyProvider client={ablyClient}>
+      <div className="h-full w-full">
+        <Channel />
+      </div>
+    </AblyProvider>
   );
 }

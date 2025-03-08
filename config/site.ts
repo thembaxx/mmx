@@ -4,6 +4,7 @@ export const siteConfig = {
   name: "mmx",
   description: "Messaging, channels",
   version: "0.0.1",
+  url: "https://mmx.vercel.app",
   links: {
     github: "https://github.com/thembaxx",
     twitter: "https://twitter.com/thembaxx",

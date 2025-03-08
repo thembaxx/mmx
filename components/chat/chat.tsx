@@ -7,19 +7,36 @@ interface Props {
 import { useState } from "react";
 import ChatInput from "./chat-input";
 import Image from "next/image";
-import { useChannel, useConnectionStateListener } from "ably/react";
+import {
+  useChannel,
+  useConnectionStateListener,
+  usePresenceListener,
+} from "ably/react";
 import { Message } from "ably";
 import { formatDistanceToNow } from "date-fns";
 
 function Chat({ channelName }: Props) {
   const [messages, setMessages] = useState<Message[]>([]);
 
-  useConnectionStateListener("connected", () => {
-    console.log("Connected to Ably!");
+  const { presenceData } = usePresenceListener(channelName);
+
+  // Convert presence data to list items to render
+  const peers = presenceData.map((msg, index) => (
+    <li key={index}>
+      {msg.clientId}: {msg.data}
+    </li>
+  ));
+
+  console.log(peers);
+
+  useConnectionStateListener((stateChange) => {
+    console.log(stateChange.current); // the new connection state
+    console.log(stateChange.previous); // the previous connection state
+    console.log(stateChange.reason); // if applicable, an error indicating the reason for the connection state change
   });
 
   // Create a channel called 'get-started' and subscribe to all messages with the name 'first' using the useChannel hook
-  const { channel } = useChannel(channelName, "first", (message) => {
+  const { channel } = useChannel(channelName, "default", (message) => {
     setMessages((previousMessages) => [...previousMessages, message]);
   });
 

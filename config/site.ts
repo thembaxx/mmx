@@ -1,9 +1,9 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "mmx",
+  name: "Pulse Chat",
   description: "Messaging, channels",
-  version: "0.0.3",
+  version: "0.0.4",
   url: "https://mmx.vercel.app",
   links: {
     github: "https://github.com/thembaxx",

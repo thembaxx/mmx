@@ -37,7 +37,7 @@ export default function RootLayout({
             disableTransitionOnChange: false,
           }}
         >
-          {children}
+          <main className="h-full w-full">{children}</main>
         </Providers>
       </body>
     </html>

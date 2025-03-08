@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import Profile from "./profile";
-import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export function ProfileMenu({ children }: { children: React.ReactNode }) {
@@ -38,9 +37,7 @@ export function ProfileMenu({ children }: { children: React.ReactNode }) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator className="dark:bg-neutral-700" />
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <Link href="/">Manage profile</Link>
-          </DropdownMenuItem>
+          <DropdownMenuItem>Manage profile</DropdownMenuItem>
           <DropdownMenuItem>Contact support</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator className="dark:bg-neutral-700" />

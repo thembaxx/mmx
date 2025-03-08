@@ -5,7 +5,6 @@ import { AblyProvider, ChannelProvider } from "ably/react";
 
 import Channels from "./channels";
 import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
 import { QrCodeIcon, RssIcon } from "@/config/icons";
 import { ProfileMenu } from "./profile-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";

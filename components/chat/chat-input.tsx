@@ -32,21 +32,21 @@ const FormSchema = z.object({
   text: z.string(),
 });
 
-const container = {
-  hidden: { opacity: 0, x: 48 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+// const container = {
+//   hidden: { opacity: 0, x: 48 },
+//   show: {
+//     opacity: 1,
+//     x: 0,
+//     transition: {
+//       staggerChildren: 0.1,
+//     },
+//   },
+// };
 
-const item = {
-  hidden: { opacity: 0, x: 16, scale: 0.8 },
-  show: { opacity: 1, x: 0, scale: 1 },
-};
+// const item = {
+//   hidden: { opacity: 0, x: 16, scale: 0.8 },
+//   show: { opacity: 1, x: 0, scale: 1 },
+// };
 
 function ChatInput({ channel }: Props) {
   const [isOpen, setIsOpen] = useState(false);

@@ -15,8 +15,11 @@ function Header() {
         <p className="font-medium">{siteConfig.name}</p>
       </div>
       <div className="space-y-3">
-        <h1 className="text-4xl font-extrabold text-center text-pretty">
-          Connect in Real-Time with <span>{siteConfig.name}</span>
+        <h1 className="text-4xl font-extrabold text-center text-pretty ">
+          Connect in Real-Time with{" "}
+          <span className="bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent">
+            {siteConfig.name}
+          </span>
         </h1>
         <p className="text-[0.95rem] text-center text-pretty max-w-xs text-secondary-foreground">
           Experience conversations that flow as naturally as face-to-face,

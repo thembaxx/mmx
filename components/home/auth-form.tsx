@@ -14,10 +14,10 @@ function AuthForm() {
   const [username, setUsername] = useState("");
 
   return (
-    <div className="w-full">
+    <div className="w-full space-y-3">
       <Input
         value={username}
-        className="h-11 text-base placeholder:text-sm"
+        className="h-11 text-base placeholder:text-sm bg-[#333333]"
         placeholder="Room id"
         type="text"
         name="username"
@@ -25,7 +25,7 @@ function AuthForm() {
           setUsername(e.target.value);
         }}
       />
-      <div className="space-y-3">
+      <div className="space-y-2">
         <Button
           className="w-full relative"
           type="submit"

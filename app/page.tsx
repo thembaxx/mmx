@@ -15,8 +15,10 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="h-full w-full p-6 flex flex-col items-center justify-center space-y-8">
-      <Header />
+    <div className="h-full w-full px-6 py-12 flex flex-col items-center  space-y-8 overflow-y-auto">
+      <div>
+        <Header />
+      </div>
       <Card className="shadow-md/20 rounded-3xl bg-[#0d0d0d]">
         <CardHeader className="text-center text-[0.7rem] uppercase">
           <CardTitle>Welcome</CardTitle>

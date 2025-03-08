@@ -41,7 +41,7 @@ function Channels({
   return (
     <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
-      <DrawerContent className="h-[65svh]">
+      <DrawerContent className="h-[70svh]">
         <DrawerHeader className="space-y-3">
           <VisuallyHidden>
             <DrawerTitle>Channels</DrawerTitle>
@@ -99,12 +99,12 @@ function Channels({
               <Image
                 src="/empty_no_items.svg"
                 alt=""
-                height={128}
-                width={128}
+                height={108}
+                width={108}
               />
 
               <div className="pt-6 text-center">
-                <p className="font-bold">No items</p>
+                <p className="font-bold">No channels found</p>
                 <p className="text-[0.8rem] text-muted-foreground">
                   Try adding a channel
                 </p>

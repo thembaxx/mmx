@@ -36,7 +36,7 @@ function Channel() {
     <AblyProvider client={ablyClient}>
       <ChannelProvider channelName={channel}>
         <div className="flex flex-col h-full w-full relative overflow-y-auto">
-          <div className="flex justify-between items-center sticky top-0 w-full z-20 p-4 bg-[#191919]">
+          <div className="flex justify-between items-center sticky top-0 w-full z-20 p-4 bg-neutral-100 dark:bg-[#191919]">
             <QrDialog channel={channel}>
               <Button size="icon" variant="ghost">
                 <QrCodeIcon className="!w-6 !h-6 text-icon" />

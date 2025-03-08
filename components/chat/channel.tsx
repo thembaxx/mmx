@@ -17,6 +17,18 @@ const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
   ssr: false,
 });
 
+const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <path
+      d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 function Channel() {
   const [channel, setChannel] = useState("default");
   const [channels, setChannels] = useState<string[]>([]);
@@ -46,9 +58,7 @@ function Channel() {
                 <span>{`${
                   channel && channel !== "" ? channel : "Select a channel"
                 }`}</span>
-                <Badge className="rounded-full ml-3 -mr-1">
-                  {channels.length}
-                </Badge>
+                <ArrowDownIcon className="ml-2" />
               </Button>
             </Channels>
 

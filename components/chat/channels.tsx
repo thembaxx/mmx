@@ -24,6 +24,7 @@ import { useState } from "react";
 import { RssIcon, SearchIcon, SolarCheckCircleBold } from "@/config/icons";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 function Channels({
   children,
@@ -41,7 +42,7 @@ function Channels({
   return (
     <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
-      <DrawerContent className="h-[70svh]">
+      <DrawerContent className="h-[70svh] bg-[#0A0A0A]">
         <DrawerHeader className="space-y-3">
           <VisuallyHidden>
             <DrawerTitle>Channels</DrawerTitle>
@@ -77,17 +78,23 @@ function Channels({
         </DrawerHeader>
         <div className="grow">
           {channels.length > 0 && items.length > 0 && (
-            <ul className="flex flex-col h-full overflow-y-auto p-4">
+            <ul className="flex flex-col h-full overflow-y-auto gap-3 p-4">
               {items.map((name, index) => (
                 <li key={index}>
                   <div
-                    className="flex items-center py-3"
+                    className={cn(
+                      "flex items-center py-3 dark:bg-[#121212] text-secondary-foreground border pr-4 pl-3 rounded-[16px]",
+                      {
+                        "text-foreground dark:bg-blue-500/[0.08] ring-2 ring-blue-500/40 border-blue-600":
+                          channel === name,
+                      }
+                    )}
                     onClick={() => onChange(name)}
                   >
-                    <RssIcon className="mr-2" />
-                    <p className="grow">{name}</p>
+                    <RssIcon className="mr-3 h-5 w-5 text-icon" />
+                    <p className="grow text-sm">{name}</p>
                     {channel === name && (
-                      <SolarCheckCircleBold className="h-5 w-5" />
+                      <SolarCheckCircleBold className="h-5 w-5 text-blue-500" />
                     )}
                   </div>
                 </li>

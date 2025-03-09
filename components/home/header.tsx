@@ -21,7 +21,7 @@ function Header() {
             {siteConfig.name}
           </span>
         </h1>
-        <p className="text-[0.95rem] text-center text-pretty max-w-xs text-secondary-foreground">
+        <p className="text-[0.95rem] text-center text-pretty max-w-xs text-secondary-foreground/85">
           Experience conversations that flow as naturally as face-to-face,
           without the wait.
         </p>

@@ -1,5 +1,13 @@
-import Channel from "@/components/chat/channel";
+"use client";
+
 import UseLayoutEffectParent from "@/components/use-layout-effect-parent";
+import dynamic from "next/dynamic";
+const Channel = dynamic(
+  () => Promise.resolve(import("@/components/chat/channel")),
+  {
+    ssr: false,
+  }
+);
 
 function ChatPage() {
   return (

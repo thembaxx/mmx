@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AblyProvider, ChannelProvider } from "ably/react";
 
 import Channels from "./channels";
@@ -9,12 +9,24 @@ import { QrCodeIcon, RssIcon } from "@/config/icons";
 import { ProfileMenu } from "./profile-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import QrDialog from "./qr-dialog";
-import { ablyClient } from "@/lib/ably-client";
+import * as Ably from "ably";
 import dynamic from "next/dynamic";
 
 const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
   ssr: false,
 });
+
+let channelId: string;
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has("channelId")) {
+    channelId = "default";
+    params.set("channelId", channelId);
+    history.replaceState(null, "", "?" + params.toString());
+  } else {
+    channelId = params.get("channelId")!;
+  }
+})();
 
 const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -34,8 +46,34 @@ const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 function Channel() {
-  const [channel, setChannel] = useState("default");
-  const [channels, setChannels] = useState<string[]>([]);
+  const ablyClient = new Ably.Realtime({
+    authUrl: "/api/ably",
+    autoConnect: typeof window !== "undefined",
+  });
+
+  const [channel, setChannel] = useState(channelId);
+  const [channels, setChannels] = useState<string[]>([channelId]);
+
+  const updateChannelId = (channel: string) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("channelId", channel);
+    history.pushState(null, "", "?" + params.toString());
+    setChannel(channel);
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const channel = params.get("channelId") || "default";
+      setChannel(channel);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   return (
     <AblyProvider client={ablyClient}>
@@ -50,7 +88,7 @@ function Channel() {
             <Channels
               channel={channel}
               channels={channels}
-              onChange={setChannel}
+              onChange={updateChannelId}
               addChannel={(name) => setChannels((prev) => [...prev, name])}
             >
               <Button
@@ -58,7 +96,7 @@ function Channel() {
                 size="sm"
                 variant="secondary"
               >
-                <RssIcon className="w-4 h-4 text-icon" />
+                <RssIcon className="w-4 h-4 mr-1 text-icon" />
                 <span>{`${
                   channel && channel !== "" ? channel : "Select a channel"
                 }`}</span>

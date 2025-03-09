@@ -19,7 +19,7 @@ export default function Home() {
       <div>
         <Header />
       </div>
-      <Card className="shadow-md/20 rounded-3xl bg-[#0d0d0d]">
+      <Card className="shadow-md/20 rounded-3xl bg-[#fcfcfc] dark:bg-[#0d0d0d]">
         <CardHeader className="text-center text-[0.7rem] uppercase">
           <CardTitle>Welcome</CardTitle>
         </CardHeader>

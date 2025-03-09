@@ -42,7 +42,7 @@ function Channels({
   return (
     <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
-      <DrawerContent className="h-[70svh] bg-[#0A0A0A]">
+      <DrawerContent className="h-[70svh] dark:bg-[#0A0A0A]">
         <DrawerHeader className="space-y-3">
           <VisuallyHidden>
             <DrawerTitle>Channels</DrawerTitle>
@@ -83,9 +83,9 @@ function Channels({
                 <li key={index}>
                   <div
                     className={cn(
-                      "flex items-center py-3 dark:bg-[#121212] text-secondary-foreground border pr-4 pl-3 rounded-[16px]",
+                      "flex items-center py-3 dark:bg-[#121212] bg-[#fafafa] text-secondary-foreground border pr-4 pl-3 rounded-[16px]",
                       {
-                        "text-foreground dark:bg-blue-500/[0.08] ring-2 ring-blue-500/40 border-blue-600":
+                        "text-foreground bg-blue-600/[0.08] dark:bg-blue-500/[0.08] ring-2 ring-blue-500/40 border-blue-600":
                           channel === name,
                       }
                     )}

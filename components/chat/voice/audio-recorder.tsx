@@ -258,11 +258,11 @@ const AudioRecorder: React.FC = () => {
                   <Image
                     src="/empty_no_items.svg"
                     alt=""
-                    height={150}
-                    width={150}
+                    height={80}
+                    width={80}
                     className="opacity-90"
                   />
-                  <p className="text-lg font-bold">No recording yet</p>
+                  <p className="font-bold">No recording yet</p>
                 </div>
               )}
             </div>

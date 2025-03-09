@@ -54,7 +54,7 @@ function Channel() {
               addChannel={(name) => setChannels((prev) => [...prev, name])}
             >
               <Button
-                className="shrink-0 pr-1 rounded-full bg-black/[0.03] dark:bg-[#191919]"
+                className="shrink-0 pr-1 rounded-full bg-black/[0.03] dark:bg-[#2E2E2E]"
                 size="sm"
                 variant="secondary"
               >

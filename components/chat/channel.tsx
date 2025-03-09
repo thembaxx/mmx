@@ -17,7 +17,12 @@ const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
 });
 
 const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    {...props}
+  >
     <path
       d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"
       stroke="currentColor"
@@ -36,10 +41,10 @@ function Channel() {
     <AblyProvider client={ablyClient}>
       <ChannelProvider channelName={channel}>
         <div className="flex flex-col h-full w-full relative overflow-y-auto">
-          <div className="flex justify-between items-center sticky top-0 w-full z-20 p-4 bg-neutral-100 dark:bg-[#191919]">
+          <div className="flex justify-between items-center sticky top-0 w-full z-20 p-4 bg-neutral-100/70 dark:bg-[#191919]">
             <QrDialog channel={channel}>
               <Button size="icon" variant="ghost">
-                <QrCodeIcon className="!w-6 !h-6 text-icon" />
+                <QrCodeIcon className="!w-6 !h-6 !dark:text-icon" />
               </Button>
             </QrDialog>
             <Channels
@@ -49,7 +54,7 @@ function Channel() {
               addChannel={(name) => setChannels((prev) => [...prev, name])}
             >
               <Button
-                className="shrink-0 pr-1 rounded-full"
+                className="shrink-0 pr-1 rounded-full bg-black/[0.03] dark:bg-[#191919]"
                 size="sm"
                 variant="secondary"
               >

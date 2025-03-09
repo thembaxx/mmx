@@ -100,12 +100,10 @@ export default function ThemeSwitcher() {
     setTheme(value);
   };
 
-  console.log(theme);
-
   return (
     <fieldset className="space-y-4">
       <RadioGroup
-        className="flex rounded-full p-1.5 gap-1 bg-[#191919]/80"
+        className="flex rounded-full p-1.5 gap-1 bg-black/[0.03] dark:bg-[#191919]/80"
         value={theme}
         onValueChange={handleValueChange}
       >

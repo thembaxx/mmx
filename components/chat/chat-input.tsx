@@ -20,40 +20,15 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
 import Gallery from "./gallery";
 
-import { GalleryIcon, SendIcon, SoundwaveIcon } from "@/config/icons";
-import Voice from "./voice/voice";
+import { AttachmentIcon, SendIcon } from "@/config/icons";
+import { Separator } from "../ui/separator";
+import AttachmentPopup from "./attachment-popup";
 
 const FormSchema = z.object({
   text: z.string(),
 });
 
-const UserIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={24}
-    height={24}
-    color="currentColor"
-    fill={"none"}
-    {...props}
-  >
-    <path
-      d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-  </svg>
-);
-
 function ChatInput({ channel }: Props) {
-  const [voiceIsOpen, setVoiceIsOpen] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -142,41 +117,31 @@ function ChatInput({ channel }: Props) {
                   transition={{ duration: 0.75, type: "spring" }}
                   className="flex items-center grow gap-2"
                 >
-                  <label htmlFor="file-upload">
-                    <div className="flex items-center justify-center h-9 w-9 dark:bg-[#333333E6] rounded-full">
-                      <GalleryIcon className="!h-4 !w-4 p-0 text-icon" />
-                      <input
-                        multiple
-                        accept="image/*"
-                        type="file"
-                        id="file-upload"
-                        className="hidden"
-                        onChange={(e) => handleFilesChange(e.target.files)}
-                      />
-                    </div>
-                  </label>
-
-                  <Voice isOpen={voiceIsOpen} setIsOpen={setVoiceIsOpen}>
-                    <Button size="icon" type="button" variant="ghost">
-                      <SoundwaveIcon className="!h-5 !w-5 p-0 text-icon" />
+                  <AttachmentPopup handleFilesChange={handleFilesChange}>
+                    <Button
+                      className="h-8 w-8 dark:bg-[#333333E6]"
+                      size="icon"
+                      type="button"
+                      variant="ghost"
+                    >
+                      <AttachmentIcon className="!h-4 !w-4 p-0 text-icon" />
                     </Button>
-                  </Voice>
-                  <div className="flex items-center gap-2 px-2 py-1 rounded-md">
-                    <UserIcon className="w-4 h-4 text-icon" />
-                    <p className="text-[0.8rem] text-secondary-foreground">
-                      {2}
-                    </p>
+                  </AttachmentPopup>
+                  <div className="flex items-center gap-2 px-2.5 h-8 shrink-0 rounded-lg border">
+                    <div className="flex items-center gap-2 h-full rounded-md">
+                      <div className="h-2 w-2 bg-green-500 rounded-full" />
+                      <p className="text-[0.8rem] text-secondary-foreground/80">
+                        3 Online
+                      </p>
+                    </div>
+                    <Separator orientation="vertical" />
+                    <div className="flex items-center gap-2 h-full rounded-md">
+                      <div className="h-2 w-2 bg-neutral-500 rounded-full" />
+                      <p className="text-[0.75rem] text-secondary-foreground/80">
+                        12 Members
+                      </p>
+                    </div>
                   </div>
-                  {/* <motion.div whileTap={{ scale: 0.95 }}>
-                      <Button
-                        className="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 h-8 w-8 ml-2 rounded-full"
-                        size="icon"
-                        type="button"
-                        variant="ghost"
-                      >
-                        <AiIcon className="!h-4 !w-4 p-0 text-white" />
-                      </Button>
-                    </motion.div> */}
                 </motion.div>
               </AnimatePresence>
               <motion.div className="flex items-center h-full space-x-2">

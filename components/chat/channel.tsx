@@ -48,7 +48,7 @@ const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
 function Channel() {
   const ablyClient = new Ably.Realtime({
     authUrl: "/api/ably",
-    autoConnect: typeof window !== "undefined",
+    autoConnect: false,
   });
 
   const [channel, setChannel] = useState(channelId);

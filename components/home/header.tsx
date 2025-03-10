@@ -3,17 +3,10 @@
 // "Chat naturally, resolve instantly.";
 
 import { siteConfig } from "@/config/site";
-import Image from "next/image";
 
 function Header() {
   return (
     <div className="h-full w-full flex flex-col items-center space-y-12">
-      <div className=" flex items-center gap-1">
-        <div className="w-9 h-9 flex items-center justify-center">
-          <Image src="/logo.png" height={24} width={24} alt="" />
-        </div>
-        <p className="font-medium">{siteConfig.name}</p>
-      </div>
       <div className="space-y-3">
         <h1 className="text-4xl font-extrabold text-center text-pretty ">
           Connect in Real-Time with{" "}

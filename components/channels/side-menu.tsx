@@ -25,8 +25,6 @@ import { Separator } from "../ui/separator";
 
 import { cn } from "@/lib/utils";
 import {
-  BriefcaseIcon,
-  DashboardCircleIcon,
   HelpCircleIcon,
   HotPriceIcon,
   NewsIcon,

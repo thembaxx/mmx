@@ -4,7 +4,7 @@ import React from "react";
 
 function PublicChannelsPage() {
   return (
-    <div className="p-6 space-y-8 flex flex-col h-full">
+    <div className="p-6 space-y-8 flex flex-col h-full overflow-y-auto">
       <Header />
       <div className="grow">
         <List />

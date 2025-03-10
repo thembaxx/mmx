@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: {
@@ -37,7 +38,10 @@ export default function RootLayout({
             disableTransitionOnChange: false,
           }}
         >
-          <main className="h-full w-full overflow-hidden">{children}</main>
+          <>
+            <main className="h-full w-full overflow-hidden">{children}</main>
+            <Toaster />
+          </>
         </Providers>
       </body>
     </html>

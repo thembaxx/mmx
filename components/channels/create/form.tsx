@@ -28,7 +28,7 @@ import IconSelector from "./icon-selector";
 import { ChannelIcon } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { siteConfig } from "@/config/site";
-import { useUserStore } from "@/stores/use-user-store";
+import { toast } from "sonner";
 
 const FormSchema = z.object({
   name: z.string().min(2, {
@@ -39,7 +39,6 @@ const FormSchema = z.object({
 
 export function CreateChannelForm() {
   const router = useRouter();
-  const { user } = useUserStore();
 
   const [loading, setLoading] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState<string>("");
@@ -54,8 +53,6 @@ export function CreateChannelForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    if (!user) return;
-
     setLoading(true);
 
     const res = await axios.post("/api/channel/create", {
@@ -63,18 +60,19 @@ export function CreateChannelForm() {
         iconSrc: channelIcon?.src ?? "",
         name: data.name.replaceAll("-", ""),
         isPrivate: data.isPrivate,
-        userId: user.id,
       },
     });
 
     setLoading(false);
 
-    if (res) {
-      const link = `${siteConfig.url}/chat?channel=${data.name.replaceAll(
+    if (res && res.status === 200) {
+      const link = `${siteConfig.url}/chat?channelId=${data.name.replaceAll(
         "-",
         ""
       )}`;
       router.push(link);
+    } else {
+      toast.error("Something went wrong");
     }
   }
 
@@ -97,7 +95,7 @@ export function CreateChannelForm() {
             {avatarSrc && <AvatarImage src={avatarSrc} alt="picture" />}
             {channelIcon && (
               <div className="h-full w-full border flex items-center justify-center bg-black/5 dark:bg-white/5 rounded-full">
-                <div className="h-16 w-16">
+                <div className="h-12 w-12">
                   <AvatarImage src={channelIcon.src} alt="picture" />
                 </div>
               </div>

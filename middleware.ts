@@ -20,8 +20,6 @@ export default async function middleware(request: NextRequest) {
 
   const session = data?.session;
 
-  console.log({ session });
-
   let url: undefined | string;
 
   if (!session && pathname !== "/") {

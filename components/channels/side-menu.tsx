@@ -31,6 +31,7 @@ import {
   HotPriceIcon,
   NewsIcon,
   PaintBucketIcon,
+  RssIcon,
   SettingDoneIcon,
   SettingsIcon,
   UserIcon,
@@ -46,15 +47,10 @@ const NavItems: NavItem[] = [
     requireVerification: true,
   },
   {
-    Icon: DashboardCircleIcon,
-    href: "/dashboard",
-    label: "Dashboard",
+    Icon: RssIcon,
+    href: "/channels",
+    label: "Channels",
     requireVerification: true,
-  },
-  {
-    Icon: BriefcaseIcon,
-    href: "/jobs",
-    label: "Jobs",
   },
   {
     Icon: NewsIcon,

@@ -33,7 +33,6 @@ function ChannelsForm() {
         <Button
           className="w-full relative"
           type="submit"
-          size="sm"
           onClick={() => {
             setLoading(true);
 

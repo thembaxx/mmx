@@ -29,7 +29,6 @@ function Content() {
       <Button
         className="w-full relative"
         type="button"
-        size="sm"
         variant="outline"
         onClick={() => {
           router.replace(`/channels/public`);

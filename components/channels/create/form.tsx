@@ -58,7 +58,7 @@ export function CreateChannelForm() {
     const res = await axios.post("/api/channel/create", {
       data: {
         iconSrc: channelIcon?.src ?? "",
-        name: data.name.replaceAll("-", ""),
+        name: data.name,
         isPrivate: data.isPrivate,
       },
     });
@@ -66,9 +66,9 @@ export function CreateChannelForm() {
     setLoading(false);
 
     if (res && res.status === 200) {
-      const link = `${siteConfig.url}/chat?channelId=${data.name.replaceAll(
-        "-",
-        ""
+      const link = `${siteConfig.baseUrl}/chat?channelId=${data.name.replaceAll(
+        " ",
+        "-"
       )}`;
       router.push(link);
     } else {

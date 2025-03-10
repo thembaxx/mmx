@@ -79,7 +79,7 @@ function List() {
             {data.map(({ image, title }, index) => (
               <li key={index}>
                 <Link
-                  href={`${siteConfig.url}/chat?channelId=${title
+                  href={`${siteConfig.baseUrl}/chat?channelId=${title
                     .toLowerCase()
                     .split(" ")
                     .join("-")}`}

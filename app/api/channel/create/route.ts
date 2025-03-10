@@ -32,7 +32,7 @@ export async function AddChannel(data: DataProps, userId: string) {
 
   const { iconSrc, name, isPrivate } = data;
 
-  await client.sql`INSERT INTO "channel" (
+  const resp = await client.sql`INSERT INTO "channel" (
           createdBy,
           name,
           isPrivate,
@@ -49,6 +49,10 @@ export async function AddChannel(data: DataProps, userId: string) {
           ${new Date().toString()},
       );
   `;
+
+  console.log(resp);
+
+  return resp;
 }
 
 export async function POST(req: Request) {

@@ -25,7 +25,7 @@ import {
   ImageIcon,
   SoundwaveIcon,
   VideoIcon,
-} from "@/config/icons";
+} from "@/components/assets/icons";
 
 function AttachmentPopup({ children, handleFilesChange }: Props) {
   const [isOpen, setIsOpen] = useState(false);

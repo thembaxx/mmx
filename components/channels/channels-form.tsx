@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 import Spinner from "../ui/spinner";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { RssIcon } from "@/config/icons";
+import { RssIcon } from "@/components/assets/icons";
 
-function AuthForm() {
+function ChannelsForm() {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -56,4 +56,4 @@ function AuthForm() {
   );
 }
 
-export default AuthForm;
+export default ChannelsForm;

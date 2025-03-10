@@ -1,6 +1,6 @@
 "use client";
 
-import { NotificationIcon } from "@/config/icons";
+import { NotificationIcon } from "@/components/assets/icons";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import { Button } from "../ui/button";

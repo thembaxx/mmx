@@ -34,7 +34,7 @@ import {
   SettingDoneIcon,
   SettingsIcon,
   UserIcon,
-} from "@/config/icons";
+} from "@/components/assets/icons";
 import Profile from "../profile";
 import ThemeSwitcher from "../theme-switcher";
 

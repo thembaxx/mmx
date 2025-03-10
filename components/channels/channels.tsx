@@ -21,7 +21,11 @@ import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { useState } from "react";
-import { RssIcon, SearchIcon, SolarCheckCircleBold } from "@/config/icons";
+import {
+  RssIcon,
+  SearchIcon,
+  SolarCheckCircleBold,
+} from "@/components/assets/icons";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Image from "next/image";
 import { capitalize, cn } from "@/lib/utils";

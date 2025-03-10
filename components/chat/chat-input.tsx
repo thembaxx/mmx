@@ -20,7 +20,7 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
 import Gallery from "./gallery";
 
-import { AttachmentIcon, SendIcon } from "@/config/icons";
+import { AttachmentIcon, SendIcon } from "@/components/assets/icons";
 import { Separator } from "../ui/separator";
 import AttachmentPopup from "./attachment-popup";
 

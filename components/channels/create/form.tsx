@@ -4,6 +4,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import axios from "axios";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,11 +21,13 @@ import Spinner from "../../ui/spinner";
 import { Switch } from "../../ui/switch";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UserIcon } from "@/config/icons";
+import { UserIcon } from "@/components/assets/icons";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import IconSelector from "./icon-selector";
 import { ChannelIcon } from "@/types/types";
+import { useRouter } from "next/navigation";
+import { siteConfig } from "@/config/site";
 
 const FormSchema = z.object({
   name: z.string().min(2, {
@@ -34,6 +37,8 @@ const FormSchema = z.object({
 });
 
 export function CreateChannelForm() {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState<string>("");
   const [channelIcon, setChannelIcon] = useState<ChannelIcon | undefined>();
@@ -46,10 +51,23 @@ export function CreateChannelForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     setLoading(true);
-    console.log(data);
+
+    const res = await axios.post("/api/channel/create", {
+      data: {
+        iconSrc: channelIcon?.src ?? "",
+        name: data.name.replaceAll("-", ""),
+        isPrivate: data.isPrivate,
+      },
+    });
+
     setLoading(false);
+
+    if (res) {
+      const link = `${siteConfig.url}?channel=${data.name.replaceAll("-", "")}`;
+      router.push(link);
+    }
   }
 
   function handleAvatarChange(event: React.ChangeEvent<HTMLInputElement>) {

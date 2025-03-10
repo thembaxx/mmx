@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRightIcon, SearchIcon } from "@/config/icons";
+import { ArrowRightIcon, SearchIcon } from "@/components/assets/icons";
 import Image from "next/image";
 import { useState } from "react";
 import { Label } from "../../ui/label";

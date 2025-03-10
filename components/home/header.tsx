@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 
 function Header() {
   return (
-    <div className="h-full w-full flex flex-col items-center space-y-12">
+    <div className=" w-full flex flex-col items-center space-y-12">
       <div className="space-y-3">
         <h1 className="text-4xl font-extrabold text-center text-pretty ">
           Connect in Real-Time with{" "}

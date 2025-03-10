@@ -11,7 +11,7 @@ import {
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { useState } from "react";
-import { CanceIcon } from "@/config/icons";
+import { CanceIcon } from "@/components/assets/icons";
 
 interface PreviewProps {
   index: number;

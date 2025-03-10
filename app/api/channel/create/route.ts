@@ -58,8 +58,12 @@ export async function POST(req: Request) {
     const userId = session.data?.user.id;
 
     if (json && json.data && userId) {
+      await client.sql`BEGIN`;
       await seedChannel();
       await AddChannel(json.data, userId);
+      await client.sql`COMMIT`;
+
+      client.release();
     }
 
     return new Response("Success", {
@@ -67,6 +71,8 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.log(error);
+    await client.sql`ROLLBACK`;
+    client.release();
     return new Response("Error", { status: 400 });
   }
 }

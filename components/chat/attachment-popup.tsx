@@ -33,7 +33,7 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
 
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger>{children}</DrawerTrigger>
+      <DrawerTrigger asChild>{children}</DrawerTrigger>
       <DrawerContent className="space-y-2">
         <VisuallyHidden>
           <DrawerHeader>

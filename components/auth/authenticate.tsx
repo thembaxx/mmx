@@ -29,7 +29,7 @@ function Authenticate() {
             onClick={async () => {
               authClient.signIn.social({
                 provider: "google",
-                callbackURL: "/dashboard",
+                callbackURL: "/channels",
               });
             }}
           >

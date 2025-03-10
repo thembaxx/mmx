@@ -58,7 +58,7 @@ const icons: ChannelIcon[] = [
 ];
 
 function IconSelector({ icon, children, onSelect }: Props) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>

@@ -28,6 +28,7 @@ import IconSelector from "./icon-selector";
 import { ChannelIcon } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { siteConfig } from "@/config/site";
+import { useUserStore } from "@/stores/use-user-store";
 
 const FormSchema = z.object({
   name: z.string().min(2, {
@@ -38,6 +39,7 @@ const FormSchema = z.object({
 
 export function CreateChannelForm() {
   const router = useRouter();
+  const { user } = useUserStore();
 
   const [loading, setLoading] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState<string>("");
@@ -52,6 +54,8 @@ export function CreateChannelForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
+    if (!user) return;
+
     setLoading(true);
 
     const res = await axios.post("/api/channel/create", {
@@ -59,13 +63,17 @@ export function CreateChannelForm() {
         iconSrc: channelIcon?.src ?? "",
         name: data.name.replaceAll("-", ""),
         isPrivate: data.isPrivate,
+        userId: user.id,
       },
     });
 
     setLoading(false);
 
     if (res) {
-      const link = `${siteConfig.url}?channel=${data.name.replaceAll("-", "")}`;
+      const link = `${siteConfig.url}/chat?channel=${data.name.replaceAll(
+        "-",
+        ""
+      )}`;
       router.push(link);
     }
   }

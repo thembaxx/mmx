@@ -75,7 +75,7 @@ function AuthForm() {
         const user = data?.user;
         setUser(user);
 
-        router.replace("/dashboard");
+        router.replace("/channels");
       }
     } else {
       const res = await checkEmailExists(email);

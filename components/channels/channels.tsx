@@ -24,7 +24,7 @@ import { useState } from "react";
 import { RssIcon, SearchIcon, SolarCheckCircleBold } from "@/config/icons";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { capitalize, cn } from "@/lib/utils";
 
 function Channels({
   children,
@@ -54,7 +54,7 @@ function Channels({
               </Label>
             </div>
             <Input
-              className="w-full h-12 text-base pl-11 dark:bg-[#1E1E1E] rounded-full"
+              className="w-full h-12 text-base pl-11 dark:bg-[#1E1E1E] rounded-[12px]"
               value={value}
               placeholder="Search"
               onChange={(e) => setValue(e.target.value)}
@@ -92,7 +92,9 @@ function Channels({
                     onClick={() => onChange(name)}
                   >
                     <RssIcon className="mr-3 h-5 w-5 text-icon" />
-                    <p className="grow text-sm">{name}</p>
+                    <p className="grow text-sm">
+                      {capitalize(name.replaceAll("-", " "))}
+                    </p>
                     {channel === name && (
                       <SolarCheckCircleBold className="h-5 w-5 text-blue-500" />
                     )}

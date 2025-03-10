@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Spinner from "../ui/spinner";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { RssIcon } from "@/config/icons";
 
 function AuthForm() {
   const router = useRouter();
@@ -15,16 +16,19 @@ function AuthForm() {
 
   return (
     <div className="w-full space-y-3">
-      <Input
-        value={channelId}
-        className="h-11 text-base placeholder:text-sm dark:bg-[#333333]"
-        placeholder="Enter Channel id"
-        type="text"
-        name="username"
-        onChange={(e) => {
-          setChannelId(e.target.value);
-        }}
-      />
+      <div className="relative flex items-center w-full">
+        <RssIcon className="w-5 h-5 absolute left-3 text-icon-secondary" />
+        <Input
+          value={channelId}
+          className="h-11 text-base placeholder:text-sm dark:bg-[#333333] pl-10"
+          placeholder="Enter Channel id"
+          type="text"
+          name="username"
+          onChange={(e) => {
+            setChannelId(e.target.value);
+          }}
+        />
+      </div>
       <div className="space-y-2">
         <Button
           className="w-full relative"
@@ -46,28 +50,6 @@ function AuthForm() {
             </div>
           )}
           <span>Join channel</span>
-        </Button>
-        <Button
-          className="w-full relative"
-          type="button"
-          size="sm"
-          variant="secondary"
-          onClick={() => {
-            setLoading(true);
-
-            if (channelId && channelId !== "") {
-              router.replace(`/chat?channelId=${channelId}`);
-            }
-
-            setLoading(false);
-          }}
-        >
-          {loading && (
-            <div className="absolute left-3">
-              <Spinner />
-            </div>
-          )}
-          <span>Public channels</span>
         </Button>
       </div>
     </div>

@@ -42,7 +42,7 @@ const CopyIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 function QrDialog({ children, channel }: Props) {
-  const link = `${siteConfig.baseUrl}?channel=${channel}`;
+  const link = `${siteConfig.url}?channel=${channel}`;
 
   return (
     <Dialog>
@@ -67,7 +67,11 @@ function QrDialog({ children, channel }: Props) {
                 value={link}
                 readOnly={true}
               />
-              <Button className="w-full" size="sm">
+              <Button
+                className="w-full"
+                size="sm"
+                onClick={async () => await navigator.clipboard.writeText(link)}
+              >
                 <CopyIcon className="!w-4 !h-5" />
                 <span>Copy link</span>
               </Button>

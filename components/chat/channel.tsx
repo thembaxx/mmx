@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AblyProvider, ChannelProvider } from "ably/react";
 
-import Channels from "./channels";
+import Channels from "../channels/channels";
 import { Button } from "../ui/button";
 import { QrCodeIcon, RssIcon } from "@/config/icons";
 import { ProfileMenu } from "./profile-menu";
@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import QrDialog from "./qr-dialog";
 import * as Ably from "ably";
 import dynamic from "next/dynamic";
+import { capitalize } from "@/lib/utils";
 
 const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
   ssr: false,
@@ -98,7 +99,9 @@ function Channel() {
               >
                 <RssIcon className="w-4 h-4 mr-1 text-icon" />
                 <span>{`${
-                  channel && channel !== "" ? channel : "Select a channel"
+                  channel && channel !== ""
+                    ? capitalize(channel.replaceAll("-", " "))
+                    : "Select a channel"
                 }`}</span>
                 <ArrowDownIcon className="ml-2" />
               </Button>

@@ -1,22 +1,19 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 
 import CreateChannelCard from "@/components/channels/create/card";
-import { Suspense } from "react";
+
+let channelName = "";
+const params = new URLSearchParams(window.location.search);
+if (params.has("channelName")) {
+  channelName = params.get("channelName")!;
+} else {
+}
 
 function CreateChannelPage() {
-  let channelName = "";
-  const params = useSearchParams();
-  if (params.has("channelName")) {
-    channelName = params.get("channelName")!;
-  }
-
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className="p-6 h-full w-full space-y-6">
-        <CreateChannelCard channelName={channelName} />
-      </div>
-    </Suspense>
+    <div className="p-6 h-full w-full space-y-6">
+      <CreateChannelCard channelName={channelName} />
+    </div>
   );
 }
 

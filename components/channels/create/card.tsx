@@ -1,5 +1,9 @@
 "use client";
 
+interface Props {
+  channelName: string;
+}
+
 import {
   Card,
   CardContent,
@@ -11,14 +15,7 @@ import { CreateChannelForm } from "./form";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import TermsFooter from "@/components/terms-footer";
 
-let channelName = "";
-const params = new URLSearchParams(window.location.search);
-if (params.has("channelName")) {
-  channelName = params.get("channelName")!;
-} else {
-}
-
-function CreateChannelCard() {
+function CreateChannelCard({ channelName }: Props) {
   return (
     <Card className="dark:bg-[#0d0d0d]">
       <VisuallyHidden>

@@ -55,7 +55,7 @@ function List() {
   );
 
   return (
-    <div className="space-y-8 h-full w-full flex flex-col">
+    <div className="space-y-8 h-full w-full flex flex-col overflow-hidden">
       <header className="flex items-center relative">
         <div className="absolute left-0">
           <Label className="h-full w-12 flex items-center justify-center">
@@ -79,7 +79,7 @@ function List() {
         {!loading && (
           <>
             {data.length > 0 && (
-              <ul className="space-y-3 grow">
+              <ul className="space-y-3 grow overflow-y-auto">
                 {data.map((item, index) => (
                   <li key={index}>
                     <Link

@@ -172,11 +172,11 @@ function Channels({ children }: Props) {
                           )}
                         </div>
                         <div className="grow flex items-center gap-2">
-                          <p className="grow text-sm">
+                          <p className="text-sm">
                             {capitalize(item.name.replaceAll("-", " "))}
                           </p>
-                          <p className="grow text-[0.8rem] text-secondary-foreground/70">
-                            {capitalize(item.type)}
+                          <p className="text-[0.8rem] text-secondary-foreground/60">
+                            {`(${capitalize(item.type)})`}
                           </p>
                         </div>
                         {channel?.id === item.id && (

@@ -1,10 +1,11 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 
 import CreateChannelCard from "@/components/channels/create/card";
 
 function CreateChannelPage() {
   let channelName = "";
-  const params = new URLSearchParams(window.location.search);
+  const params = useSearchParams();
   if (params.has("channelName")) {
     channelName = params.get("channelName")!;
   } else {

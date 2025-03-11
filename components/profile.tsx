@@ -1,7 +1,6 @@
-import { StarIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
 import { MaterialSymbolsVerifiedRounded } from "./chat/profile";
+import { RssIcon, UserIcon } from "./assets/icons";
 
 function Profile() {
   return (
@@ -25,10 +24,19 @@ function Profile() {
             work@themba.dev
           </p>
           <div className="flex gap-4 items-center pt-4">
-            <Badge>Job seeker</Badge>
             <div className="flex items-center gap-2">
-              <StarIcon className="h-4 w-4 text-[#FF990A]" />
-              <span className="text-[0.85rem]">4.3</span>
+              <UserIcon className="w-4 h-4 text-icon-secondary" />
+              <p className="text-[0.85rem]">
+                <span>12</span>{" "}
+                <span className="text-muted-foreground">Friends</span>
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <RssIcon className="w-4 h-4 text-icon-secondary" />
+              <p className="text-[0.85rem]">
+                <span>3</span>{" "}
+                <span className="text-muted-foreground">Channels</span>
+              </p>
             </div>
           </div>
         </div>

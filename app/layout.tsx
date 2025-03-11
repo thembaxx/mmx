@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Toaster } from "sonner";
+import Navbar from "@/components/navbar/navbar";
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +28,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body
         className={cn(
-          `antialiased h-screen overflow-hidden font-sans ${fontSans.className}`
+          `antialiased h-screen font-sans ${fontSans.className} overflow-y-auto`
         )}
       >
         <Providers
@@ -39,6 +40,9 @@ export default function RootLayout({
           }}
         >
           <>
+            <div className="w-full h-16 fixed top-0 left-0 z-50">
+              <Navbar />
+            </div>
             <main className="h-full w-full overflow-hidden">{children}</main>
             <Toaster />
           </>

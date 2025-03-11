@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import Profile from "./profile";
+import Profile from "../chat/profile";
 import { siteConfig } from "@/config/site";
 import ThemeSwitcher from "../theme-switcher";
 

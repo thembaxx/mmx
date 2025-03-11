@@ -9,7 +9,6 @@ interface NavItem {
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import { siteConfig } from "@/config/site";
 
@@ -89,9 +88,11 @@ export function SideMenu({ children }: { children: React.ReactNode }) {
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
-          <VisuallyHidden>
-            <SheetTitle>Menu</SheetTitle>
-          </VisuallyHidden>
+          <SheetTitle>
+            <Link className="font-bold text-[0.90rem] mt-0.5" href="/">
+              <span>{siteConfig.name}</span>
+            </Link>
+          </SheetTitle>
         </SheetHeader>
         <div className="grow space-y-0 overflow-y-auto">
           <div className="p-4 pt-0">

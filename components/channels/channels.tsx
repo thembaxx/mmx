@@ -22,7 +22,6 @@ import {
   SearchIcon,
   SolarCheckCircleBold,
 } from "@/components/assets/icons";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Image from "next/image";
 import { capitalize, cn } from "@/lib/utils";
 import axios from "axios";
@@ -99,11 +98,12 @@ function Channels({ children }: Props) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
-      <DrawerContent className="h-[70svh] dark:bg-[#0A0A0A]">
+      <DrawerContent className="h-[75svh] flex flex-col dark:bg-[#0A0A0A]">
         <DrawerHeader className="space-y-3">
-          <VisuallyHidden>
-            <DrawerTitle>Channels</DrawerTitle>
-          </VisuallyHidden>
+          <DrawerTitle className="text-[0.8rem] opacity-75">
+            Channels
+          </DrawerTitle>
+
           <div className="flex items-center relative">
             <div className="absolute left-0">
               <Label className="h-full w-12 flex items-center justify-center">
@@ -112,7 +112,7 @@ function Channels({ children }: Props) {
             </div>
             <Input
               disabled={loading || items.length === 0}
-              className="w-full h-12 text-base pl-11 dark:bg-[#1E1E1E] rounded-[12px]"
+              className="w-full h-12 text-base pl-11 dark:bg-[#1E1E1E] rounded-[16px]"
               value={value}
               placeholder="Search"
               onChange={(e) => setValue(e.target.value)}
@@ -139,7 +139,7 @@ function Channels({ children }: Props) {
             </Button>
           )}
         </DrawerHeader>
-        <div className="grow">
+        <div className="grow overflow-y-auto">
           {loading && <LoadingPlaceholder />}
 
           {!loading && (
@@ -171,9 +171,14 @@ function Channels({ children }: Props) {
                             />
                           )}
                         </div>
-                        <p className="grow text-sm">
-                          {capitalize(item.name.replaceAll("-", " "))}
-                        </p>
+                        <div className="grow flex items-center gap-2">
+                          <p className="grow text-sm">
+                            {capitalize(item.name.replaceAll("-", " "))}
+                          </p>
+                          <p className="grow text-[0.8rem] text-secondary-foreground/70">
+                            {capitalize(item.type)}
+                          </p>
+                        </div>
                         {channel?.id === item.id && (
                           <SolarCheckCircleBold className="h-5 w-5 text-blue-500" />
                         )}

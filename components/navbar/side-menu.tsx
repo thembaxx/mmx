@@ -26,7 +26,7 @@ import { cn } from "@/lib/utils";
 import {
   HelpCircleIcon,
   HotPriceIcon,
-  NewsIcon,
+  MessageMultipleIcon,
   PaintBucketIcon,
   RssIcon,
   SettingDoneIcon,
@@ -50,9 +50,9 @@ const NavItems: NavItem[] = [
     requireVerification: true,
   },
   {
-    Icon: NewsIcon,
-    href: "/blog",
-    label: "Blog",
+    Icon: MessageMultipleIcon,
+    href: "/chat",
+    label: "Chat",
   },
   {
     Icon: HotPriceIcon,
@@ -89,7 +89,10 @@ export function SideMenu({ children }: { children: React.ReactNode }) {
       <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>
-            <Link className="font-bold text-[0.90rem] mt-0.5" href="/">
+            <Link
+              className="font-bold text-[0.70rem] mt-0.5 uppercase tracking-wide"
+              href="/"
+            >
               <span>{siteConfig.name}</span>
             </Link>
           </SheetTitle>

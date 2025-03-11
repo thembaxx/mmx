@@ -3,6 +3,7 @@ import Ably from "ably";
 export async function GET() {
   const client = new Ably.Rest({
     key: process.env.ABLY_API_KEY,
+    autoConnect: typeof window !== "undefined",
   });
 
   const tokenRequestData = await client.auth.createTokenRequest({

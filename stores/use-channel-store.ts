@@ -1,17 +1,18 @@
+import { ChannelResponse } from "@/types/types";
 import { create } from "zustand";
 
 interface ChannelStore {
-  channel: string;
-  channels: string[];
-  setChannel: (channel: string) => void;
-  setChannels: (channels: string[]) => void;
+  channel: ChannelResponse | null;
+  channels: ChannelResponse[];
+  setChannel: (channel: ChannelResponse) => void;
+  setChannels: (channels: ChannelResponse[]) => void;
   clear: () => void;
 }
 
 export const useChannelstore = create<ChannelStore>((set) => ({
-  channel: "General",
+  channel: null,
   channels: [],
   setChannel: (channel) => set({ channel }),
   setChannels: (channels) => set({ channels }),
-  clear: () => set({ channel: "", channels: [] }),
+  clear: () => set({ channel: null, channels: [] }),
 }));

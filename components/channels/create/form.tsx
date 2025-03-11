@@ -1,5 +1,9 @@
 "use client";
 
+interface Props {
+  channelName: string;
+}
+
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -37,7 +41,7 @@ const FormSchema = z.object({
   isPrivate: z.boolean(),
 });
 
-export function CreateChannelForm() {
+export function CreateChannelForm({ channelName }: Props) {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -47,7 +51,7 @@ export function CreateChannelForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: "",
+      name: channelName,
       isPrivate: false,
     },
   });
@@ -55,25 +59,31 @@ export function CreateChannelForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     setLoading(true);
 
-    const res = await axios.post("/api/channel/create", {
-      data: {
-        iconSrc: channelIcon?.src ?? "",
-        name: data.name,
-        isPrivate: data.isPrivate,
-      },
-    });
+    try {
+      const res = await axios.post("/api/channel/create", {
+        data: {
+          iconSrc: channelIcon?.src ?? "",
+          name: data.name,
+          isPrivate: data.isPrivate,
+        },
+      });
+
+      setLoading(false);
+
+      if (res && res.status === 200) {
+        const link = `${
+          siteConfig.baseUrl
+        }/chat?channelName=${data.name.replaceAll(" ", "-")}`;
+        router.push(link);
+      } else {
+        toast("Something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+      toast("Something went wrong");
+    }
 
     setLoading(false);
-
-    if (res && res.status === 200) {
-      const link = `${siteConfig.baseUrl}/chat?channelId=${data.name.replaceAll(
-        " ",
-        "-"
-      )}`;
-      router.push(link);
-    } else {
-      toast.error("Something went wrong");
-    }
   }
 
   function handleAvatarChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -195,7 +205,11 @@ export function CreateChannelForm() {
               </FormItem>
             )}
           />
-          <Button className="relative w-full" type="submit">
+          <Button
+            disabled={loading}
+            className="relative w-full disabled:opacity-80"
+            type="submit"
+          >
             <span>Create Channel</span>
             {loading && (
               <div className="absolute left-3">

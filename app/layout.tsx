@@ -43,7 +43,9 @@ export default function RootLayout({
             <div className="w-full h-16 fixed top-0 left-0 z-50">
               <Navbar />
             </div>
-            <main className="h-full w-full overflow-hidden">{children}</main>
+            <main className="h-full w-full overflow-hidden pt-20">
+              {children}
+            </main>
             <Toaster />
           </>
         </Providers>

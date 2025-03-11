@@ -5,27 +5,26 @@ import { AblyProvider, ChannelProvider } from "ably/react";
 
 import Channels from "../channels/channels";
 import { Button } from "../ui/button";
-import { RssIcon } from "@/components/assets/icons";
+import { PlusSignSquareIcon, RssIcon } from "@/components/assets/icons";
 import * as Ably from "ably";
 import dynamic from "next/dynamic";
 import { capitalize } from "@/lib/utils";
 import { useChannelstore } from "@/stores/use-channel-store";
+import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
 
 const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
   ssr: false,
 });
 
-let channelId: string;
-(function () {
-  const params = new URLSearchParams(window.location.search);
-  if (!params.has("channelId")) {
-    channelId = "default";
-    params.set("channelId", channelId);
-    history.replaceState(null, "", "?" + params.toString());
-  } else {
-    channelId = params.get("channelId")!;
-  }
-})();
+// let channelName: string;
+// (function () {
+//   const params = new URLSearchParams(window.location.search);
+//   if (params.has("channelName")) {
+//     channelName = params.get("channelName")!;
+//   }
+// })();
 
 const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -44,26 +43,28 @@ const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const ablyClient = new Ably.Realtime({
+  authUrl: "/api/ably",
+});
+
 function Channel() {
-  const ablyClient = new Ably.Realtime({
-    authUrl: "/api/ably",
-    autoConnect: true,
-  });
-
-  const { channel, channels, setChannel, setChannels } = useChannelstore();
-
-  const updateChannelId = (channel: string) => {
-    const params = new URLSearchParams(window.location.search);
-    params.set("channelId", channel);
-    history.pushState(null, "", "?" + params.toString());
-    setChannel(channel);
-  };
+  const { channel, setChannel } = useChannelstore();
 
   useEffect(() => {
-    const handlePopState = () => {
+    const handlePopState = async () => {
       const params = new URLSearchParams(window.location.search);
-      const channel = params.get("channelId") || "default";
-      setChannel(channel);
+      const value = params.get("channelName");
+      history.pushState(null, "", "?" + params.toString());
+      try {
+        const res = await axios.get("/api/channel/get", {
+          data: {
+            channelName: value,
+          },
+        });
+        setChannel(res?.data?.[0]);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -73,33 +74,71 @@ function Channel() {
     };
   }, [setChannel]);
 
+  if (!channel) {
+    return (
+      <div className="h-full w-full flex justify-center items-center">
+        <div className="w-full max-w-sm flex flex-col justify-center items-center">
+          <Image src="/warning.svg" alt="" height={96} width={96} />
+          <div className="text-center mt-8">
+            <h1 className="text-xl font-bold">No channel selected</h1>
+            <p className="text-sm text-secondary-foreground/85">
+              Create or select a channel
+            </p>
+          </div>
+          <div className="mt-4 flex flex-col gap-3">
+            <Channels>
+              <Button size="sm" variant="secondary">
+                <ArrowDownIcon className="w-4 h-4 text-icon" />
+                <span>Select a channel</span>
+              </Button>
+            </Channels>
+
+            <Button size="sm" variant="outline">
+              <PlusSignSquareIcon className="w-4 h-4 text-icon" />
+              <span>Create a channel</span>
+            </Button>
+            <Link
+              className="text-sm font-medium underline text-center"
+              href="/channels/public"
+            >
+              Public channels
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <AblyProvider client={ablyClient}>
-      <ChannelProvider channelName={channel}>
+      <ChannelProvider channelName={channel.name}>
         <div className="flex flex-col h-full w-full relative overflow-hidden">
-          <Channels
-            channel={channel}
-            channels={channels}
-            onChange={updateChannelId}
-            addChannel={(name) => setChannels([...channels, name])}
-          >
+          <Channels>
             <Button
               className="shrink-0 pr-1 rounded-[8px] bg-black/[0.03] dark:bg-[#2E2E2E] flex w-[125px] fixed top-0 left-1/2 right-1/2 -translate-x-1/2 translate-y-1/2 z-50"
               size="sm"
               variant="secondary"
             >
-              <RssIcon className="w-4 h-4 mr-1 text-icon" />
-              <span>{`${
-                channel && channel !== ""
-                  ? capitalize(channel.replaceAll("-", " "))
-                  : "Select a channel"
-              }`}</span>
+              <div className="h-6 w-6 flex items-center justify-center">
+                {!channel.iconSrc && <RssIcon className="w-4 h-4 text-icon" />}
+                {channel.iconSrc && (
+                  <Image
+                    className="-ml-2"
+                    src={channel.iconSrc}
+                    alt=""
+                    height={20}
+                    width={20}
+                  />
+                )}
+              </div>
+
+              <span>{capitalize(channel.name.replaceAll("-", " "))}</span>
               <ArrowDownIcon className="ml-2" />
             </Button>
           </Channels>
 
           <div className="h-full w-full relative">
-            <Chat channelName={channel} />
+            <Chat channelName={channel.name} />
           </div>
         </div>
       </ChannelProvider>

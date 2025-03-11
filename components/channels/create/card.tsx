@@ -1,3 +1,7 @@
+interface Props {
+  channelName: string;
+}
+
 import {
   Card,
   CardContent,
@@ -9,7 +13,7 @@ import { CreateChannelForm } from "./form";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import TermsFooter from "@/components/terms-footer";
 
-function CreateChannelCard() {
+function CreateChannelCard({ channelName }: Props) {
   return (
     <Card className="dark:bg-[#0d0d0d]">
       <VisuallyHidden>
@@ -18,7 +22,7 @@ function CreateChannelCard() {
         </CardHeader>
       </VisuallyHidden>
       <CardContent className="p-0">
-        <CreateChannelForm />
+        <CreateChannelForm channelName={channelName} />
       </CardContent>
       <CardFooter className="pt-2">
         <TermsFooter />

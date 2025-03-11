@@ -180,9 +180,12 @@ function ChannelMenu({ children }: { children: React.ReactNode }) {
             <UserAiIcon className="w-4 h-4 text-icon" />
             <span>My Channels</span>
           </DropdownMenuItem>
-          <DropdownMenuItem disabled={true}>
-            <QrDialog channel={channel ?? ""}>
-              <div className="flex items-center gap-2">
+          <DropdownMenuItem disabled={!channel}>
+            <QrDialog channel={channel?.name ?? ""}>
+              <div
+                className="flex items-center gap-2"
+                onClick={() => setIsOpen(false)}
+              >
                 <QrCodeIcon className="w-4 h-4 text-icon" />
                 <span>Share channel</span>
               </div>
@@ -192,7 +195,11 @@ function ChannelMenu({ children }: { children: React.ReactNode }) {
         <DropdownMenuSeparator className="dark:bg-neutral-700" />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <Link href="/channels/create" className="flex items-center gap-2">
+            <Link
+              href="/channels/create"
+              className="flex items-center gap-2"
+              onClick={() => setIsOpen(false)}
+            >
               <SatelliteIcon className="w-4 h-4 text-icon" />
               <span>Public channels</span>
             </Link>
@@ -203,7 +210,11 @@ function ChannelMenu({ children }: { children: React.ReactNode }) {
           </DropdownMenuItem>
           <DropdownMenuSeparator className="dark:bg-neutral-700" />
           <DropdownMenuItem>
-            <Link href="/channels/create" className="flex items-center gap-2">
+            <Link
+              href="/channels/create"
+              className="flex items-center gap-2"
+              onClick={() => setIsOpen(false)}
+            >
               <AddCircleHalfDotIcon className="w-4 h-4 text-icon" />
               <span>Create a channel</span>
             </Link>

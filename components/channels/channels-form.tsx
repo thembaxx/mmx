@@ -12,14 +12,14 @@ function ChannelsForm() {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
-  const [channelId, setChannelId] = useState("");
+  const [channelName, setChannelId] = useState("");
 
   return (
     <div className="w-full space-y-3">
       <div className="relative flex items-center w-full">
         <RssIcon className="w-5 h-5 absolute left-3 text-icon-secondary" />
         <Input
-          value={channelId}
+          value={channelName}
           className="h-11 text-base placeholder:text-sm dark:bg-[#333333] pl-10"
           placeholder="Enter Channel id"
           type="text"
@@ -36,8 +36,8 @@ function ChannelsForm() {
           onClick={() => {
             setLoading(true);
 
-            if (channelId && channelId !== "") {
-              router.replace(`/chat?channelId=${channelId}`);
+            if (channelName && channelName !== "") {
+              router.replace(`/chat?channelName=${channelName}`);
             }
 
             setLoading(false);

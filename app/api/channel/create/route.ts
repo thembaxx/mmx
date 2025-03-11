@@ -4,15 +4,17 @@ interface DataProps {
   isPrivate: boolean;
 }
 
-import { authClient } from "@/lib/auth-client";
-import { db } from "@vercel/postgres";
+import { auth } from "@/lib/auth";
+import { betterFetch } from "@better-fetch/fetch";
+import { db, QueryResult, QueryResultRow } from "@vercel/postgres";
+import { NextRequest } from "next/server";
 
-const client = await db.connect();
+type Session = typeof auth.$Infer.Session;
 
 async function seedChannel() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  await db.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-  await client.sql`
+  await db.sql`
     CREATE TABLE IF NOT EXISTS "channel" (
       id VARCHAR(100) DEFAULT uuid_generate_v4() PRIMARY KEY,
       "createdBy" TEXT,
@@ -32,51 +34,66 @@ export async function AddChannel(data: DataProps, userId: string) {
 
   const { iconSrc, name, isPrivate } = data;
 
-  const resp = await client.sql`INSERT INTO "channel" (
-          createdBy,
-          name,
-          isPrivate,
-          iconSrc,
-          createdAt,
-          createdAt,
-          )
-      VALUES(
-          ${userId},
-          ${name},
-          ${isPrivate},
-          ${iconSrc},
-          ${new Date().toString()},
-          ${new Date().toString()},
-      );
+  const resp = await db.sql`
+  INSERT INTO "channel" (
+            "createdBy",
+            name,
+            "isPrivate",
+            "iconSrc",
+            "createdAt",
+            "updatedAt"
+            )
+            VALUES(
+            ${userId},
+            ${name},
+            ${isPrivate},
+            ${iconSrc},
+            ${new Date().toISOString()},
+            ${new Date().toISOString()}
+            )
   `;
-
-  console.log(resp);
 
   return resp;
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const json = await req.json();
-    const session = await authClient.getSession();
-    const userId = session.data?.user.id;
 
+    const { data } = await betterFetch<Session>("/api/auth/get-session", {
+      baseURL: req.nextUrl.origin,
+      headers: {
+        //get the cookie from the req
+        cookie: req.headers.get("cookie") || "",
+      },
+    });
+
+    const session = data?.session;
+    const userId = session?.userId;
+
+    let result: QueryResult<QueryResultRow> | undefined;
     if (json && json.data && userId) {
-      await client.sql`BEGIN`;
-      await seedChannel();
-      await AddChannel(json.data, userId);
-      await client.sql`COMMIT`;
+      try {
+        await db.connect();
+      } catch (error) {
+        console.log(error);
+      }
 
-      client.release();
+      await seedChannel();
+      result = await AddChannel(json.data, userId);
+
+      return new Response(JSON.stringify(result), {
+        status: 200,
+      });
     }
 
-    return new Response("Success", {
-      status: 200,
+    return new Response("Something went wrong", {
+      status: 500,
     });
   } catch (error) {
     console.log(error);
-    await client.sql`ROLLBACK`;
-    client.release();
+    await db.sql`ROLLBACK`;
+
     return new Response("Error", { status: 400 });
   }
 }

@@ -69,7 +69,7 @@ function Navbar() {
         <div className="flex items-center">
           <SideMenu>
             <Button className="p-0" variant="ghost">
-              <MenuIcon className="!w-6 !h-6 !text-icon" />
+              <MenuIcon className="!w-6 !h-6" />
             </Button>
           </SideMenu>
         </div>

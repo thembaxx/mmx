@@ -9,6 +9,7 @@ export interface ChannelResponse {
   name: string;
   isPrivate: boolean;
   iconSrc: string;
+  type: string;
   createdAt: string;
   updatedAt: string;
 }

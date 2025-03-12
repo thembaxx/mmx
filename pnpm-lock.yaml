@@ -60,8 +60,8 @@ importers:
         specifier: ^2.6.3
         version: 2.6.3(bufferutil@4.0.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       axios:
-        specifier: ^1.8.2
-        version: 1.8.2
+        specifier: ^1.8.3
+        version: 1.8.3
       better-auth:
         specifier: ^1.2.3
         version: 1.2.3(typescript@5.8.2)
@@ -1153,8 +1153,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  automation-events@7.1.7:
-    resolution: {integrity: sha512-TK4cQrEssgJzrieUvF9vwpn+rryLP1Cb46LOQAiYl/4b5vtZ/vOWXaR7zxC3uMBrWj7MqhCGPlyTFgETrF5Ydw==}
+  automation-events@7.1.8:
+    resolution: {integrity: sha512-ITQAwmdjiSBGm6j7CUoxBR39MNUsuh0Nst4mI1vwWBj1VOhDKjJlF95njzN1bb+DS54j/mLWnemzs0QVMPI1sA==}
     engines: {node: '>=18.2.0'}
 
   available-typed-arrays@1.0.7:
@@ -1165,8 +1165,8 @@ packages:
     resolution: {integrity: sha512-Xm7bpRXnDSX2YE2YFfBk2FnF0ep6tmG7xPh8iHee8MIcrgq762Nkce856dYtJYLkuIoYZvGfTs/PbZhideTcEg==}
     engines: {node: '>=4'}
 
-  axios@1.8.2:
-    resolution: {integrity: sha512-ls4GYBm5aig9vWx8AWDSGLpnpDQRtWAfrjU+EuytuODrFBkqesN2RkOQCBzrA1RQNHw1SmRMSDDDSwzNAYQ6Rg==}
+  axios@1.8.3:
+    resolution: {integrity: sha512-iP4DebzoNlP/YN2dpwCgb8zoCmhtkajzS48JvwmkSkXvPI3DHc7m+XYL5tGnSlJtR6nImXZmdCuN5aP8dh1d8A==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -1198,8 +1198,8 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  broker-factory@3.1.3:
-    resolution: {integrity: sha512-mBxlMgW4Fk4nYDuwLTGtBt+TaHnxgnXW6bqW9D4L7mPEPSkvsfdEakzvsrIwy+quOU9eDl+ETAMVbaU1fSUKAQ==}
+  broker-factory@3.1.4:
+    resolution: {integrity: sha512-AiOHLd+QGzmj57N7ZqvleGg8x7X/Rzz3jBcM5+Noe3nv8RwOSV31Nb+9JLLCKIo5VzT1wkAxD8Wh8rB+6SqS7Q==}
 
   bufferutil@4.0.9:
     resolution: {integrity: sha512-WDtdLmJvAuNNPzByAYpRo2rF1Mmradw6gvWsQKf63476DDXmomT9zUiGypLcG4ibIM67vhAj8jJRdbmEws2Aqw==}
@@ -1440,8 +1440,8 @@ packages:
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
 
-  eslint-import-resolver-typescript@3.8.4:
-    resolution: {integrity: sha512-vjTGvhr528DzCOLQnBxvoB9a2YuzegT1ogfrUwOqMXS/J6vNYQKSHDJxxDVU1gRuTiUK8N2wyp8Uik9JSPAygA==}
+  eslint-import-resolver-typescript@3.8.5:
+    resolution: {integrity: sha512-0ZRnzOqKc7TRm85w6REOUkVLHevN6nWd/xZsmKhSD/dcDktoxQaQAg59e5EK/QEsGFf7o5JSpE6qTwCEz0WjTw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '*'
@@ -1544,14 +1544,14 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
 
-  extendable-media-recorder-wav-encoder-broker@7.0.115:
-    resolution: {integrity: sha512-gto/LFc9eUKd+vZ1ZPInlhxExOR03QXo1td6KvxK/JCdTQSb1bo3DiOplaXWaPEznrIOEukeBgYmTmX73yZihQ==}
+  extendable-media-recorder-wav-encoder-broker@7.0.116:
+    resolution: {integrity: sha512-5eYZCPrK38Vm5TzKrxwoTMoqbGaFi5nl0mLsvOh6gYC39weptriU+ArX/pDryBRf1oCaCoSoBGO848zQwpMixA==}
 
-  extendable-media-recorder-wav-encoder-worker@8.0.112:
-    resolution: {integrity: sha512-H2Z9cAUcPNPwzNfJm8fWRM15+one+c/GCrof6TIg1AxuFVoPBSepTwAOMRX+gg99Gn2VxOI0Bm/JtMuPlxAPhA==}
+  extendable-media-recorder-wav-encoder-worker@8.0.113:
+    resolution: {integrity: sha512-FqZdBUElTTxYFm20Ndzu6lK43us8PFnvIWLphaGnfZbKcshB9QeSRnFDrpYQGb6GupA9qyLWXBsMGexacfn8QA==}
 
-  extendable-media-recorder-wav-encoder@7.0.125:
-    resolution: {integrity: sha512-6Nb2JFWcwjpzwoJGEEU1c1pYByXgiM5KJqxJz37Ks5eAjMODLjVNbx8yuIvPBDoZ+YwW2q2rL5EionZ9IS/VAw==}
+  extendable-media-recorder-wav-encoder@7.0.126:
+    resolution: {integrity: sha512-KtwAa8byIttsLubKDaWLDCJ0WeCmdpmrg9/XOLh5GexKV+4okHmcJwhuXPePNLt5Z9xpvmUpi99zsdM7xUHfLg==}
 
   extendable-media-recorder@6.6.10:
     resolution: {integrity: sha512-gnSmLqDFq40ZdbGfuarnMLNqYPLCPpPr0p21V+g67wG4Pv2oCc/ga8sfsZrEM5GywEi7FcpyRm3z99JWZ/0aPw==}
@@ -1577,8 +1577,8 @@ packages:
     resolution: {integrity: sha512-xnqpsnu889bHbq5cbDMwCJ2BPf6kjFPMu+RHfqKvisRxeEbTOVxY5aW/ZNsZ/r8OlwatxmjdFEVQog2xAhLkvg==}
     engines: {node: '>=14.15.4'}
 
-  fast-unique-numbers@9.0.18:
-    resolution: {integrity: sha512-+mCjhyigl+xn5jicnUMsA2R63xQQyEp8EzW1u7NOeVzq9ULNm59aB1oNYUsWJiv2wi07CyTyjiGXZejaMn5JhA==}
+  fast-unique-numbers@9.0.19:
+    resolution: {integrity: sha512-sfxP/1eJtVFle7hSJjHxULjVabATWtxTdUTzemee5E3kM0SlosrpklxFT7V19hyPdpYllrFLt2Uo40SyDX2mtg==}
     engines: {node: '>=18.2.0'}
 
   fastestsmallesttextencoderdecoder@1.0.22:
@@ -2538,8 +2538,8 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  subscribable-things@2.1.49:
-    resolution: {integrity: sha512-kYyysfppl7D+5EmT7MgJtJt3rS743NaqhdRIlAo6DLluWXG/lTvX41QdPxFOAlGH38lh5FKhBnQHvV65fH4MzA==}
+  subscribable-things@2.1.50:
+    resolution: {integrity: sha512-zGho96LYeY7WNsaA3gVMIP+IRSSGYxS4IltRwQkpwLNViyHPht78b2CzAAQw/BQ90+h4J2m1gofiV+M5f8y0Wg==}
 
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
@@ -2694,8 +2694,8 @@ packages:
   worker-factory@6.0.76:
     resolution: {integrity: sha512-W1iBNPmE9p0asU4aFmYJYCnMxhkvk4qlKc660GlHxWgmflY64NxxTbmKqipu4K5p9LiKKPjqXfcQme6153BZEQ==}
 
-  worker-factory@7.0.39:
-    resolution: {integrity: sha512-UrCbghhZSu8ZjBwF0fmH+h7l8gK9LhBMcl2w6TpC22gQHi2YLXogJcW71aaldtVLSrbusAi526Oi5IHJgc9FdA==}
+  worker-factory@7.0.40:
+    resolution: {integrity: sha512-hfNchU+FG8PChpBdL1zUsVT84D94wMZEOZIXUJUDuNTrnW9gBk8TvSbV9+wb3ByLA8zWF/5U6OrAksBoZsW3lA==}
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
@@ -3738,7 +3738,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  automation-events@7.1.7:
+  automation-events@7.1.8:
     dependencies:
       '@babel/runtime': 7.26.10
       tslib: 2.8.1
@@ -3749,7 +3749,7 @@ snapshots:
 
   axe-core@4.10.3: {}
 
-  axios@1.8.2:
+  axios@1.8.3:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.2
@@ -3806,12 +3806,12 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  broker-factory@3.1.3:
+  broker-factory@3.1.4:
     dependencies:
       '@babel/runtime': 7.26.10
-      fast-unique-numbers: 9.0.18
+      fast-unique-numbers: 9.0.19
       tslib: 2.8.1
-      worker-factory: 7.0.39
+      worker-factory: 7.0.40
 
   bufferutil@4.0.9:
     dependencies:
@@ -4113,8 +4113,8 @@ snapshots:
       '@typescript-eslint/parser': 8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       eslint: 9.22.0(jiti@2.4.2)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.8.4(eslint-plugin-import@2.31.0)(eslint@9.22.0(jiti@2.4.2))
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.8.4)(eslint@9.22.0(jiti@2.4.2))
+      eslint-import-resolver-typescript: 3.8.5(eslint-plugin-import@2.31.0)(eslint@9.22.0(jiti@2.4.2))
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.8.5)(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-react: 7.37.4(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-react-hooks: 5.2.0(eslint@9.22.0(jiti@2.4.2))
@@ -4133,7 +4133,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.8.4(eslint-plugin-import@2.31.0)(eslint@9.22.0(jiti@2.4.2)):
+  eslint-import-resolver-typescript@3.8.5(eslint-plugin-import@2.31.0)(eslint@9.22.0(jiti@2.4.2)):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.0
@@ -4144,22 +4144,22 @@ snapshots:
       stable-hash: 0.0.4
       tinyglobby: 0.2.12
     optionalDependencies:
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.8.4)(eslint@9.22.0(jiti@2.4.2))
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.8.5)(eslint@9.22.0(jiti@2.4.2))
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.8.4)(eslint@9.22.0(jiti@2.4.2)):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.8.5)(eslint@9.22.0(jiti@2.4.2)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       eslint: 9.22.0(jiti@2.4.2)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.8.4(eslint-plugin-import@2.31.0)(eslint@9.22.0(jiti@2.4.2))
+      eslint-import-resolver-typescript: 3.8.5(eslint-plugin-import@2.31.0)(eslint@9.22.0(jiti@2.4.2))
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.8.4)(eslint@9.22.0(jiti@2.4.2)):
+  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.8.5)(eslint@9.22.0(jiti@2.4.2)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.8
@@ -4170,7 +4170,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.22.0(jiti@2.4.2)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.8.4)(eslint@9.22.0(jiti@2.4.2))
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.8.5)(eslint@9.22.0(jiti@2.4.2))
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -4302,24 +4302,24 @@ snapshots:
 
   esutils@2.0.3: {}
 
-  extendable-media-recorder-wav-encoder-broker@7.0.115:
+  extendable-media-recorder-wav-encoder-broker@7.0.116:
     dependencies:
       '@babel/runtime': 7.26.10
-      broker-factory: 3.1.3
-      extendable-media-recorder-wav-encoder-worker: 8.0.112
+      broker-factory: 3.1.4
+      extendable-media-recorder-wav-encoder-worker: 8.0.113
       tslib: 2.8.1
 
-  extendable-media-recorder-wav-encoder-worker@8.0.112:
+  extendable-media-recorder-wav-encoder-worker@8.0.113:
     dependencies:
       '@babel/runtime': 7.26.10
       tslib: 2.8.1
-      worker-factory: 7.0.39
+      worker-factory: 7.0.40
 
-  extendable-media-recorder-wav-encoder@7.0.125:
+  extendable-media-recorder-wav-encoder@7.0.126:
     dependencies:
       '@babel/runtime': 7.26.10
-      extendable-media-recorder-wav-encoder-broker: 7.0.115
-      extendable-media-recorder-wav-encoder-worker: 8.0.112
+      extendable-media-recorder-wav-encoder-broker: 7.0.116
+      extendable-media-recorder-wav-encoder-worker: 8.0.113
       tslib: 2.8.1
 
   extendable-media-recorder@6.6.10:
@@ -4329,7 +4329,7 @@ snapshots:
       multi-buffer-data-view: 3.0.24
       recorder-audio-worklet: 5.1.39
       standardized-audio-context: 25.3.77
-      subscribable-things: 2.1.49
+      subscribable-things: 2.1.50
       tslib: 2.8.1
 
   fast-deep-equal@3.1.3: {}
@@ -4359,7 +4359,7 @@ snapshots:
       '@babel/runtime': 7.26.10
       tslib: 2.8.1
 
-  fast-unique-numbers@9.0.18:
+  fast-unique-numbers@9.0.19:
     dependencies:
       '@babel/runtime': 7.26.10
       tslib: 2.8.1
@@ -4781,17 +4781,17 @@ snapshots:
   media-encoder-host-broker@7.1.0:
     dependencies:
       '@babel/runtime': 7.26.10
-      broker-factory: 3.1.3
-      fast-unique-numbers: 9.0.18
+      broker-factory: 3.1.4
+      fast-unique-numbers: 9.0.19
       media-encoder-host-worker: 9.2.0
       tslib: 2.8.1
 
   media-encoder-host-worker@9.2.0:
     dependencies:
       '@babel/runtime': 7.26.10
-      extendable-media-recorder-wav-encoder-broker: 7.0.115
+      extendable-media-recorder-wav-encoder-broker: 7.0.116
       tslib: 2.8.1
-      worker-factory: 7.0.39
+      worker-factory: 7.0.40
 
   media-encoder-host@8.1.0:
     dependencies:
@@ -5063,7 +5063,7 @@ snapshots:
   react-media-recorder@1.7.1:
     dependencies:
       extendable-media-recorder: 6.6.10
-      extendable-media-recorder-wav-encoder: 7.0.125
+      extendable-media-recorder-wav-encoder: 7.0.126
 
   react-remove-scroll-bar@2.3.8(@types/react@19.0.10)(react@19.0.0):
     dependencies:
@@ -5106,11 +5106,11 @@ snapshots:
   recorder-audio-worklet@5.1.39:
     dependencies:
       '@babel/runtime': 7.26.10
-      broker-factory: 3.1.3
+      broker-factory: 3.1.4
       fast-unique-numbers: 7.0.2
       recorder-audio-worklet-processor: 4.2.21
       standardized-audio-context: 25.3.77
-      subscribable-things: 2.1.49
+      subscribable-things: 2.1.50
       tslib: 2.8.1
       worker-factory: 6.0.76
 
@@ -5295,7 +5295,7 @@ snapshots:
   standardized-audio-context@25.3.77:
     dependencies:
       '@babel/runtime': 7.26.10
-      automation-events: 7.1.7
+      automation-events: 7.1.8
       tslib: 2.8.1
 
   streamsearch@1.1.0: {}
@@ -5359,7 +5359,7 @@ snapshots:
       client-only: 0.0.1
       react: 19.0.0
 
-  subscribable-things@2.1.49:
+  subscribable-things@2.1.50:
     dependencies:
       '@babel/runtime': 7.26.10
       rxjs-interop: 2.0.0
@@ -5545,10 +5545,10 @@ snapshots:
       fast-unique-numbers: 7.0.2
       tslib: 2.8.1
 
-  worker-factory@7.0.39:
+  worker-factory@7.0.40:
     dependencies:
       '@babel/runtime': 7.26.10
-      fast-unique-numbers: 9.0.18
+      fast-unique-numbers: 9.0.19
       tslib: 2.8.1
 
   wrappy@1.0.2: {}

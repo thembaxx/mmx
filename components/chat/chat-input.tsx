@@ -1,11 +1,6 @@
 "use client";
 
-interface Props {
-  channel: RealtimeChannel;
-}
-
-import { useState } from "react";
-import { RealtimeChannel } from "ably";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,14 +18,25 @@ import Gallery from "./gallery";
 import { AttachmentIcon, SendIcon } from "@/components/assets/icons";
 import { Separator } from "../ui/separator";
 import AttachmentPopup from "./attachment-popup";
+import {
+  ConnectionStatus,
+  useChatConnection,
+  useMessages,
+  useTyping,
+} from "@ably/chat";
 
 const FormSchema = z.object({
   text: z.string(),
 });
 
-function ChatInput({ channel }: Props) {
+function ChatInput() {
   const [files, setFiles] = useState<File[]>([]);
   const [isFocused, setIsFocused] = useState(false);
+  const [shouldDisable, setShouldDisable] = useState(true);
+
+  const { send } = useMessages();
+  const { start, stop } = useTyping();
+  const { currentStatus } = useChatConnection();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -39,9 +45,25 @@ function ChatInput({ channel }: Props) {
     },
   });
 
+  useEffect(() => {
+    // disable the input if the connection is not established
+    setShouldDisable(currentStatus !== ConnectionStatus.Connected);
+  }, [currentStatus]);
+
+  const handleStartTyping = () => {
+    start().catch((error: unknown) => {
+      console.error("Failed to start typing indicator", error);
+    });
+  };
+  const handleStopTyping = () => {
+    stop().catch((error: unknown) => {
+      console.error("Failed to stop typing indicator", error);
+    });
+  };
+
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const { text } = data;
-    await channel.publish("first", text);
+    await send({ text });
   }
 
   function handleFilesChange(filesList: FileList | null) {
@@ -96,6 +118,17 @@ function ChatInput({ channel }: Props) {
                           "dark:outline-none focus-visible:ring-0 focus-visible:outline-0"
                         )}
                         {...field}
+                        disabled={shouldDisable}
+                        onChange={(e) => {
+                          field.onChange(e);
+
+                          if (e.target.value && e.target.value.length > 0) {
+                            handleStartTyping();
+                          } else {
+                            // For good UX we should stop typing indicators as soon as the input field is empty.
+                            handleStopTyping();
+                          }
+                        }}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
                       />
@@ -120,6 +153,7 @@ function ChatInput({ channel }: Props) {
                   <AttachmentPopup handleFilesChange={handleFilesChange}>
                     <Button
                       className="h-8 w-8 dark:bg-[#333333E6]"
+                      disabled={shouldDisable}
                       size="icon"
                       type="button"
                       variant="ghost"
@@ -149,7 +183,7 @@ function ChatInput({ channel }: Props) {
                   <Button
                     className="bg-blue-700 rounded-xl shadow-doger-blue/10 shadow-lg text-white"
                     aria-label="Send button"
-                    disabled={!form.watch("text")}
+                    disabled={!form.watch("text") || shouldDisable}
                     type="submit"
                     size="icon"
                   >

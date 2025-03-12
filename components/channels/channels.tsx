@@ -4,6 +4,14 @@ interface Props {
   children: React.ReactNode;
 }
 
+import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import Image from "next/image";
+
+import { capitalize, cn } from "@/lib/utils";
+import { useChannelstore } from "@/stores/use-channel-store";
+
 import {
   Drawer,
   DrawerClose,
@@ -13,22 +21,18 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import { useCallback, useEffect, useState } from "react";
 import {
   RssIcon,
   SearchIcon,
   SolarCheckCircleBold,
 } from "@/components/assets/icons";
-import Image from "next/image";
-import { capitalize, cn } from "@/lib/utils";
-import axios from "axios";
+
 import { ChannelResponse } from "@/types/types";
 import { Skeleton } from "../ui/skeleton";
-import { useChannelstore } from "@/stores/use-channel-store";
-import { useRouter } from "next/navigation";
 
 const ReloadIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg

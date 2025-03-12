@@ -1,12 +1,19 @@
 "use client";
 
 import { useEffect } from "react";
-import { AblyProvider, ChannelProvider } from "ably/react";
+import { AblyProvider } from "ably/react";
+import {
+  ChatClient,
+  LogLevel,
+  ChatClientProvider,
+  RoomOptionsDefaults,
+} from "@ably/chat";
+import { ChatRoomProvider } from "@ably/chat";
+import * as Ably from "ably";
 
 import Channels from "../channels/channels";
 import { Button } from "../ui/button";
 import { PlusSignSquareIcon, RssIcon } from "@/components/assets/icons";
-import * as Ably from "ably";
 import dynamic from "next/dynamic";
 import { capitalize } from "@/lib/utils";
 import { useChannelstore } from "@/stores/use-channel-store";
@@ -17,14 +24,6 @@ import Link from "next/link";
 const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
   ssr: false,
 });
-
-// let channelName: string;
-// (function () {
-//   const params = new URLSearchParams(window.location.search);
-//   if (params.has("channelName")) {
-//     channelName = params.get("channelName")!;
-//   }
-// })();
 
 const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -43,9 +42,11 @@ const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const ablyClient = new Ably.Realtime({
+const realtimeClient = new Ably.Realtime({
   authUrl: "/api/ably",
 });
+
+const chatClient = new ChatClient(realtimeClient, { logLevel: LogLevel.Info });
 
 function Channel() {
   const { channel, setChannel } = useChannelstore();
@@ -110,38 +111,47 @@ function Channel() {
   }
 
   return (
-    <AblyProvider client={ablyClient}>
-      <ChannelProvider channelName={channel.name}>
-        <div className="flex flex-col h-full w-full relative overflow-hidden">
-          <Channels>
-            <Button
-              className="shrink-0 pr-1 rounded-[8px] bg-black/[0.03] dark:bg-[#2E2E2E] flex w-[125px] fixed top-0 left-1/2 right-1/2 -translate-x-1/2 translate-y-1/2 z-50"
-              size="sm"
-              variant="secondary"
-            >
-              <div className="h-6 w-6 flex items-center justify-center">
-                {!channel.iconSrc && <RssIcon className="w-4 h-4 text-icon" />}
-                {channel.iconSrc && (
-                  <Image
-                    className="-ml-2"
-                    src={channel.iconSrc}
-                    alt=""
-                    height={20}
-                    width={20}
-                  />
-                )}
-              </div>
+    <AblyProvider client={realtimeClient}>
+      <ChatClientProvider client={chatClient}>
+        <ChatRoomProvider
+          id={channel.name}
+          release={true}
+          attach={true}
+          options={RoomOptionsDefaults}
+        >
+          <div className="flex flex-col h-full w-full relative overflow-hidden">
+            <Channels>
+              <Button
+                className="shrink-0 pr-1 rounded-[8px] bg-black/[0.03] dark:bg-[#2E2E2E] flex w-[125px] fixed top-0 left-1/2 right-1/2 -translate-x-1/2 translate-y-1/2 z-50"
+                size="sm"
+                variant="secondary"
+              >
+                <div className="h-6 w-6 flex items-center justify-center">
+                  {!channel.iconSrc && (
+                    <RssIcon className="w-4 h-4 text-icon" />
+                  )}
+                  {channel.iconSrc && (
+                    <Image
+                      className="-ml-2"
+                      src={channel.iconSrc}
+                      alt=""
+                      height={20}
+                      width={20}
+                    />
+                  )}
+                </div>
 
-              <span>{capitalize(channel.name.replaceAll("-", " "))}</span>
-              <ArrowDownIcon className="ml-2" />
-            </Button>
-          </Channels>
+                <span>{capitalize(channel.name.replaceAll("-", " "))}</span>
+                <ArrowDownIcon className="ml-2" />
+              </Button>
+            </Channels>
 
-          <div className="h-full w-full relative">
-            <Chat channelName={channel.name} />
+            <div className="h-full w-full relative">
+              <Chat />
+            </div>
           </div>
-        </div>
-      </ChannelProvider>
+        </ChatRoomProvider>
+      </ChatClientProvider>
     </AblyProvider>
   );
 }

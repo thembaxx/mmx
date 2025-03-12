@@ -25,7 +25,7 @@ import Spinner from "../../ui/spinner";
 import { Switch } from "../../ui/switch";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UserIcon } from "@/components/assets/icons";
+import { Image02Icon } from "@/components/assets/icons";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import IconSelector from "./icon-selector";
@@ -112,7 +112,7 @@ export function CreateChannelForm({ channelName }: Props) {
             )}
             {!avatarSrc && !channelIcon && (
               <AvatarFallback>
-                <UserIcon className="w-12 h-12 text-icon-secondary" />
+                <Image02Icon className="w-10 h-10 text-icon-secondary" />
               </AvatarFallback>
             )}
           </Avatar>

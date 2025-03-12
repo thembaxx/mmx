@@ -132,7 +132,7 @@ export function CreateChannelForm({ channelName }: Props) {
                   {/* <Camera className="w-4 h-4 mr-2" /> */}
                   <Image
                     className="mr-2"
-                    src="/icons/camera-icon-color.svg"
+                    src="/channel-icons/camera-icon-color.svg"
                     alt=""
                     height={16}
                     width={16}
@@ -154,7 +154,7 @@ export function CreateChannelForm({ channelName }: Props) {
                   variant="ghost"
                 >
                   <Image
-                    src="/icons/plus-color-icon.svg"
+                    src="/channel-icons/plus-color-icon.svg"
                     alt=""
                     height={24}
                     width={24}

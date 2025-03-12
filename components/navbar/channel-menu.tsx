@@ -177,8 +177,14 @@ function ChannelMenu({ children }: { children: React.ReactNode }) {
         </DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem className="p-2">
-            <UserAiIcon className="w-4 h-4 text-icon" />
-            <span>My Channels</span>
+            <Link
+              href="/channels/me"
+              className="flex items-center gap-2"
+              onClick={() => setIsOpen(false)}
+            >
+              <UserAiIcon className="w-4 h-4 text-icon" />
+              <span>My Channels</span>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem disabled={!channel}>
             <QrDialog channel={channel?.name ?? ""}>

@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
     }
 
     const result =
-      await db.sql`SELECT * FROM "channel" WHERE "type" = 'Default'`;
+      await db.sql`SELECT * FROM "channel" WHERE "type" = 'Created By You'`;
 
     return new Response(JSON.stringify(result.rows), {
       status: 200,

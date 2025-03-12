@@ -17,7 +17,7 @@ function List() {
   const fetchChannels = useCallback(async () => {
     setLoading(true);
 
-    const res = await axios.get("/api/channel/public");
+    const res = await axios.get("/api/channel/me");
 
     if (res && res.status === 200) {
       const data = (res.data as ChannelResponse[]) ?? [];

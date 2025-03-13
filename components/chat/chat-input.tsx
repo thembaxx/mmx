@@ -16,7 +16,6 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import Gallery from "./gallery";
 
 import { AttachmentIcon, SendIcon } from "@/components/assets/icons";
-import { Separator } from "../ui/separator";
 import AttachmentPopup from "./attachment-popup";
 import {
   ConnectionStatus,
@@ -24,6 +23,7 @@ import {
   useMessages,
   useTyping,
 } from "@ably/chat";
+import { TypingIndicatorPanel } from "./typing-indicator";
 
 const FormSchema = z.object({
   text: z.string(),
@@ -84,6 +84,9 @@ function ChatInput() {
           }}
         />
       )}
+      <div>
+        <TypingIndicatorPanel />
+      </div>
       <motion.div
         className={cn(
           "rounded-2xl shadow-2xs border bg-neutral-50 dark:bg-[#171717]",
@@ -162,17 +165,10 @@ function ChatInput() {
                     </Button>
                   </AttachmentPopup>
                   <div className="flex items-center gap-2 px-2.5 h-8 shrink-0 rounded-lg border">
-                    <div className="flex items-center gap-2 h-full rounded-md">
+                    <div className="flex items-center gap-2 h-8 rounded-md">
                       <div className="h-2 w-2 bg-green-500 rounded-full" />
                       <p className="text-[0.8rem] text-secondary-foreground/80">
-                        3 Online
-                      </p>
-                    </div>
-                    <Separator orientation="vertical" />
-                    <div className="flex items-center gap-2 h-full rounded-md">
-                      <div className="h-2 w-2 bg-neutral-500 rounded-full" />
-                      <p className="text-[0.75rem] text-secondary-foreground/80">
-                        12 Members
+                        3
                       </p>
                     </div>
                   </div>

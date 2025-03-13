@@ -20,6 +20,8 @@ import { useChannelstore } from "@/stores/use-channel-store";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import ConnectionStatusComp from "./connection-status-comp";
+import { Separator } from "../ui/separator";
 
 const Chat = dynamic(() => Promise.resolve(import("@/components/chat/chat")), {
   ssr: false,
@@ -122,17 +124,16 @@ function Channel() {
           <div className="flex flex-col h-full w-full relative overflow-hidden">
             <Channels>
               <Button
-                className="shrink-0 pr-1 rounded-[8px] bg-black/[0.03] dark:bg-[#2E2E2E] flex w-[125px] fixed top-0 left-1/2 right-1/2 -translate-x-1/2 translate-y-1/2 z-50"
+                className="shrink-0 pl-1.5 pr-0 gap-0 rounded-[8px] bg-black/[0.03] dark:bg-[#2E2E2E] flex items-center w-fit fixed top-0 left-1/2 right-1/2 -translate-x-1/2 translate-y-1/2 z-50"
                 size="sm"
                 variant="secondary"
               >
-                <div className="h-6 w-6 flex items-center justify-center">
+                <div className="h-8 w-8 shrink-0 flex items-center justify-center">
                   {!channel.iconSrc && (
                     <RssIcon className="w-4 h-4 text-icon" />
                   )}
                   {channel.iconSrc && (
                     <Image
-                      className="-ml-2"
                       src={channel.iconSrc}
                       alt=""
                       height={20}
@@ -141,8 +142,19 @@ function Channel() {
                   )}
                 </div>
 
-                <span>{capitalize(channel.name.replaceAll("-", " "))}</span>
-                <ArrowDownIcon className="ml-2" />
+                <div className="space-x-3 flex items-center justify-center ">
+                  <span className="text-[0.8rem]">
+                    {capitalize(channel.name.replaceAll("-", " "))}
+                  </span>
+                  <ConnectionStatusComp />
+                </div>
+                <Separator
+                  className="dark:bg-[#3a3a3a] mx-2"
+                  orientation="vertical"
+                />
+                <div className="h-8 w-8 flex items-center justify-center shrink-0">
+                  <ArrowDownIcon className="w-4 h-4 text-icon" />
+                </div>
               </Button>
             </Channels>
 

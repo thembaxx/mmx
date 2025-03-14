@@ -2,7 +2,6 @@ import { betterFetch } from "@better-fetch/fetch";
 import type { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { NextURL } from "next/dist/server/web/next-url";
 import { isOnboardingComplete } from "./actions";
 
 type Session = typeof auth.$Infer.Session;
@@ -40,7 +39,7 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
-  if (url) return NextResponse.redirect(new URL("/", request.url));
+  if (url) return NextResponse.redirect(new URL(url, request.url));
 
   return NextResponse.next();
 }

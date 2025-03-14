@@ -30,15 +30,12 @@ export default async function middleware(request: NextRequest) {
         const email = data.user.email;
         const onboardingComplete = await isOnboardingComplete(email);
         if (onboardingComplete) {
-          const url = new NextURL("/channels", request.url);
-          return NextResponse.redirect(url);
+          url = "/channels";
         } else {
-          const url = new NextURL("/channels", request.url);
-          return NextResponse.redirect(url);
+          url = "/channels";
         }
       } else {
-        const url = new NextURL("/", request.url);
-        return NextResponse.redirect(url);
+        url = "/";
       }
     }
   }

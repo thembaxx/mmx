@@ -74,10 +74,10 @@ function Navbar() {
           </SideMenu>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <ChannelMenu>
             <Button className="p-0" variant="ghost">
-              <RssConnectedIcon className="!w-5 !h-5 !text-icon" />
+              <RssConnectedIcon className="!w-6 !h-6 !text-icon" />
             </Button>
           </ChannelMenu>
           <ProfileMenu>

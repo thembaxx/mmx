@@ -21,6 +21,7 @@ import {
   ConnectionStatus,
   useChatConnection,
   useMessages,
+  useOccupancy,
   useTyping,
 } from "@ably/chat";
 import { TypingIndicatorPanel } from "./typing-indicator";
@@ -42,6 +43,16 @@ function ChatInput() {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       text: "",
+    },
+  });
+
+  const { presenceMembers } = useOccupancy({
+    listener: (occupancyEvent) => {
+      console.log("Number of users connected is: ", occupancyEvent.connections);
+      console.log(
+        "Number of members present is: ",
+        occupancyEvent.presenceMembers
+      );
     },
   });
 
@@ -168,7 +179,7 @@ function ChatInput() {
                     <div className="flex items-center gap-2 h-8 rounded-md">
                       <div className="h-2 w-2 bg-green-500 rounded-full" />
                       <p className="text-[0.8rem] text-secondary-foreground/80">
-                        3
+                        {presenceMembers ?? 0}
                       </p>
                     </div>
                   </div>

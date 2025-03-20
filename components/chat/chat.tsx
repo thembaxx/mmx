@@ -321,7 +321,7 @@ function Chat() {
         {messages.length > 0 && (
           <ul className="p-4">
             {messages.map((message) => {
-              console.log(message.clientId === clientId);
+              // console.log(message.clientId === clientId);
               if (message.isDeleted) {
                 return (
                   <li key={message.serial}>
@@ -348,7 +348,9 @@ function Chat() {
                     <div className="space-y-2 w-fit max-w-[75%]">
                       <div className="flex items-center gap-2">
                         <p className="text-sm font-medium grow pl-2">
-                          {message.clientId}
+                          {message.clientId === clientId
+                            ? "You"
+                            : message.clientId}
                         </p>
                       </div>
                       <div

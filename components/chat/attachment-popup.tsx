@@ -45,8 +45,7 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
         <div className="space-y-3">
           <div className="p-3">
             <Button
-              className="text-white/90 bg-gradient-to-r from-fuchsia-600 to-cyan-600 rounded-[10px] w-full"
-              size="sm"
+              className="text-white/90 bg-gradient-to-r from-fuchsia-700 to-cyan-700 rounded-[10px] w-full"
               variant="ghost"
             >
               <AiIcon className="!h-4 !w-4 p-0 text-white" />
@@ -54,8 +53,8 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
             </Button>
           </div>
           <div className="w-full px-3 space-y-2">
-            <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#333333] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
-              <ImageIcon className="!h-4.5 !w-4.5 p-0 text-icon" />
+            <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#1e1e1e] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
+              <ImageIcon className="!h-5 !w-5 p-0 text-icon" />
               <div className="grow text-left">
                 <div className="font-semibold text-sm">
                   <label htmlFor="file-upload">
@@ -72,14 +71,16 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
                     </div>
                   </label>
                 </div>
-                <div className="text-xs opacity-70">upload jpeg, png etc.</div>
+                <div className="text-xs text-secondary-foreground font-normal">
+                  upload jpeg, png etc.
+                </div>
               </div>
             </Button>
             <Button
               disabled
-              className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#333333] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]"
+              className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#1e1e1e] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]"
             >
-              <VideoIcon className="!h-4.5 !w-4.5 p-0 text-icon" />
+              <VideoIcon className="!h-5 !w-5 p-0 text-icon" />
               <div className="grow text-left">
                 <div className="font-semibold text-sm">
                   <label htmlFor="video-upload">
@@ -96,22 +97,24 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
                     </div>
                   </label>
                 </div>
-                <div className="text-xs opacity-70">video max size (10mb).</div>
+                <div className="text-xs text-secondary-foreground font-normal">
+                  video max size (10mb).
+                </div>
               </div>
             </Button>
             <Voice isOpen={voiceIsOpen} setIsOpen={setVoiceIsOpen}>
-              <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#333333] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
-                <SoundwaveIcon className="!h-4.5 !w-4.5 text-icon" />
+              <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#1e1e1e] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
+                <SoundwaveIcon className="!h-5 !w-5 text-icon" />
                 <div className="grow text-left">
                   <div className="font-semibold text-sm">Record audio</div>
-                  <div className="text-xs opacity-70">
+                  <div className="text-xs text-secondary-foreground font-normal">
                     Record and send a voice message
                   </div>
                 </div>
               </Button>
             </Voice>
-            <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#333333] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
-              <DocumentAttachmentIcon className="!h-4.5 !w-4.5 p-0 text-icon" />
+            <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#1e1e1e] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
+              <DocumentAttachmentIcon className="!h-5 !w-5 p-0 text-icon" />
               <div className="grow text-left">
                 <div className="font-semibold text-sm">
                   <label htmlFor="document-upload">
@@ -128,7 +131,9 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
                     </div>
                   </label>
                 </div>
-                <div className="text-xs opacity-70">upload a document.</div>
+                <div className="text-xs text-secondary-foreground font-normal">
+                  upload a document.
+                </div>
               </div>
             </Button>
           </div>

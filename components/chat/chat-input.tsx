@@ -84,7 +84,7 @@ function ChatInput() {
   }
 
   return (
-    <div className="space-y-4 w-full">
+    <div className="space-y-4 w-full h-full overflow-hidden">
       {files && files.length > 0 && (
         <Gallery
           files={files}
@@ -123,7 +123,7 @@ function ChatInput() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.75, type: "spring" }}
-                      className="relative mr-24 h-20 w-full overflow-hidden"
+                      className="relative mr-24 h-24 w-full overflow-hidden"
                     >
                       <Textarea
                         placeholder="Type your message here"
@@ -151,6 +151,20 @@ function ChatInput() {
                 </FormItem>
               )}
             />
+            <motion.div className="flex items-center  space-x-2 z-10 absolute right-2 top-3">
+              <motion.div whileTap={{ scale: 0.95 }}>
+                <Button
+                  className="bg-blue-700 rounded-full shadow-doger-blue/10 shadow-lg text-white"
+                  aria-label="Send button"
+                  disabled={!form.watch("text") || shouldDisable}
+                  type="submit"
+                  size="icon"
+                >
+                  <SendIcon className="!h-4 !w-4" />
+                </Button>
+              </motion.div>
+            </motion.div>
+
             <motion.div
               className="w-full flex justify-end items-center px-2 py-2 overflow-hidden"
               layout="position"
@@ -175,7 +189,7 @@ function ChatInput() {
                       <AttachmentIcon className="!h-4 !w-4 p-0 text-icon" />
                     </Button>
                   </AttachmentPopup>
-                  <div className="flex items-center gap-2 px-2.5 h-8 shrink-0 rounded-lg border">
+                  <div className="flex items-center gap-2 px-2.5 h-8 shrink-0 rounded-lg border dark:bg-[#1e1e1e]">
                     <div className="flex items-center gap-2 h-8 rounded-md">
                       <div className="h-2 w-2 bg-green-500 rounded-full" />
                       <p className="text-[0.8rem] text-secondary-foreground/80">
@@ -185,60 +199,10 @@ function ChatInput() {
                   </div>
                 </motion.div>
               </AnimatePresence>
-              <motion.div className="flex items-center h-full space-x-2">
-                <motion.div whileTap={{ scale: 0.95 }}>
-                  <Button
-                    className="bg-blue-700 rounded-xl shadow-doger-blue/10 shadow-lg text-white"
-                    aria-label="Send button"
-                    disabled={!form.watch("text") || shouldDisable}
-                    type="submit"
-                    size="icon"
-                  >
-                    <SendIcon className="!h-4 !w-4" />
-                  </Button>
-                </motion.div>
-              </motion.div>
             </motion.div>
           </motion.form>
         </Form>
       </motion.div>
-      {/* <motion.div
-        className="flex items-center gap-2"
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.div variants={item} whileTap={{ scale: 0.9 }}>
-          <Button
-            className="rounded-lg dark:bg-[#1E1E1E]"
-            size="sm"
-            variant="secondary"
-          >
-            <StickerIcon />
-            <span className="text-xs mr-1">Stickers</span>
-          </Button>
-        </motion.div>
-        <motion.div variants={item} whileTap={{ scale: 0.9 }}>
-          <Button
-            className="rounded-lg dark:bg-[#1E1E1E]"
-            size="sm"
-            variant="secondary"
-          >
-            <SimileCircleIcon />
-            <span className="text-xs mr-1">Emoji</span>
-          </Button>
-        </motion.div>
-        <motion.div variants={item} whileTap={{ scale: 0.9 }}>
-          <Button
-            className="rounded-lg dark:bg-[#1E1E1E]"
-            size="sm"
-            variant="secondary"
-          >
-            <AttachmentIcon />
-            <span className="text-xs mr-1">Other</span>
-          </Button>
-        </motion.div>
-      </motion.div> */}
     </div>
   );
 }

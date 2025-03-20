@@ -2,11 +2,18 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as Ably from "ably";
-import { Message, MessageEventPayload, MessageEvents } from "@ably/chat";
+import { Message, MessageEvent, MessageEvents } from "@ably/chat";
 import { useChatClient, useMessages } from "@ably/chat";
 
 import ChatInput from "./chat-input";
 import Image from "next/image";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import { formatDistanceToNow } from "date-fns";
 import { cn } from "@/lib/utils";
@@ -82,6 +89,34 @@ const DeleteIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const MoreHorizontalCircleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={24}
+    height={24}
+    color="currentColor"
+    fill={"none"}
+    {...props}
+  >
+    <path
+      d="M21 12C21 11.1716 20.3284 10.5 19.5 10.5C18.6716 10.5 18 11.1716 18 12C18 12.8284 18.6716 13.5 19.5 13.5C20.3284 13.5 21 12.8284 21 12Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5C12.8284 13.5 13.5 12.8284 13.5 12Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M6 12C6 11.1716 5.32843 10.5 4.5 10.5C3.67157 10.5 3 11.1716 3 12C3 12.8284 3.67157 13.5 4.5 13.5C5.32843 13.5 6 12.8284 6 12Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+  </svg>
+);
+
 function Chat() {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -90,7 +125,7 @@ function Chat() {
   const clientId = chatClient.clientId;
 
   const { getPreviousMessages, deleteMessage, update } = useMessages({
-    listener: (message: MessageEventPayload) => {
+    listener: (message: MessageEvent) => {
       switch (message.type) {
         case MessageEvents.Created: {
           setMessages((prevMessages) => {
@@ -157,7 +192,7 @@ function Chat() {
       }
 
       // skip update if the received version is not newer
-      if (!prevMessages[index].versionBefore(message)) {
+      if (!prevMessages[index].version) {
         return prevMessages;
       }
 
@@ -222,9 +257,10 @@ function Chat() {
         return;
       }
       update(message, {
-        text: newText,
-        metadata: message.metadata,
-        headers: message.headers,
+        description: "updated by user",
+        // text: newText,
+        // metadata: message.metadata,
+        // headers: message.headers,
       })
         .then((updatedMessage: Message) => {
           handleRESTMessageUpdate(updatedMessage);
@@ -308,64 +344,74 @@ function Chat() {
 
               return (
                 <li key={message.serial}>
-                  <div className="space-y-2 w-full max-w-[75%]">
-                    <div className="flex items-center gap-2">
-                      <p className="text-sm font-medium grow pl-2">
-                        {message.clientId}
-                      </p>
-                      <div className="flex items-center">
-                        <Button
-                          size="sm"
-                          variant="ghost"
+                  <div className="relative flex items-center gap-2">
+                    <div className="space-y-2 w-fit max-w-[75%]">
+                      <div className="flex items-center gap-2">
+                        <p className="text-sm font-medium grow pl-2">
+                          {message.clientId}
+                        </p>
+                      </div>
+                      <div
+                        className={cn(
+                          "py-2 px-4 space-y-1 rounded-[10px] text-sm w-full dark:bg-[#1E1E1E]/75 text-foreground/90",
+                          {
+                            "bg-violet-500 dark:bg-violet-500 text-white":
+                              message.clientId === clientId,
+                          }
+                        )}
+                      >
+                        <p>{message.text}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-muted-foreground text-left pl-2">
+                          {message.timestamp && (
+                            <span>
+                              {formatDistanceToNow(
+                                new Date(message.timestamp),
+                                {
+                                  includeSeconds: true,
+                                }
+                              )}
+                            </span>
+                          )}{" "}
+                          {message.isUpdated && message.updatedAt && (
+                            <span>
+                              • Edited {formatDistanceToNow(message.updatedAt)}
+                            </span>
+                          )}
+                          {message.updatedBy && (
+                            <span> by {message.updatedBy}</span>
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                          <MoreHorizontalCircleIcon className="h-5 w-5 text-icon" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem
                           onClick={(e) => {
                             e.preventDefault();
                             onUpdateMessage(message);
                           }}
                         >
-                          <EditIcon className="h-4 w-4 text-icon" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="ghost"
+                          <EditIcon className="h-4 w-4 text-icon mr-2" />
+                          <span>Edit</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
                           onClick={(e) => {
                             e.preventDefault();
                             onDeleteMessage(message);
                           }}
                         >
-                          <DeleteIcon className="h-4 w-4 text-icon" />
-                        </Button>
-                      </div>
-                    </div>
-                    <div
-                      className={cn(
-                        "py-2 px-4 space-y-1 rounded-[10px] text-sm w-full dark:bg-[#1E1E1E]/75 text-foreground/90",
-                        {
-                          "bg-violet-500 dark:bg-violet-500 text-white":
-                            message.clientId === clientId,
-                        }
-                      )}
-                    >
-                      <p>{message.text}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground text-left pl-2">
-                        {message.timestamp && (
-                          <span>
-                            {formatDistanceToNow(new Date(message.timestamp), {
-                              includeSeconds: true,
-                            })}
-                          </span>
-                        )}{" "}
-                        {message.isUpdated && message.updatedAt && (
-                          <span>
-                            • Edited {formatDistanceToNow(message.updatedAt)}
-                          </span>
-                        )}
-                        {message.updatedBy && (
-                          <span> by {message.updatedBy}</span>
-                        )}
-                      </p>
-                    </div>
+                          <DeleteIcon className="h-4 w-4 text-icon mr-2" />
+                          <span>Delete</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
                 </li>
               );

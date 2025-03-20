@@ -6,7 +6,7 @@ import {
   ChatClient,
   LogLevel,
   ChatClientProvider,
-  RoomOptionsDefaults,
+  RoomOptions,
 } from "@ably/chat";
 import { ChatRoomProvider } from "@ably/chat";
 import * as Ably from "ably";
@@ -49,6 +49,11 @@ const realtimeClient = new Ably.Realtime({
 });
 
 const chatClient = new ChatClient(realtimeClient, { logLevel: LogLevel.Info });
+const RoomOptionsDefaults: RoomOptions = {
+  presence: { enter: true, subscribe: true },
+  typing: { timeoutMs: 5000 },
+  occupancy: {},
+};
 
 function Channel() {
   const { channel, setChannel } = useChannelstore();

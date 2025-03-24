@@ -347,7 +347,7 @@ function Chat() {
                         setEditDialogOpen(false);
                       }}
                     />
-                    <div className="space-y-2 w-fit max-w-[75%]">
+                    <div className="space-y-2 w-fit max-w-[79%]">
                       <div className="flex items-center gap-2">
                         <p className="text-[0.75rem] font-medium grow pl-2">
                           {message.clientId === clientId
@@ -357,7 +357,7 @@ function Chat() {
                       </div>
                       <div
                         className={cn(
-                          "py-2 px-4 space-y-1 rounded-[10px] text-sm w-full dark:bg-[#1E1E1E]/75 text-foreground/90",
+                          "py-2 px-4 space-y-1 rounded-bl-[15px] rounded-tl-[4px] rounded-r-[15px] text-sm w-full dark:bg-[#1E1E1E]/75 text-foreground/90",
                           {
                             "bg-violet-500 dark:bg-violet-500 text-white":
                               message.clientId === clientId,

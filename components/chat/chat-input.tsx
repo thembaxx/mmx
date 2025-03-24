@@ -180,7 +180,7 @@ function ChatInput() {
                 >
                   <AttachmentPopup handleFilesChange={handleFilesChange}>
                     <Button
-                      className="h-8 w-8 dark:bg-[#333333E6]"
+                      className="h-8 w-8 bg-secondary dark:bg-[#333333E6]"
                       disabled={shouldDisable}
                       size="icon"
                       type="button"

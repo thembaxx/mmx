@@ -15,6 +15,7 @@ import {
 import Profile from "../chat/profile";
 import { siteConfig } from "@/config/site";
 import ThemeSwitcher from "../theme-switcher";
+import Link from "next/link";
 
 export function ProfileMenu({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,9 @@ export function ProfileMenu({ children }: { children: React.ReactNode }) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator className="dark:bg-neutral-700" />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Manage profile</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href="/profile">Manage profile</Link>
+          </DropdownMenuItem>
           <DropdownMenuItem>Contact support</DropdownMenuItem>
           <DropdownMenuSeparator className="dark:bg-neutral-700" />
           <DropdownMenuItem>

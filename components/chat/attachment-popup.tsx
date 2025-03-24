@@ -53,7 +53,7 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
             </Button>
           </div>
           <div className="w-full px-3 space-y-2">
-            <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#1e1e1e] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
+            <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D]/20 text-foreground dark:!bg-[#1e1e1e] dark:!text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
               <ImageIcon className="!h-5 !w-5 p-0 text-icon" />
               <div className="grow text-left">
                 <div className="font-semibold text-sm">
@@ -71,14 +71,14 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
                     </div>
                   </label>
                 </div>
-                <div className="text-xs text-secondary-foreground font-normal">
+                <div className="text-xs text-secondary-foreground/50 font-normal">
                   upload jpeg, png etc.
                 </div>
               </div>
             </Button>
             <Button
               disabled
-              className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#1e1e1e] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]"
+              className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D]/20 dark:!bg-[#1e1e1e] text-card-foreground dark:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]"
             >
               <VideoIcon className="!h-5 !w-5 p-0 text-icon" />
               <div className="grow text-left">
@@ -103,7 +103,7 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
               </div>
             </Button>
             <Voice isOpen={voiceIsOpen} setIsOpen={setVoiceIsOpen}>
-              <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#1e1e1e] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
+              <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D]/20 dark:!bg-[#1e1e1e] text-foreground dark:!text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
                 <SoundwaveIcon className="!h-5 !w-5 text-icon" />
                 <div className="grow text-left">
                   <div className="font-semibold text-sm">Record audio</div>
@@ -113,7 +113,7 @@ function AttachmentPopup({ children, handleFilesChange }: Props) {
                 </div>
               </Button>
             </Voice>
-            <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D] dark:!bg-[#1e1e1e] !text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
+            <Button className="relative cursor-default select-none outline-none h-auto w-full focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex items-start gap-2 px-2 py-2 rounded-md text-xs last:mb-0 transition-colors duration-200 !bg-opacity-90 dark:!bg-opacity-90 !bg-[#2D2D2D]/20 dark:!bg-[#1e1e1e] text-foreground dark:!text-white hover:!text-white hover:!bg-[#1a1a1a] dark:hover:!bg-[#444444]">
               <DocumentAttachmentIcon className="!h-5 !w-5 p-0 text-icon" />
               <div className="grow text-left">
                 <div className="font-semibold text-sm">

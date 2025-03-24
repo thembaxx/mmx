@@ -72,7 +72,7 @@ function ChannelList({ loading, items, onSelect }: Props) {
                         .join("-")}`}
                       onClick={() => onSelect(item)}
                     >
-                      <div className="flex items-center gap-3 h-12 pl-3 pr-4 dark:bg-[#191919] rounded-[16px]">
+                      <div className="flex items-center bg-black/[0.03] border gap-3 h-12 pl-3 pr-4 dark:bg-[#191919] rounded-[16px]">
                         <Image
                           src={item.iconSrc}
                           alt=""

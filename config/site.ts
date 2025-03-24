@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "Pulse Chat",
   description: "Messaging, channels",
-  version: "0.0.81",
+  version: "0.0.82",
   baseUrl:
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"

@@ -19,6 +19,7 @@ import { formatDistanceToNow } from "date-fns";
 import { cn } from "@/lib/utils";
 import { TypingIndicatorPanel } from "./typing-indicator";
 import { Button } from "../ui/button";
+import EditMessageDialog from "./edit-message-dialog";
 
 const EditIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -120,6 +121,7 @@ const MoreHorizontalCircleIcon = (props: React.SVGProps<SVGSVGElement>) => (
 function Chat() {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
 
   const chatClient = useChatClient();
   const clientId = chatClient.clientId;
@@ -251,13 +253,13 @@ function Chat() {
   };
 
   const onUpdateMessage = useCallback(
-    (message: Message) => {
-      const newText = prompt("Enter new text");
+    (message: Message, newText: string) => {
       if (!newText) {
         return;
       }
       update(message, {
         description: "updated by user",
+
         // text: newText,
         // metadata: message.metadata,
         // headers: message.headers,
@@ -319,24 +321,14 @@ function Chat() {
         )}
 
         {messages.length > 0 && (
-          <ul className="p-4">
+          <ul className="p-4 space-y-4">
             {messages.map((message) => {
               // console.log(message.clientId === clientId);
               if (message.isDeleted) {
                 return (
                   <li key={message.serial}>
-                    <div>
+                    <div className="text-xs opacity-85">
                       This message was deleted.
-                      <a
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          onUpdateMessage(message);
-                        }}
-                      >
-                        Edit
-                      </a>
-                      .
                     </div>
                   </li>
                 );
@@ -345,6 +337,15 @@ function Chat() {
               return (
                 <li key={message.serial}>
                   <div className="relative flex items-center gap-2">
+                    <EditMessageDialog
+                      open={editDialogOpen}
+                      setOpen={setEditDialogOpen}
+                      initial={message.text}
+                      onSubmit={(newValue) => {
+                        onUpdateMessage(message, newValue);
+                        setEditDialogOpen(false);
+                      }}
+                    />
                     <div className="space-y-2 w-fit max-w-[75%]">
                       <div className="flex items-center gap-2">
                         <p className="text-sm font-medium grow pl-2">
@@ -397,12 +398,13 @@ function Chat() {
                         <DropdownMenuItem
                           onClick={(e) => {
                             e.preventDefault();
-                            onUpdateMessage(message);
+                            setEditDialogOpen(true);
                           }}
                         >
                           <EditIcon className="h-4 w-4 text-icon mr-2" />
                           <span>Edit</span>
                         </DropdownMenuItem>
+
                         <DropdownMenuItem
                           onClick={(e) => {
                             e.preventDefault();
@@ -418,6 +420,7 @@ function Chat() {
                 </li>
               );
             })}
+
             <div ref={messagesEndRef} />
           </ul>
         )}

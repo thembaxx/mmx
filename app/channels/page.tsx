@@ -11,8 +11,8 @@ import TermsFooter from "@/components/terms-footer";
 
 function ChannelsPage() {
   return (
-    <div className="p-6">
-      <Card className="shadow-md/20 rounded-3xl bg-[#fcfcfc] dark:bg-[#0d0d0d]">
+    <div className="p-6 flex justify-center">
+      <Card className="shadow-md/20 rounded-3xl bg-[#fcfcfc] max-w-md dark:bg-[#0d0d0d]">
         <CardHeader className="space-y-2">
           <CardTitle className="text-[0.7rem] uppercase">Welcome</CardTitle>
           <Header />

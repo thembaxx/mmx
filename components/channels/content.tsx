@@ -9,34 +9,36 @@ function Content() {
   const router = useRouter();
 
   return (
-    <div className="space-y-2 flex flex-col items-center justify-center h-full w-full">
-      <Button
-        className="w-full"
-        variant="secondary"
-        onClick={() => {
-          router.replace(`/channels/create`);
-        }}
-      >
-        <PlusSignSquareIcon className="h-5 w-5" />
-        <span className="font-medium">Create a channel</span>
-      </Button>
+    <div className="w-full h-full flex flex-col items-center justify-center">
+      <div className="space-y-2 flex flex-col items-center justify-center h-full max-w-md w-full">
+        <Button
+          className="w-full"
+          variant="secondary"
+          onClick={() => {
+            router.replace(`/channels/create`);
+          }}
+        >
+          <PlusSignSquareIcon className="h-5 w-5" />
+          <span className="font-medium">Create a channel</span>
+        </Button>
 
-      <div className="w-full text-center py-1.5">
-        <span className="text-muted-foreground/50 text-xs uppercase">or</span>
+        <div className="w-full text-center py-1.5">
+          <span className="text-muted-foreground/50 text-xs uppercase">or</span>
+        </div>
+
+        <ChannelsForm />
+        <Button
+          className="w-full relative"
+          type="button"
+          variant="outline"
+          onClick={() => {
+            router.replace(`/channels/public`);
+          }}
+        >
+          <p>Public channels</p>
+          <ArrowRightIcon />
+        </Button>
       </div>
-
-      <ChannelsForm />
-      <Button
-        className="w-full relative"
-        type="button"
-        variant="outline"
-        onClick={() => {
-          router.replace(`/channels/public`);
-        }}
-      >
-        <p>Public channels</p>
-        <ArrowRightIcon />
-      </Button>
     </div>
   );
 }

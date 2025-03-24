@@ -3,10 +3,12 @@ import List from "@/components/channels/public/List";
 
 function PublicChannelsPage() {
   return (
-    <div className="p-6 space-y-8 flex flex-col h-full overflow-y-auto">
-      <Header />
-      <div className="grow">
-        <List />
+    <div className="w-full h-full flex justify-center overflow-y-auto">
+      <div className="p-6 space-y-8 flex flex-col h-full max-w-md w-full">
+        <Header />
+        <div className="grow">
+          <List />
+        </div>
       </div>
     </div>
   );

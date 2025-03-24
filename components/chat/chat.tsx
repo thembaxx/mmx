@@ -15,7 +15,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { formatDistanceToNow, formatDistanceToNowStrict } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
+
 import { cn } from "@/lib/utils";
 import { TypingIndicatorPanel } from "./typing-indicator";
 import { Button } from "../ui/button";

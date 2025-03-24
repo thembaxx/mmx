@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow, formatDistanceToNowStrict } from "date-fns";
 import { cn } from "@/lib/utils";
 import { TypingIndicatorPanel } from "./typing-indicator";
 import { Button } from "../ui/button";
@@ -348,7 +348,7 @@ function Chat() {
                     />
                     <div className="space-y-2 w-fit max-w-[75%]">
                       <div className="flex items-center gap-2">
-                        <p className="text-sm font-medium grow pl-2">
+                        <p className="text-[0.75rem] font-medium grow pl-2">
                           {message.clientId === clientId
                             ? "You"
                             : message.clientId}
@@ -369,17 +369,16 @@ function Chat() {
                         <p className="text-xs text-muted-foreground text-left pl-2">
                           {message.timestamp && (
                             <span>
-                              {formatDistanceToNow(
-                                new Date(message.timestamp),
-                                {
-                                  includeSeconds: true,
-                                }
-                              )}
+                              {formatDistanceToNowStrict(
+                                new Date(message.timestamp)
+                              )}{" "}
+                              ago
                             </span>
                           )}{" "}
                           {message.isUpdated && message.updatedAt && (
                             <span>
-                              • Edited {formatDistanceToNow(message.updatedAt)}
+                              • Edited{" "}
+                              {formatDistanceToNowStrict(message.updatedAt)} ago
                             </span>
                           )}
                           {message.updatedBy && (

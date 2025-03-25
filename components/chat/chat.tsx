@@ -258,6 +258,7 @@ function Chat() {
       if (!newText) {
         return;
       }
+
       update(message, {
         description: "updated by user",
 

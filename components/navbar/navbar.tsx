@@ -66,38 +66,36 @@ const RssConnectedIcon = (props: React.SVGProps<SVGSVGElement>) => (
 function Navbar() {
   const { user } = useUserStore();
 
-  return (
-    <nav className="sticky top-0 z-20 bg-background/80 backdrop-blur-2xl h-full shrink-0 flex justify-center">
-      <div className="w-full flex items-center px-4 justify-between max-w-2xl">
-        {user && (
-          <div className="flex items-center">
-            <SideMenu user={user}>
-              <Button className="p-0" variant="ghost">
-                <MenuIcon className="!w-6 !h-6" />
-              </Button>
-            </SideMenu>
-          </div>
-        )}
+  if (!user) return null;
 
-        {user && (
-          <div className="flex items-center gap-4">
-            <ChannelMenu>
-              <Button className="p-0" variant="ghost">
-                <RssConnectedIcon className="!w-6 !h-6 !text-icon" />
-              </Button>
-            </ChannelMenu>
-            <ProfileMenu user={user}>
-              <div className="h-8 w-8 relative">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src={user.image ?? ""} />
-                  <AvatarFallback className="text-xs uppercase">
-                    {user.name}
-                  </AvatarFallback>
-                </Avatar>
-              </div>
-            </ProfileMenu>
-          </div>
-        )}
+  return (
+    <nav className="w-full h-16 fixed top-0 left-0 z-50 bg-background/80 backdrop-blur-2xl shrink-0 flex justify-center">
+      <div className="w-full flex items-center px-4 justify-between max-w-2xl">
+        <div className="flex items-center">
+          <SideMenu user={user}>
+            <Button className="p-0" variant="ghost">
+              <MenuIcon className="!w-6 !h-6" />
+            </Button>
+          </SideMenu>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <ChannelMenu>
+            <Button className="p-0" variant="ghost">
+              <RssConnectedIcon className="!w-6 !h-6 !text-icon" />
+            </Button>
+          </ChannelMenu>
+          <ProfileMenu user={user}>
+            <div className="h-8 w-8 relative">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src={user.image ?? ""} />
+                <AvatarFallback className="text-xs uppercase">
+                  {user.name}
+                </AvatarFallback>
+              </Avatar>
+            </div>
+          </ProfileMenu>
+        </div>
       </div>
     </nav>
   );

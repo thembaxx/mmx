@@ -163,7 +163,7 @@ function Channel() {
               </Button>
             </Channels>
 
-            <div className="h-full w-full relative">
+            <div className="h-full w-full relative pt-20">
               <Chat />
             </div>
           </div>

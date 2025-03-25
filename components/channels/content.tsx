@@ -12,7 +12,7 @@ function Content() {
     <div className="w-full h-full flex flex-col items-center justify-center">
       <div className="space-y-2 flex flex-col items-center justify-center h-full max-w-md w-full">
         <Button
-          className="w-full h-11 rounded-full text-black/90 bg-amber-500"
+          className="w-full h-11 rounded-full bg-sky-700 "
           variant="ghost"
           onClick={() => {
             router.replace(`/channels/create`);
@@ -22,9 +22,9 @@ function Content() {
           <span className="font-medium">Create a channel</span>
         </Button>
         <Button
-          className="w-full relative h-11 rounded-full bg-violet-700 text-white"
+          className="w-full relative h-11 rounded-full"
           type="button"
-          variant="ghost"
+          variant="outline"
           onClick={() => {
             router.replace(`/channels/public`);
           }}

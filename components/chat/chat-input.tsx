@@ -46,7 +46,7 @@ function ChatInput() {
     },
   });
 
-  const { presenceMembers } = useOccupancy({
+  const { connections } = useOccupancy({
     listener: (occupancyEvent) => {
       console.log("Number of users connected is: ", occupancyEvent.connections);
       console.log(
@@ -191,9 +191,11 @@ function ChatInput() {
                   </AttachmentPopup>
                   <div className="flex items-center gap-2 px-2.5 h-8 shrink-0 rounded-lg border dark:bg-[#1e1e1e]">
                     <div className="flex items-center gap-2 h-8 rounded-md">
-                      <div className="h-2 w-2 bg-green-500 rounded-full" />
+                      {connections && connections > 0 && (
+                        <div className="h-2 w-2 bg-green-500 rounded-full" />
+                      )}
                       <p className="text-[0.8rem] text-secondary-foreground/80">
-                        {presenceMembers ?? 0}
+                        {connections ?? 0}
                       </p>
                     </div>
                   </div>

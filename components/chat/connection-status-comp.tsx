@@ -12,12 +12,12 @@ import {
 
 import { cn, capitalize } from "@/lib/utils";
 
-const Status = React.forwardRef<HTMLInputElement, React.ComponentProps<"div">>(
+const Status = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
   ({ className, children }, ref) => {
     return (
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger asChild>
             <div
               ref={ref}
               className={cn(

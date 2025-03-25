@@ -40,6 +40,7 @@ import {
 import Profile from "../profile";
 import ThemeSwitcher from "../theme-switcher";
 import { UserData } from "@/stores/use-user-store";
+import { usePathname } from "next/navigation";
 
 const NavItems: NavItem[] = [
   {
@@ -81,6 +82,8 @@ const footerNavItems: NavItem[] = [
 ];
 
 export function SideMenu({ children, user }: Props) {
+  const pathname = usePathname();
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -103,12 +106,14 @@ export function SideMenu({ children, user }: Props) {
           </div>
 
           <Separator />
-          <ul className="p-4">
+          <ul className="py-4">
             {NavItems.map(({ Icon, href, label }, index) => (
               <Link
                 key={index}
                 href={href}
-                className={cn("flex items-center gap-3 py-2.5")}
+                className={cn("flex items-center gap-3 py-2.5 px-4", {
+                  "bg-secondary dark:bg-[#333333E6]": href === pathname,
+                })}
                 onClick={() => setIsOpen(false)}
               >
                 <Icon />

@@ -167,9 +167,9 @@ function ChannelMenu({ children }: { children: React.ReactNode }) {
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
       <DropdownMenuContent
-        align="end"
-        sideOffset={4}
-        alignOffset={4}
+        align="center"
+        sideOffset={8}
+        alignOffset={8}
         className="w-44 rounded-[15px] dark:bg-[#262626e6] backdrop-blur-2xl"
       >
         <DropdownMenuLabel className="text-xs text-muted-foreground/80">

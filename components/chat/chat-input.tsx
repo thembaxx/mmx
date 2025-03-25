@@ -84,7 +84,7 @@ function ChatInput() {
   }
 
   return (
-    <div className="space-y-4 w-full h-full overflow-hidden">
+    <div className="space-y-4 w-full h-full">
       {files && files.length > 0 && (
         <Gallery
           files={files}
@@ -100,7 +100,7 @@ function ChatInput() {
       </div>
       <motion.div
         className={cn(
-          "rounded-2xl shadow-2xs border bg-neutral-50 dark:bg-[#171717]",
+          "rounded-2xl shadow-2xs border bg-white dark:bg-[#171717]",
           {
             "border-ring ring-ring/50 ring-[3px]": isFocused,
           }
@@ -123,7 +123,7 @@ function ChatInput() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.75, type: "spring" }}
-                      className="relative mr-24 h-24 w-full overflow-hidden"
+                      className="relative mr-24 h-24 w-full"
                     >
                       <Textarea
                         placeholder="Type your message here"

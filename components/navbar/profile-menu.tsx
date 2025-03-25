@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 
+interface Props {
+  children?: React.ReactNode;
+  user: UserData;
+}
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,11 +18,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import Profile from "../chat/profile";
-import { siteConfig } from "@/config/site";
 import ThemeSwitcher from "../theme-switcher";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { UserData } from "@/stores/use-user-store";
 
-export function ProfileMenu({ children }: { children: React.ReactNode }) {
+export function ProfileMenu({ children, user }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -34,7 +40,7 @@ export function ProfileMenu({ children }: { children: React.ReactNode }) {
         </DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem className="p-2">
-            <Profile />
+            <Profile user={user} />
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator className="dark:bg-neutral-700" />
@@ -52,13 +58,13 @@ export function ProfileMenu({ children }: { children: React.ReactNode }) {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator className="dark:bg-neutral-700" />
-        <DropdownMenuItem>Log out</DropdownMenuItem>
-        <DropdownMenuSeparator className="dark:bg-neutral-700" />
-        <DropdownMenuItem>
-          <p className="text-[0.7rem] text-muted-foreground">
-            {siteConfig.name} © <>{new Date().getFullYear()}</>{" "}
-            {` v${siteConfig.version}`}
-          </p>
+        <DropdownMenuItem
+          className="font-medium text-red-500"
+          onClick={async () => {
+            await authClient.signOut();
+          }}
+        >
+          Sign out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

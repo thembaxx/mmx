@@ -28,7 +28,7 @@ function EditMessageDialog({ open, setOpen, initial, onSubmit }: Props) {
         <DialogHeader className="text-left">
           <DialogTitle>Edit message</DialogTitle>
           <DialogDescription>
-            Make changes here. Click save when you're done.
+            Make changes here. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

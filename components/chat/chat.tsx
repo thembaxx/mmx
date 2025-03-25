@@ -349,7 +349,7 @@ function Chat() {
                     />
                     <div className="space-y-2 w-fit max-w-[79%]">
                       <div className="flex items-center gap-2">
-                        <p className="text-[0.75rem] font-medium grow pl-2">
+                        <p className="text-[0.75rem] font-normal text-secondary-foreground/70 grow pl-2">
                           {message.clientId === clientId
                             ? "You"
                             : message.clientId}
@@ -383,7 +383,13 @@ function Chat() {
                             </span>
                           )}
                           {message.updatedBy && (
-                            <span> by {message.updatedBy}</span>
+                            <span>
+                              {" "}
+                              by{" "}
+                              {message.clientId === clientId
+                                ? "You"
+                                : message.updatedBy}
+                            </span>
                           )}
                         </p>
                       </div>

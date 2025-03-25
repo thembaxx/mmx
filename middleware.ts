@@ -2,7 +2,7 @@ import { betterFetch } from "@better-fetch/fetch";
 import type { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { isOnboardingComplete } from "./actions";
+// import { isOnboardingComplete } from "./actions";
 
 type Session = typeof auth.$Infer.Session;
 
@@ -18,28 +18,22 @@ export default async function middleware(request: NextRequest) {
   });
 
   const session = data?.session;
+  const user = data?.user;
 
-  let url: undefined | string;
+  if (!session || !!error || !user) {
+    return NextResponse.redirect(new URL("/", request.url));
+  } else if (user) {
+    // const email = user.email;
+    // const onboardingComplete = await isOnboardingComplete(email);
 
-  if (!session && pathname !== "/") {
-    url = "/";
-  } else if (session && !error) {
-    if (pathname === "/") {
-      if (data.user) {
-        const email = data.user.email;
-        const onboardingComplete = await isOnboardingComplete(email);
-        if (onboardingComplete) {
-          url = "/channels";
-        } else {
-          url = "/channels";
-        }
-      } else {
-        url = "/";
-      }
+    if (
+      pathname === "/" ||
+      pathname === "/sign-in" ||
+      pathname === "/sign-up"
+    ) {
+      return NextResponse.redirect(new URL("/channels", request.url));
     }
   }
-
-  if (url) return NextResponse.redirect(new URL(url, request.url));
 
   return NextResponse.next();
 }
@@ -47,10 +41,10 @@ export default async function middleware(request: NextRequest) {
 // Protect sub-routes
 export const config = {
   matcher: [
-    "/",
-    "/login/:path",
-    "/channels/:path",
-    "/chat/:path",
-    "/sign-up/:path",
+    "/channels/:path*",
+    "/channel/:path*",
+    "/chat/:path*",
+    "/sign-up/:path*",
+    "/profile/:path*",
   ],
 };

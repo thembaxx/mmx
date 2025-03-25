@@ -1,5 +1,10 @@
 "use client";
 
+interface Props {
+  children: React.ReactNode;
+  user: UserData;
+}
+
 interface NavItem {
   Icon: React.JSX.ElementType;
   href: string;
@@ -25,7 +30,6 @@ import { Separator } from "../ui/separator";
 import { cn } from "@/lib/utils";
 import {
   HelpCircleIcon,
-  HotPriceIcon,
   MessageMultipleIcon,
   PaintBucketIcon,
   RssIcon,
@@ -35,6 +39,7 @@ import {
 } from "@/components/assets/icons";
 import Profile from "../profile";
 import ThemeSwitcher from "../theme-switcher";
+import { UserData } from "@/stores/use-user-store";
 
 const NavItems: NavItem[] = [
   {
@@ -53,11 +58,6 @@ const NavItems: NavItem[] = [
     Icon: MessageMultipleIcon,
     href: "/chat",
     label: "Chat",
-  },
-  {
-    Icon: HotPriceIcon,
-    href: "/pricing",
-    label: "Pricing",
   },
 ];
 
@@ -80,7 +80,7 @@ const footerNavItems: NavItem[] = [
   },
 ];
 
-export function SideMenu({ children }: { children: React.ReactNode }) {
+export function SideMenu({ children, user }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -99,7 +99,7 @@ export function SideMenu({ children }: { children: React.ReactNode }) {
         </SheetHeader>
         <div className="grow space-y-0 overflow-y-auto">
           <div className="p-4 pt-0">
-            <Profile />
+            <Profile user={user} />
           </div>
 
           <Separator />

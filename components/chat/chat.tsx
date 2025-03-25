@@ -375,7 +375,11 @@ function Chat() {
                             <span>
                               {formatDistanceToNowStrict(
                                 new Date(message.timestamp)
-                              )}{" "}
+                              )
+                                .replace(" days", "d")
+                                .replace(" hours", "h")
+                                .replace(" minutes", "m")
+                                .replace(" seconds", "s")}{" "}
                               ago
                             </span>
                           )}{" "}

@@ -48,7 +48,6 @@ export function ProfileMenu({ children, user }: Props) {
           <DropdownMenuItem>
             <Link href="/profile">Manage profile</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>Contact support</DropdownMenuItem>
           <DropdownMenuSeparator className="dark:bg-neutral-700" />
           <DropdownMenuItem>
             <div className="flex items-center gap-3 w-full">

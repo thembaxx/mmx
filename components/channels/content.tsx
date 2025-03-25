@@ -12,7 +12,7 @@ function Content() {
     <div className="w-full h-full flex flex-col items-center justify-center">
       <div className="space-y-2 flex flex-col items-center justify-center h-full max-w-md w-full">
         <Button
-          className="w-full h-11 rounded-full bg-sky-700 "
+          className="w-full h-11 rounded-full text-white bg-sky-700 "
           variant="ghost"
           onClick={() => {
             router.replace(`/channels/create`);

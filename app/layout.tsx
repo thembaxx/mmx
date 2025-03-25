@@ -7,6 +7,7 @@ import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Toaster } from "sonner";
 import Navbar from "@/components/navbar/navbar";
+import { DotPattern } from "@/components/dot-pattern";
 
 export const metadata: Metadata = {
   title: {
@@ -28,7 +29,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body
         className={cn(
-          `antialiased h-screen font-sans ${fontSans.className} overflow-y-auto`
+          `antialiased h-screen font-sans ${fontSans.className} overflow-y-auto bg-black/90`
         )}
       >
         <Providers
@@ -40,6 +41,12 @@ export default function RootLayout({
           }}
         >
           <>
+            <DotPattern
+              className={cn(
+                "absolute inset-0 h-full w-full opacity-50 left-0 top-0",
+                "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
+              )}
+            />
             <Navbar />
             <main className="h-full w-full overflow-hidden">{children}</main>
             <Toaster />

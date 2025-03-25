@@ -304,7 +304,7 @@ function Chat() {
 
   return (
     <div className="w-full h-full flex flex-col bg-background">
-      <div className="w-full grow">
+      <div className="w-full grow overflow-y-auto">
         {messages.length === 0 && (
           <div className="flex flex-col gap-4 h-full items-center justify-center">
             <div className="p-4 opacity-60 flex flex-col items-center justify-center">
@@ -386,7 +386,12 @@ function Chat() {
                           {message.isUpdated && message.updatedAt && (
                             <span>
                               • Edited{" "}
-                              {formatDistanceToNowStrict(message.updatedAt)} ago
+                              {formatDistanceToNowStrict(message.updatedAt)
+                                .replace(" days", "d")
+                                .replace(" hours", "h")
+                                .replace(" minutes", "m")
+                                .replace(" seconds", "s")}{" "}
+                              ago
                             </span>
                           )}
                           {message.updatedBy && (

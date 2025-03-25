@@ -10,7 +10,6 @@ interface Props {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -26,12 +25,10 @@ function EditMessageDialog({ open, setOpen, initial, onSubmit }: Props) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader className="text-left">
-          <DialogTitle>Edit message</DialogTitle>
-          <DialogDescription>
-            Make changes here. Click save when you&apos;re done.
-          </DialogDescription>
+          <DialogTitle className="text-[0.85rem]">Edit message</DialogTitle>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+
+        <div className="pb-0">
           <Textarea
             value={value}
             onChange={(e) => setValue(e.target.value)}

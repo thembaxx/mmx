@@ -17,11 +17,11 @@ function ChannelsForm() {
   return (
     <div className="w-full space-y-3">
       <div className="relative flex items-center w-full">
-        <RssIcon className="w-5 h-5 absolute left-3 text-icon-secondary" />
+        <RssIcon className="w-4 h-4 absolute left-3 text-icon" />
         <Input
           value={channelName}
-          className="h-11 text-base placeholder:text-sm dark:bg-[#333333] pl-10"
-          placeholder="Enter Channel id"
+          className="h-11 text-base placeholder:text-sm dark:bg-[#333333] pl-9"
+          placeholder="Find channel"
           type="text"
           name="username"
           onChange={(e) => {
@@ -31,7 +31,7 @@ function ChannelsForm() {
       </div>
       <div className="space-y-2">
         <Button
-          className="w-full relative text-[#292831] bg-[#FFCA24]"
+          className="w-full relative text-white/90 bg-[#FF4121]"
           type="submit"
           onClick={() => {
             setLoading(true);

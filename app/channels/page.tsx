@@ -12,7 +12,7 @@ import TermsFooter from "@/components/terms-footer";
 function ChannelsPage() {
   return (
     <div className="p-6 flex justify-center">
-      <Card className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.05)] border-none rounded-3xl bg-white/85 backdrop-blur-sm max-w-md dark:bg-[#0d0d0d]">
+      <Card className="shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] border-none rounded-3xl bg-white/90 backdrop-blur-sm max-w-md dark:bg-[#0d0d0d]">
         <CardHeader className="space-y-2">
           <CardTitle className="text-[0.7rem] uppercase">Welcome</CardTitle>
           <Header />

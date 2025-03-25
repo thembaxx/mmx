@@ -12,7 +12,7 @@ function Header() {
   if (!user) return null;
 
   return (
-    <div className="flex items-center gap-3 border rounded-xl p-3">
+    <div className="flex items-center gap-3 border border-border/5 shadow/[0.001] rounded-3xl p-3  bg-[#fcfbf9]">
       <div className="relative">
         <Avatar className="h-10 w-10">
           <AvatarImage src={user.image ?? ""} />

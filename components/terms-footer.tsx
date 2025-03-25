@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function TermsFooter() {
   return (
-    <div className="text-xs inline-block text-center text-pretty leading-5 tracking-wide">
+    <div className="text-[0.73rem] inline-block text-card-foreground/60 text-center text-pretty leading-5 tracking-wide">
       By continuing, you agree to {siteConfig.name}&apos;s{" "}
       <Link className="underline" href="/">
         Consumer Terms

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ArrowRightIcon, PlusSignSquareIcon } from "../assets/icons";
 import { Button } from "../ui/button";
 import ChannelsForm from "./channels-form";
 
@@ -12,17 +11,16 @@ function Content() {
     <div className="w-full h-full flex flex-col items-center justify-center">
       <div className="space-y-2 flex flex-col items-center justify-center h-full max-w-md w-full">
         <Button
-          className="w-full h-12 rounded-full text-white/[0.96] bg-[#FF4121] "
-          variant="ghost"
+          className="w-full text-[0.65rem] uppercase tracking-wider text-secondary-foreground/80 h-10 rounded-xl  font-mono "
+          variant="outline"
           onClick={() => {
             router.replace(`/channels/create`);
           }}
         >
-          <PlusSignSquareIcon className="h-5 w-5" />
-          <span className="font-medium">Create a channel</span>
+          <span className="font-medium">New channel</span>
         </Button>
         <Button
-          className="w-full relative h-12 rounded-full border-neutral-200/70"
+          className="w-full text-[0.65rem] uppercase tracking-wider text-secondary-foreground/80 relative h-10 rounded-2xl border-neutral-200/70  font-mono "
           type="button"
           variant="outline"
           onClick={() => {
@@ -30,11 +28,12 @@ function Content() {
           }}
         >
           <p>Public channels</p>
-          <ArrowRightIcon />
         </Button>
 
         <div className="w-full text-center py-1.5">
-          <span className="text-muted-foreground/50 text-xs uppercase">or</span>
+          <span className="text-muted-foreground/80 text-[10px] uppercase">
+            or
+          </span>
         </div>
 
         <ChannelsForm />

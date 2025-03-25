@@ -34,7 +34,7 @@ function Navbar() {
   if (!user) return null;
 
   return (
-    <nav className="w-full h-16 fixed top-0 left-0 z-50 bg-background/80 backdrop-blur-2xl shrink-0 flex justify-center">
+    <nav className="w-full h-16 fixed top-0 left-0 z-50 bg-white/60  backdrop-blur-sm shrink-0 flex justify-center drop-shadow-xs">
       <div className="w-full flex items-center px-4 justify-between max-w-2xl">
         <div className="flex items-center">
           <SideMenu user={user}>

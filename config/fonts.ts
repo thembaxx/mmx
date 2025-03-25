@@ -1,6 +1,6 @@
 import {
   Geist_Mono as FontMono,
-  Geist as FontSans,
+  Roboto as FontSans,
   Noto_Serif as FontSerif,
 } from "next/font/google";
 

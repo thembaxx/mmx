@@ -31,7 +31,7 @@ function ChannelsForm() {
       </div>
       <div className="space-y-2">
         <Button
-          className="w-full relative"
+          className="w-full relative text-[#292831] bg-[#FFCA24]"
           type="submit"
           onClick={() => {
             setLoading(true);

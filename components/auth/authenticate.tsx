@@ -17,7 +17,7 @@ import TermsFooter from "../terms-footer";
 
 function Authenticate() {
   return (
-    <Card className="shadow-md/20 rounded-3xl">
+    <Card className="shadow-2xl border-none">
       <CardHeader className="h-0 p-0 hidden">
         <CardTitle>Sign in</CardTitle>
       </CardHeader>

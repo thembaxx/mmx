@@ -2,7 +2,10 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { upload } from "@vercel/blob/client";
+import { UploadProgressEvent } from "@vercel/blob";
+
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -27,9 +30,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Label } from "@/components/ui/label";
+import { authClient } from "@/lib/auth-client";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { useUserStore } from "@/stores/use-user-store";
+import { Progress } from "@/components/ui/progress";
 
 const profileFormSchema = z.object({
   name: z.string().min(2, {
@@ -56,21 +62,39 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
-  name: "John Doe",
-  email: "john.doe@example.com",
-  bio: "I'm a software developer based in New York City. I enjoy building web applications and learning new technologies.",
-  urls: {
-    website: "https://example.com",
-    twitter: "@johndoe",
-    linkedin: "johndoe",
-  },
+  name: "",
+  email: "",
+  bio: "",
 };
 
 export default function ProfileForm() {
+  const { user } = useUserStore();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [avatarSrc, setAvatarSrc] = useState<string>(
-    "/placeholder.svg?height=100&width=100"
-  );
+  const [avatarSrc, setAvatarSrc] = useState<string>("");
+  const [image, setImage] = useState<File | null>(null);
+
+  const [uploadProgress, setUploadProgress] =
+    useState<UploadProgressEvent | null>(null);
+
+  async function uploadImageAsync(file: File | undefined) {
+    if (!file) return;
+
+    try {
+      const blob = await upload(file.name, file, {
+        access: "public",
+        handleUploadUrl: "/api/upload",
+        onUploadProgress: (progressEvent) => {
+          setUploadProgress(progressEvent);
+        },
+      });
+
+      return blob?.url;
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+  }
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -78,14 +102,45 @@ export default function ProfileForm() {
     mode: "onChange",
   });
 
-  function onSubmit(data: ProfileFormValues) {
-    setIsLoading(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log(data);
+      const res = await authClient.getSession();
+      if (res && res.data && res.data.user) {
+        const user = res.data.user;
+        setAvatarSrc(user.image ?? "");
+        form.setValue("name", user.name);
+        form.setValue("email", user.email);
+      }
+
       setIsLoading(false);
-    }, 1000);
+    };
+
+    fetchData();
+  }, [form]);
+
+  async function onSubmit(data: ProfileFormValues) {
+    setIsLoading(true);
+    const { name } = data;
+
+    const currentImage = user?.image ?? "";
+
+    const payload: {
+      name?: string;
+      image?: string | null;
+    } = {};
+
+    if (currentImage !== avatarSrc && image) {
+      const res = await uploadImageAsync(image);
+      if (res) payload.image = res;
+    }
+
+    if (name !== user?.name) payload.name = name;
+
+    await authClient.updateUser(payload);
+
+    setIsLoading(false);
   }
 
   function handleAvatarChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -96,20 +151,24 @@ export default function ProfileForm() {
         setAvatarSrc(e.target?.result as string);
       };
       reader.readAsDataURL(file);
+
+      setImage(file);
     }
   }
 
   return (
-    <div className="w-full h-full overflow-y-auto">
+    <div className="w-full h-full overflow-y-auto pt-20">
       <div className="max-w-2xl mx-auto py-10 px-6">
         <Card>
-          <CardHeader>
-            <CardTitle>Profile</CardTitle>
-            <CardDescription>
-              Manage your profile information. This information will be
-              displayed publicly.
-            </CardDescription>
-          </CardHeader>
+          <VisuallyHidden>
+            <CardHeader>
+              <CardTitle>Profile</CardTitle>
+              <CardDescription>
+                Manage your profile information. This information will be
+                displayed publicly.
+              </CardDescription>
+            </CardHeader>
+          </VisuallyHidden>
           <CardContent>
             <div className="space-y-8">
               <div className="flex flex-col items-center sm:flex-row sm:justify-center gap-4">
@@ -148,6 +207,7 @@ export default function ProfileForm() {
                   </p>
                 </div>
               </div>
+
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
@@ -188,7 +248,7 @@ export default function ProfileForm() {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  {/* <FormField
                     control={form.control}
                     name="bio"
                     render={({ field }) => (
@@ -208,62 +268,25 @@ export default function ProfileForm() {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
-                  <div className="space-y-4">
-                    <div className="text-sm font-medium">Links</div>
-                    <FormField
-                      control={form.control}
-                      name="urls.website"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Website</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="https://example.com"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="urls.twitter"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Twitter</FormLabel>
-                          <FormControl>
-                            <Input placeholder="@username" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="urls.linkedin"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>LinkedIn</FormLabel>
-                          <FormControl>
-                            <Input placeholder="username" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                  /> */}
                 </form>
               </Form>
             </div>
           </CardContent>
-          <CardFooter className="flex justify-end gap-2">
-            <Button variant="outline">Cancel</Button>
-            <Button onClick={form.handleSubmit(onSubmit)} disabled={isLoading}>
-              {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Save changes
-            </Button>
+          <CardFooter className="flex flex-col gap-4">
+            {isLoading && uploadProgress && uploadProgress.percentage && (
+              <Progress value={uploadProgress.percentage} />
+            )}
+            <div className="flex justify-end gap-2 w-full">
+              <Button variant="outline">Cancel</Button>
+              <Button
+                onClick={form.handleSubmit(onSubmit)}
+                disabled={isLoading}
+              >
+                {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                Save changes
+              </Button>
+            </div>
           </CardFooter>
         </Card>
       </div>

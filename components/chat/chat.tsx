@@ -211,7 +211,9 @@ function Chat() {
     if (getPreviousMessages) {
       getPreviousMessages({ limit: 50 })
         .then((result: Ably.PaginatedResult<Message>) => {
-          setMessages(result.items.filter((m) => !m.isDeleted).reverse());
+          setMessages(
+            result.items.filter((m: Message) => !m.isDeleted).reverse()
+          );
           setLoading(false);
         })
         .catch((error: Ably.ErrorInfo) => {

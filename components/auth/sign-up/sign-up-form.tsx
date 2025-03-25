@@ -25,6 +25,7 @@ import { useRouter } from "next/navigation";
 import Spinner from "@/components/ui/spinner";
 import { SolarQuestionCircleLinear } from "@/components/assets/icons";
 import PasswordReset from "../password-reset";
+import { useUserStore } from "@/stores/use-user-store";
 
 const formSchema = z.object({
   first_name: z.string().min(2).default(""),
@@ -35,6 +36,7 @@ const formSchema = z.object({
 
 function SignUpForm() {
   const router = useRouter();
+  const { setUser } = useUserStore();
 
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -68,7 +70,7 @@ function SignUpForm() {
         name,
         email,
         password,
-        callbackURL: "/dashboard",
+        callbackURL: "/channels",
       },
       {
         onRequest: () => {
@@ -77,6 +79,7 @@ function SignUpForm() {
         onSuccess: (ctx) => {
           if (ctx && ctx.data) {
             const user = ctx.data?.user;
+            setUser(user);
 
             console.log(user);
           }
@@ -84,7 +87,7 @@ function SignUpForm() {
 
           setLoading(false);
 
-          router.replace("/dashboard");
+          router.replace("/channels");
         },
         onError: (ctx) => {
           toast("Error", { description: ctx.error.message });

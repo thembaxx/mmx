@@ -21,7 +21,8 @@ export default async function middleware(request: NextRequest) {
   const user = data?.user;
 
   if (!session || !!error || !user) {
-    return NextResponse.redirect(new URL("/", request.url));
+    if (pathname !== "sign-up")
+      return NextResponse.redirect(new URL("/", request.url));
   } else if (user) {
     // const email = user.email;
     // const onboardingComplete = await isOnboardingComplete(email);
@@ -44,7 +45,7 @@ export const config = {
     "/channels/:path*",
     "/channel/:path*",
     "/chat/:path*",
-    "/sign-up/:path*",
+
     "/profile/:path*",
   ],
 };

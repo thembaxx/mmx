@@ -21,10 +21,12 @@ import Profile from "../chat/profile";
 import ThemeSwitcher from "../theme-switcher";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-import { UserData } from "@/stores/use-user-store";
+import { UserData, useUserStore } from "@/stores/use-user-store";
+import { redirect } from "next/navigation";
 
 export function ProfileMenu({ children, user }: Props) {
   const [isOpen, setIsOpen] = useState(false);
+  const { setUser } = useUserStore();
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
@@ -61,6 +63,8 @@ export function ProfileMenu({ children, user }: Props) {
           className="font-medium text-red-500"
           onClick={async () => {
             await authClient.signOut();
+            setUser(null);
+            redirect("/");
           }}
         >
           Sign out

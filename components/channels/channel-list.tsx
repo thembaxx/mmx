@@ -8,7 +8,7 @@ interface Props {
 
 import Image from "next/image";
 import { Label } from "../ui/label";
-import { ArrowRightIcon, SearchIcon } from "../assets/icons";
+import { SearchIcon } from "../assets/icons";
 import { Input } from "../ui/input";
 import { Skeleton } from "../ui/skeleton";
 import { ChannelResponse } from "@/types/types";
@@ -42,13 +42,13 @@ function ChannelList({ loading, items, onSelect }: Props) {
       <header className="flex items-center relative">
         <div className="absolute left-0">
           <Label className="h-full w-12 flex items-center justify-center">
-            <SearchIcon className="w-5 h-5 text-icon-secondary" />
+            <SearchIcon className="w-4 h-4 text-icon-secondary" />
           </Label>
         </div>
         <Input
           disabled={loading}
           type="text"
-          className="w-full h-10 text-base pl-11 bg-[#FCFCFC] dark:bg-[#1E1E1E] rounded-[12px]"
+          className="w-full h-10 text-base pl-10 bg-[#FCFCFC] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] dark:bg-[#1E1E1E] rounded-[12px] placeholder:text-[0.8rem]"
           value={value}
           placeholder="Search"
           onChange={(e) => setValue(e.target.value)}
@@ -72,19 +72,16 @@ function ChannelList({ loading, items, onSelect }: Props) {
                         .join("-")}`}
                       onClick={() => onSelect(item)}
                     >
-                      <div className="flex items-center bg-[#FCFCFC] border border-[#f7f7f8] gap-3 h-11 pl-3 pr-4 dark:bg-[#191919] rounded-[16px]">
+                      <div className="flex flex-col bg-[#FCFCFC] border border-[#f7f7f8] gap-2 p-4 dark:bg-[#191919] rounded-[16px]">
                         <Image
                           src={item.iconSrc}
                           alt=""
                           height={28}
                           width={28}
                         />
-                        <p className="font-medium grow text-sm truncate leading-none mt-1 text-foreground/90">
+                        <p className="font-medium w-full text-sm truncate leading-none mt-1 text-foreground/90">
                           {item.name}
                         </p>
-                        <div>
-                          <ArrowRightIcon className="h-4 w-4 text-icon-secondary" />
-                        </div>
                       </div>
                     </Link>
                   </li>

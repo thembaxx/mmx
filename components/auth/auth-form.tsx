@@ -102,8 +102,8 @@ function AuthForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="h-11 text-base placeholder:text-sm"
-                    placeholder="Enter your personal or work email"
+                    className="h-11 text-base placeholder:text-sm placeholder:text-[#a3a3a3] font-normal"
+                    placeholder="example@pulsechat.com"
                     {...field}
                   />
                 </FormControl>
@@ -122,7 +122,7 @@ function AuthForm() {
                   <FormControl>
                     <div className="relative">
                       <Input
-                        className="h-11 text-base pr-12 placeholder:text-sm"
+                        className="h-11 text-base pr-12 placeholder:text-sm placeholder:text-[#a3a3a3]"
                         placeholder="Password"
                         type={showPassword ? "text" : "password"}
                         {...field}
@@ -164,7 +164,10 @@ function AuthForm() {
             />
           )}
         </div>
-        <Button className="w-full relative" type="submit">
+        <Button
+          className="w-full relative bg-blue-600 tracking-wider text-white text-[0.67rem] uppercase font-medium font-mono shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
+          type="submit"
+        >
           {loading && (
             <div className="absolute left-3">
               <Spinner />

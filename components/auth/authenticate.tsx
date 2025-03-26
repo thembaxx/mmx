@@ -17,14 +17,14 @@ import TermsFooter from "../terms-footer";
 
 function Authenticate() {
   return (
-    <Card className="shadow-2xl border-none">
+    <Card className="shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] rounded-4xl rounded-br-xl border-none">
       <CardHeader className="h-0 p-0 hidden">
         <CardTitle>Sign in</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-2 flex flex-col items-center justify-center h-full w-full">
           <Button
-            className="w-full"
+            className="w-full rounded-xl bg-[#f5f5f5]"
             variant="secondary"
             onClick={async () => {
               authClient.signIn.social({

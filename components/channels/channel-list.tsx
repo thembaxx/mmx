@@ -72,14 +72,16 @@ function ChannelList({ loading, items, onSelect }: Props) {
                         .join("-")}`}
                       onClick={() => onSelect(item)}
                     >
-                      <div className="flex flex-col bg-[#FCFCFC] border border-[#f7f7f8] gap-2 p-4 dark:bg-[#191919] rounded-[16px]">
-                        <Image
-                          src={item.iconSrc}
-                          alt=""
-                          height={28}
-                          width={28}
-                        />
-                        <p className="font-medium w-full text-sm truncate leading-none mt-1 text-foreground/90">
+                      <div className="flex flex-col items-start bg-[#FCFCFC] border border-[#f7f7f8] gap-2 p-4 dark:bg-[#191919] rounded-[16px]">
+                        <div className="p-2 bg-[#f7f7f8] rounded-tr-[12px] rounded-b-[10px]">
+                          <Image
+                            src={item.iconSrc}
+                            alt=""
+                            height={24}
+                            width={24}
+                          />
+                        </div>
+                        <p className="font-normal w-full text-sm truncate leading-none mt-1 text-foreground/90">
                           {item.name}
                         </p>
                       </div>

@@ -38,31 +38,36 @@ function ChannelList({ loading, items, onSelect }: Props) {
   );
 
   return (
-    <div className="space-y-8 h-full w-full flex flex-col overflow-hidden">
-      <header className="flex items-center relative">
-        <div className="absolute left-0">
-          <Label className="h-full w-12 flex items-center justify-center">
-            <SearchIcon className="w-4 h-4 text-icon-secondary" />
-          </Label>
+    <div className="space-y-6">
+      <header className="space-y-8 p-4 bg-gradient-to-t from-white to-[#F3F5F6]/60 border shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] rounded-2xl rounded-br-xl">
+        <div className="text-left">
+          <h1 className="font-medium text-pretty ">Channels</h1>
+          <p className="text-[0.75rem] text-pretty max-w-xs text-[#646564]">
+            Pulse messaging channels
+          </p>
         </div>
-        <Input
-          disabled={loading}
-          type="text"
-          className="w-full h-10 text-base pl-10 bg-[#FCFCFC] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] dark:bg-[#1E1E1E] rounded-[12px] placeholder:text-[0.8rem]"
-          value={value}
-          placeholder="Search"
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <div className="flex items-center relative bg-[#FCFCFC] border border-[#D9D9D9] rounded-[12px] overflow-hidden">
+          <div className="absolute left-0">
+            <Label className="h-full w-12 flex items-center justify-center">
+              <SearchIcon className="w-4 h-4 text-[#999999]" />
+            </Label>
+          </div>
+          <Input
+            disabled={loading}
+            type="text"
+            className="w-full h-10 text-base pl-10 bg-transparent border-none rounded-none dark:bg-[#1E1E1E] placeholder:text-[0.8rem]"
+            value={value}
+            placeholder="Search"
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </div>
       </header>
       <div className="space-y-4 grow flex flex-col">
-        <h1 className="text-[0.8rem] font-semibold text-secondary-foreground/80">
-          Channels
-        </h1>
         {loading && <LoadingPlaceholder />}
         {!loading && (
           <>
             {data.length > 0 && (
-              <ul className="grid grid-cols-2 gap-2  overflow-y-auto">
+              <ul className="grid grid-cols-2 gap-2">
                 {data.map((item, index) => (
                   <li key={index}>
                     <Link
@@ -73,17 +78,22 @@ function ChannelList({ loading, items, onSelect }: Props) {
                       onClick={() => onSelect(item)}
                     >
                       <div className="flex flex-col items-start bg-[#FCFCFC] border border-[#f7f7f8] gap-2 p-4 dark:bg-[#191919] rounded-[16px]">
-                        <div className="p-2 bg-[#f7f7f8] rounded-tr-[12px] rounded-b-[10px]">
+                        <div className="p-3 bg-[#f7f7f8] rounded-tr-[12px] rounded-b-[10px]">
                           <Image
                             src={item.iconSrc}
                             alt=""
-                            height={24}
-                            width={24}
+                            height={28}
+                            width={28}
                           />
                         </div>
-                        <p className="font-normal w-full text-sm truncate leading-none mt-1 text-foreground/90">
-                          {item.name}
-                        </p>
+                        <div className="space-y-1.5 mt-2">
+                          <p className="font-medium w-full text-sm truncate leading-none text-foreground/90">
+                            {item.name}
+                          </p>
+                          <p className="font-normal w-full text-[0.75rem] truncate leading-none text-[#646564]">
+                            {item.type}
+                          </p>
+                        </div>
                       </div>
                     </Link>
                   </li>

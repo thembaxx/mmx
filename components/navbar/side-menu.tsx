@@ -112,7 +112,7 @@ export function SideMenu({ children, user }: Props) {
                 key={index}
                 href={href}
                 className={cn("flex items-center gap-3 py-2.5 px-4", {
-                  "bg-secondary dark:bg-[#333333E6]": href === pathname,
+                  "bg-[#F7F7F8] dark:bg-[#333333E6]": href === pathname,
                 })}
                 onClick={() => setIsOpen(false)}
               >

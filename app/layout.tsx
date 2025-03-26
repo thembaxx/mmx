@@ -28,7 +28,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body
         className={cn(
-          `antialiased h-screen font-sans ${fontSans.className} overflow-y-auto bg-[#FCF8EC] dark:bg-[#111111]`
+          `antialiased h-screen font-sans ${fontSans.className} overflow-y-auto bg-[#F4F5F5] dark:bg-[#111111]`
         )}
       >
         <Providers

@@ -48,7 +48,7 @@ function ChannelList({ loading, items, onSelect }: Props) {
         <Input
           disabled={loading}
           type="text"
-          className="w-full h-10 text-base pl-11 dark:bg-[#1E1E1E] rounded-[12px]"
+          className="w-full h-10 text-base pl-11 bg-[#FCFCFC] dark:bg-[#1E1E1E] rounded-[12px]"
           value={value}
           placeholder="Search"
           onChange={(e) => setValue(e.target.value)}
@@ -62,7 +62,7 @@ function ChannelList({ loading, items, onSelect }: Props) {
         {!loading && (
           <>
             {data.length > 0 && (
-              <ul className="space-y-3 grow overflow-y-auto">
+              <ul className="grid grid-cols-2 gap-2  overflow-y-auto">
                 {data.map((item, index) => (
                   <li key={index}>
                     <Link
@@ -72,18 +72,18 @@ function ChannelList({ loading, items, onSelect }: Props) {
                         .join("-")}`}
                       onClick={() => onSelect(item)}
                     >
-                      <div className="flex items-center bg-black/[0.03] border gap-3 h-12 pl-3 pr-4 dark:bg-[#191919] rounded-[16px]">
+                      <div className="flex items-center bg-[#FCFCFC] border border-[#f7f7f8] gap-3 h-11 pl-3 pr-4 dark:bg-[#191919] rounded-[16px]">
                         <Image
                           src={item.iconSrc}
                           alt=""
                           height={28}
                           width={28}
                         />
-                        <p className="font-semibold grow truncate leading-none mt-1 text-foreground/90">
+                        <p className="font-medium grow text-sm truncate leading-none mt-1 text-foreground/90">
                           {item.name}
                         </p>
                         <div>
-                          <ArrowRightIcon className="h-5 w-5 text-icon" />
+                          <ArrowRightIcon className="h-4 w-4 text-icon-secondary" />
                         </div>
                       </div>
                     </Link>

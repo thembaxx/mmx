@@ -38,7 +38,7 @@ function ChannelList({ loading, items, onSelect }: Props) {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 h-full">
       <header className="space-y-8 p-4 bg-gradient-to-t from-white to-[#F3F5F6]/60 border shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] rounded-2xl rounded-br-xl">
         <div className="text-left">
           <h1 className="font-medium text-pretty ">Channels</h1>

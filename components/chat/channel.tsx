@@ -129,7 +129,7 @@ function Channel() {
           <div className="flex flex-col h-full w-full relative overflow-hidden">
             <Channels>
               <Button
-                className="shrink-0 pl-1.5 pr-0 gap-0 rounded-[10px] bg-black/[0.03] dark:bg-[#2E2E2E] flex items-center w-fit fixed top-0 left-1/2 right-1/2 -translate-x-1/2 translate-y-1/2 z-50"
+                className="shrink-0 pl-1.5 pr-0 gap-0 rounded-[10px] bg-black/[0.03] dark:bg-[#2E2E2E] flex items-center w-fit fixed top-4.5 left-1/2 right-1/2 -translate-x-1/2 translate-y-1/2 z-50"
                 size="sm"
                 variant="secondary"
               >
@@ -163,9 +163,7 @@ function Channel() {
               </Button>
             </Channels>
 
-            <div className="h-full w-full relative pt-20">
-              <Chat />
-            </div>
+            <Chat />
           </div>
         </ChatRoomProvider>
       </ChatClientProvider>

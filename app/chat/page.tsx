@@ -11,7 +11,7 @@ const Channel = dynamic(
 
 function ChatPage() {
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full overflow-hidden">
       <UseLayoutEffectParent>
         <Channel />
       </UseLayoutEffectParent>

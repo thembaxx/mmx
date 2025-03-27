@@ -303,8 +303,8 @@ function Chat() {
   }, [messages, loading]);
 
   return (
-    <div className="w-full h-full flex flex-col bg-background">
-      <div className="w-full grow overflow-y-auto">
+    <div className="w-full h-full flex flex-col overflow-hidden">
+      <div className="w-full h-full pt-24 pb-40 overflow-y-auto">
         {messages.length === 0 && (
           <div className="flex flex-col gap-4 h-full items-center justify-center">
             <div className="p-4 opacity-60 flex flex-col items-center justify-center">
@@ -443,7 +443,7 @@ function Chat() {
           </ul>
         )}
       </div>
-      <footer className="p-4 sticky bottom-0 left-0 w-full">
+      <footer className="p-4 fixed bottom-0 left-0 w-full">
         <TypingIndicatorPanel />
         <ChatInput />
       </footer>

@@ -20,7 +20,7 @@ function Content() {
           <span className="font-medium">New channel</span>
         </Button>
         <Button
-          className="w-full text-[0.65rem] uppercase tracking-wider text-secondary-foreground/80 relative h-10 rounded-2xl border-neutral-200/70  font-mono "
+          className="w-full text-[0.65rem] uppercase tracking-wider text-secondary-foreground/80 relative h-10 rounded-2xl font-mono "
           type="button"
           variant="outline"
           onClick={() => {

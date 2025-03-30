@@ -7,8 +7,9 @@ import { siteConfig } from "@/config/site";
 function Header() {
   return (
     <div className="space-y-3 w-full flex flex-col items-center">
-      <h1 className="text-4xl font-extrabold text-center text-pretty ">
-        Connect in Real-Time with{" "}
+      <h1 className="text-4xl font-extrabold text-center text-pretty max-w-2xs">
+        Connect in Real-Time with
+        <br />
         <span className="bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent">
           {siteConfig.name}
         </span>

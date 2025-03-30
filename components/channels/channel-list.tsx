@@ -39,14 +39,14 @@ function ChannelList({ loading, items, onSelect }: Props) {
 
   return (
     <div className="space-y-6 h-full">
-      <header className="space-y-8 p-4 bg-gradient-to-t from-white to-[#F3F5F6]/60 border shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] rounded-2xl rounded-br-xl">
+      <header className="space-y-8 p-4 bg-gradient-to-t from-white to-[#F3F5F6]/60 dark:from-[#171717] dark:to-[#373737]/20 border shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] rounded-2xl rounded-br-xl">
         <div className="text-left">
           <h1 className="font-medium text-pretty ">Channels</h1>
           <p className="text-[0.75rem] text-pretty max-w-xs text-[#646564]">
             Pulse messaging channels
           </p>
         </div>
-        <div className="flex items-center relative bg-[#FCFCFC] border border-[#D9D9D9] rounded-[12px] overflow-hidden">
+        <div className="flex items-center relative bg-[#FCFCFC] dark:bg-[#8A8A8A] dark:border-none border border-[#D9D9D9] rounded-[12px] overflow-hidden">
           <div className="absolute left-0">
             <Label className="h-full w-12 flex items-center justify-center">
               <SearchIcon className="w-4 h-4 text-[#999999]" />
@@ -77,8 +77,8 @@ function ChannelList({ loading, items, onSelect }: Props) {
                         .join("-")}`}
                       onClick={() => onSelect(item)}
                     >
-                      <div className="flex flex-col items-start bg-[#FCFCFC] border border-[#f7f7f8] gap-2 p-4 dark:bg-[#191919] rounded-[16px]">
-                        <div className="p-3 bg-[#f7f7f8] rounded-tr-[12px] rounded-b-[10px]">
+                      <div className="flex flex-col items-start bg-[#FCFCFC] border border-[#f7f7f8] dark:border-[#525252]/60 gap-2 p-4 dark:bg-[#191919] rounded-[16px]">
+                        <div className="p-3 bg-[#f7f7f8] dark:bg-white/5 rounded-tr-[12px] rounded-b-[10px]">
                           <Image
                             src={item.iconSrc}
                             alt=""

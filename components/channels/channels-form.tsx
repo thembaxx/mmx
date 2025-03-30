@@ -21,6 +21,7 @@ function ChannelsForm() {
         <Input
           value={channelName}
           className="h-11 text-base placeholder:text-sm dark:bg-[#333333] pl-9"
+          disabled={loading}
           placeholder="Find channel"
           type="text"
           name="username"
@@ -32,6 +33,7 @@ function ChannelsForm() {
       <div className="space-y-2">
         <Button
           className="w-full relative text-white/90 bg-[#FF4121]"
+          disabled={!channelName}
           type="submit"
           onClick={() => {
             setLoading(true);
@@ -45,7 +47,7 @@ function ChannelsForm() {
         >
           {loading && (
             <div className="absolute left-3">
-              <Spinner />
+              <Spinner variant="dark" />
             </div>
           )}
           <span>Join channel</span>

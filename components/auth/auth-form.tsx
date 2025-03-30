@@ -103,6 +103,7 @@ function AuthForm() {
                 <FormControl>
                   <Input
                     className="h-11 text-base placeholder:text-sm placeholder:text-[#a3a3a3] font-normal"
+                    disabled={loading}
                     placeholder="example@pulsechat.com"
                     {...field}
                   />
@@ -123,6 +124,7 @@ function AuthForm() {
                     <div className="relative">
                       <Input
                         className="h-11 text-base pr-12 placeholder:text-sm placeholder:text-[#a3a3a3]"
+                        disabled={loading}
                         placeholder="Password"
                         type={showPassword ? "text" : "password"}
                         {...field}
@@ -166,11 +168,12 @@ function AuthForm() {
         </div>
         <Button
           className="w-full relative bg-blue-600 tracking-wider text-white text-[0.67rem] uppercase font-medium font-mono shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
+          disabled={loading}
           type="submit"
         >
           {loading && (
             <div className="absolute left-3">
-              <Spinner />
+              <Spinner variant="dark" />
             </div>
           )}
           <>{`${emailExists ? "Sign In" : "Continue with Email"}`}</>
@@ -179,6 +182,7 @@ function AuthForm() {
           <div className="flex w-full">
             <Button
               className="text-primary text-[0.85rem]"
+              disabled={loading}
               variant="link"
               type="button"
               size="sm"

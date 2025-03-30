@@ -24,7 +24,7 @@ function Authenticate() {
       <CardContent>
         <div className="space-y-2 flex flex-col items-center justify-center h-full w-full">
           <Button
-            className="w-full rounded-xl bg-[#f5f5f5]"
+            className="w-full rounded-xl bg-[#f5f5f5] dark:bg-[#171717]"
             variant="secondary"
             onClick={async () => {
               authClient.signIn.social({

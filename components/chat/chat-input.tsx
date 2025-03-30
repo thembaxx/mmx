@@ -158,7 +158,7 @@ function ChatInput() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.75, type: "spring" }}
-                      className="relative mr-24 h-24 w-full"
+                      className="relative mr-24 h-24 w-full overflow-hidden"
                     >
                       <Textarea
                         placeholder="Type your message here"

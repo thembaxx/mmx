@@ -123,6 +123,7 @@ function Chat() {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const chatClient = useChatClient();
   const clientId = chatClient.clientId;
@@ -406,7 +407,7 @@ function Chat() {
                         </p>
                       </div>
                     </div>
-                    <DropdownMenu>
+                    <DropdownMenu open={menuOpen} onOpenChange={setMenuOpen}>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="icon">
                           <MoreHorizontalCircleIcon className="h-5 w-5 text-icon" />
@@ -416,6 +417,7 @@ function Chat() {
                         <DropdownMenuItem
                           onClick={(e) => {
                             e.preventDefault();
+                            setMenuOpen(false);
                             setEditDialogOpen(true);
                           }}
                         >
@@ -426,6 +428,7 @@ function Chat() {
                         <DropdownMenuItem
                           onClick={(e) => {
                             e.preventDefault();
+                            setMenuOpen(false);
                             onDeleteMessage(message);
                           }}
                         >

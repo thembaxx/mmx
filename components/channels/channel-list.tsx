@@ -67,7 +67,7 @@ function ChannelList({ loading, items, onSelect }: Props) {
         {!loading && (
           <>
             {data.length > 0 && (
-              <ul className="grid grid-cols-2 gap-2">
+              <ul className="grid grid-cols-2 gap-4">
                 {data.map((item, index) => (
                   <li key={index}>
                     <Link
@@ -78,7 +78,7 @@ function ChannelList({ loading, items, onSelect }: Props) {
                       onClick={() => onSelect(item)}
                     >
                       <div className="flex flex-col items-start bg-[#FCFCFC] border border-[#f7f7f8] dark:border-[#525252]/60 gap-2 p-4 dark:bg-[#191919] rounded-[16px]">
-                        <div className="p-3 bg-[#f7f7f8] dark:bg-white/5 rounded-tr-[12px] rounded-b-[10px]">
+                        <div className="p-2 bg-[#f7f7f8] dark:bg-white/5 rounded-tr-[12px] rounded-b-[10px]">
                           <Image
                             src={item.iconSrc}
                             alt=""

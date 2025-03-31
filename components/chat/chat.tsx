@@ -304,7 +304,7 @@ function Chat() {
 
   return (
     <div className="w-full h-full flex flex-col overflow-hidden">
-      <div className="w-full h-full pt-24 pb-16 overflow-y-auto">
+      <div className="w-full h-full pt-24 pb-8 overflow-y-auto">
         {messages.length === 0 && (
           <div className="flex flex-col gap-4 h-full items-center justify-center">
             <div className="p-4 opacity-60 flex flex-col items-center justify-center">

@@ -34,8 +34,8 @@ function Navbar() {
   if (!user) return null;
 
   return (
-    <nav className="w-full h-16 fixed top-0 left-0 z-50 shrink-0 flex justify-center p-6">
-      <div className="w-full flex h-13  bg-white/80 dark:bg-[#262626] rounded-[20px] overflow-hidden backdrop-blur-sm items-center pr-3 pl-1.5 justify-between max-w-2xl border border-border/40">
+    <nav className="w-full sticky top-0 left-0 z-50 shrink-0 flex justify-center p-6  backdrop-blur-lg">
+      <div className="w-full flex h-13 bg-white/80 dark:bg-[#262626] rounded-[20px] overflow-hidden backdrop-blur-sm items-center pr-3 pl-1.5 justify-between max-w-2xl border border-border/40">
         <div className="flex items-center">
           <SideMenu user={user}>
             <Button className="p-0" variant="ghost">

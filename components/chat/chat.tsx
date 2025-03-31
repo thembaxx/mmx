@@ -123,7 +123,6 @@ function Chat() {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const chatClient = useChatClient();
   const clientId = chatClient.clientId;
@@ -305,7 +304,7 @@ function Chat() {
 
   return (
     <div className="w-full h-full flex flex-col overflow-hidden">
-      <div className="w-full h-full pt-24 pb-40 overflow-y-auto">
+      <div className="w-full h-full pt-24 pb-16 overflow-y-auto">
         {messages.length === 0 && (
           <div className="flex flex-col gap-4 h-full items-center justify-center">
             <div className="p-4 opacity-60 flex flex-col items-center justify-center">
@@ -407,7 +406,7 @@ function Chat() {
                         </p>
                       </div>
                     </div>
-                    <DropdownMenu open={menuOpen} onOpenChange={setMenuOpen}>
+                    <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="icon">
                           <MoreHorizontalCircleIcon className="h-5 w-5 text-icon" />
@@ -417,7 +416,6 @@ function Chat() {
                         <DropdownMenuItem
                           onClick={(e) => {
                             e.preventDefault();
-                            setMenuOpen(false);
                             setEditDialogOpen(true);
                           }}
                         >
@@ -428,7 +426,6 @@ function Chat() {
                         <DropdownMenuItem
                           onClick={(e) => {
                             e.preventDefault();
-                            setMenuOpen(false);
                             onDeleteMessage(message);
                           }}
                         >
@@ -446,7 +443,7 @@ function Chat() {
           </ul>
         )}
       </div>
-      <footer className="p-4 fixed bottom-0 left-0 w-full">
+      <footer className="p-4 w-full">
         <TypingIndicatorPanel />
         <ChatInput />
       </footer>

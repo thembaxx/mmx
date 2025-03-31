@@ -207,13 +207,13 @@ export function CreateChannelForm({ channelName }: Props) {
           />
           <Button
             disabled={loading}
-            className="relative w-full disabled:opacity-80"
+            className="relative w-full disabled:opacity-80 bg-blue-600 hover:bg-blue-500 text-white"
             type="submit"
           >
             <span>Create Channel</span>
             {loading && (
               <div className="absolute left-3">
-                <Spinner />
+                <Spinner variant="dark" />
               </div>
             )}
           </Button>

@@ -159,7 +159,7 @@ export default function ProfileForm() {
   return (
     <div className="w-full h-full overflow-y-auto pt-20">
       <div className="max-w-2xl mx-auto py-10 px-6">
-        <Card>
+        <Card className="shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] border-none rounded-4xl rounded-br-xl bg-[#FCFCFC] max-w-md dark:bg-[#171717]">
           <VisuallyHidden>
             <CardHeader>
               <CardTitle>Profile</CardTitle>
@@ -280,8 +280,9 @@ export default function ProfileForm() {
             <div className="flex justify-end gap-2 w-full">
               <Button variant="outline">Cancel</Button>
               <Button
-                onClick={form.handleSubmit(onSubmit)}
+                className="bg-blue-600 hover:bg-blue-500 text-white"
                 disabled={isLoading}
+                onClick={form.handleSubmit(onSubmit)}
               >
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Save changes

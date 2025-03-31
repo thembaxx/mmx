@@ -17,7 +17,7 @@ import TermsFooter from "@/components/terms-footer";
 
 function CreateChannelCard({ channelName }: Props) {
   return (
-    <Card className="dark:bg-[#0d0d0d]">
+    <Card className="shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] border-none rounded-4xl rounded-br-xl bg-[#FCFCFC] max-w-md dark:bg-[#171717]">
       <VisuallyHidden>
         <CardHeader>
           <CardTitle>Channel</CardTitle>

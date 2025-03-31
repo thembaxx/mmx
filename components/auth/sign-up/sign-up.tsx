@@ -12,9 +12,9 @@ import TermsFooter from "@/components/terms-footer";
 
 function SignUp() {
   return (
-    <div className="w-full flex justify-center p-6 pt-12">
+    <div className="w-full flex justify-center p-6 pt-24">
       <div className="w-full max-w-md flex flex-col items-center">
-        <Card className="border-none rounded-4xl rounded-br-xl bg-[#FCFCFC] shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)]">
+        <Card className="shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] border-none rounded-4xl rounded-br-xl bg-[#FCFCFC] max-w-md dark:bg-[#171717]">
           <CardHeader>
             <CardTitle className="text-[0.8rem] text-[#656565] font-normal text-center">
               Hi, Create a free {siteConfig.name} account

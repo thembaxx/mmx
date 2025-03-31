@@ -60,7 +60,7 @@ export function ProfileMenu({ children, user }: Props) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator className="dark:bg-neutral-700" />
         <DropdownMenuItem
-          className="font-medium text-red-500"
+          className="font-semibold text-red-400"
           onClick={async () => {
             await authClient.signOut();
             setUser(null);

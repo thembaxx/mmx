@@ -28,8 +28,7 @@ import PasswordReset from "../password-reset";
 import { useUserStore } from "@/stores/use-user-store";
 
 const formSchema = z.object({
-  first_name: z.string().min(2).default(""),
-  last_name: z.string().min(2).default(""),
+  full_name: z.string().min(2).default(""),
   email: z.string().email().default(""),
   password: z.string().min(6).default(""),
 });
@@ -47,8 +46,7 @@ function SignUpForm() {
     resolver: zodResolver(formSchema),
     // disabled: loading,
     defaultValues: {
-      first_name: "",
-      last_name: "",
+      full_name: "",
       email: "",
       password: "",
     },
@@ -61,13 +59,11 @@ function SignUpForm() {
 
     setLoading(true);
 
-    const { first_name, last_name, email, password } = values;
-
-    const name = `${first_name} ${last_name}`;
+    const { full_name, email, password } = values;
 
     await authClient.signUp.email(
       {
-        name,
+        name: full_name,
         email,
         password,
         callbackURL: "/channels",
@@ -110,31 +106,14 @@ function SignUpForm() {
         <div className="grid md:grid-cols-2 md:gap-4 gap-6 w-full">
           <FormField
             control={form.control}
-            name="first_name"
+            name="full_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-medium">First name</FormLabel>
+                <FormLabel className="font-medium">Full name</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="John"
                     className="text-base placeholder:text-sm"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="last_name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-medium">Last name</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Doe"
-                    className="text-base pr-12 placeholder:text-sm"
                     {...field}
                   />
                 </FormControl>

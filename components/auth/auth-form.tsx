@@ -167,7 +167,7 @@ function AuthForm() {
           )}
         </div>
         <Button
-          className="w-full relative bg-blue-600 tracking-wider text-white text-[0.67rem] uppercase font-medium font-mono shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
+          className="w-full relative bg-blue-600 hover:bg-blue-500 tracking-wider text-white text-[0.67rem] uppercase font-medium font-mono shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
           disabled={loading}
           type="submit"
         >

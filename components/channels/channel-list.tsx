@@ -38,14 +38,15 @@ function ChannelList({ loading, items, onSelect }: Props) {
   );
 
   return (
-    <div className="space-y-6 h-full">
-      <header className="space-y-8 p-4 bg-gradient-to-t from-white to-[#F3F5F6]/60 dark:from-[#171717] dark:to-[#373737]/20 border shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] rounded-2xl rounded-br-xl">
+    <div className="space-y-4 h-full overflow-hidden">
+      <header className="space-y-6 p-4 bg-gradient-to-t from-white to-[#F3F5F6]/60 dark:from-[#171717] dark:to-[#373737]/20 border shadow-[0_35px_60px_-20px_rgba(0,0,0,0.08)] rounded-2xl rounded-br-xl">
         <div className="text-left">
           <h1 className="font-medium text-pretty ">Channels</h1>
           <p className="text-[0.75rem] text-pretty max-w-xs text-[#646564]">
             Pulse messaging channels
           </p>
         </div>
+
         <div className="flex items-center relative bg-[#FCFCFC] dark:bg-[#8A8A8A] dark:border-none border border-[#D9D9D9] rounded-[12px] overflow-hidden">
           <div className="absolute left-0">
             <Label className="h-full w-12 flex items-center justify-center">
@@ -67,7 +68,7 @@ function ChannelList({ loading, items, onSelect }: Props) {
         {!loading && (
           <>
             {data.length > 0 && (
-              <ul className="grid grid-cols-2 gap-4">
+              <ul className="grid grid-cols-2 gap-3">
                 {data.map((item, index) => (
                   <li key={index}>
                     <Link

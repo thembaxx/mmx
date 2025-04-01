@@ -1,8 +1,7 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { MaterialSymbolsVerifiedRounded } from "../chat/profile";
-import { SettingsIcon } from "../assets/icons";
+import { MaterialSymbolsVerifiedRounded, SettingsIcon } from "../assets/icons";
 import Link from "next/link";
 import { useUserStore } from "@/stores/use-user-store";
 import { getInitials } from "@/lib/utils";

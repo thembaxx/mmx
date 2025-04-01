@@ -28,7 +28,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body
         className={cn(
-          `antialiased h-screen font-sans ${fontSans.className} overflow-y-auto bg-[#F4F5F5] dark:bg-[#111111]`
+          `antialiased h-full font-sans ${fontSans.className} overflow-y-auto flex flex-col bg-[#F4F5F5] dark:bg-[#111111]`
         )}
       >
         <Providers
@@ -41,7 +41,7 @@ export default function RootLayout({
         >
           <>
             <Navbar />
-            <main className="h-full w-full overflow-hidden">{children}</main>
+            <main className="grow w-full">{children}</main>
             <Toaster />
           </>
         </Providers>

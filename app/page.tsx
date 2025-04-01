@@ -3,8 +3,8 @@ import Header from "@/components/home/header";
 
 export default function Home() {
   return (
-    <div className="h-full w-full px-6 py-12 flex flex-col items-center justify-center">
-      <div className="w-full max-w-md space-y-8">
+    <div className="h-full w-full p-6 flex flex-col items-center justify-center overflow-hidden">
+      <div className="max-w-md space-y-8">
         <Header />
         <Authenticate />
       </div>

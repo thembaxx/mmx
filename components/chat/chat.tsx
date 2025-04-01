@@ -303,7 +303,7 @@ function Chat() {
   }, [messages, loading]);
 
   return (
-    <div className="w-full h-full flex flex-col overflow-hidden">
+    <div className="w-full h-full flex flex-col overflow-hidden  border-2 border-red-600">
       <div className="w-full h-full pt-24 pb-8 overflow-y-auto">
         {messages.length === 0 && (
           <div className="flex flex-col gap-4 h-full items-center justify-center">

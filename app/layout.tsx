@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning className="h-full" lang="en">
       <body
         className={cn(
           `antialiased h-full font-sans ${fontSans.className} overflow-y-auto flex flex-col bg-[#F4F5F5] dark:bg-[#111111]`

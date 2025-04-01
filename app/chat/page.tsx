@@ -1,5 +1,6 @@
 "use client";
 
+import Container from "@/components/container";
 import UseLayoutEffectParent from "@/components/use-layout-effect-parent";
 import dynamic from "next/dynamic";
 const Channel = dynamic(
@@ -11,11 +12,11 @@ const Channel = dynamic(
 
 function ChatPage() {
   return (
-    <div className="h-full w-full overflow-hidden">
+    <Container>
       <UseLayoutEffectParent>
         <Channel />
       </UseLayoutEffectParent>
-    </div>
+    </Container>
   );
 }
 

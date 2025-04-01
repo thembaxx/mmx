@@ -1,10 +1,11 @@
 import SignUp from "@/components/auth/sign-up/sign-up";
+import Container from "@/components/container";
 
 async function SignUpPage() {
   return (
-    <div className="h-full w-full overflow-y-auto">
+    <Container>
       <SignUp />
-    </div>
+    </Container>
   );
 }
 

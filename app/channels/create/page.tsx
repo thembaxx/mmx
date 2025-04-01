@@ -1,10 +1,11 @@
 import CreateChannelCard from "@/components/channels/create/card";
+import Container from "@/components/container";
 
 function CreateChannelPage() {
   return (
-    <div className="p-6 h-full w-full">
+    <Container>
       <CreateChannelCard channelName="" />
-    </div>
+    </Container>
   );
 }
 

@@ -19,7 +19,6 @@ import { capitalize } from "@/lib/utils";
 import { useChannelstore } from "@/stores/use-channel-store";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
 import ConnectionStatusComp from "./connection-status-comp";
 import { Separator } from "../ui/separator";
 
@@ -48,7 +47,9 @@ const realtimeClient = new Ably.Realtime({
   authUrl: "/api/ably",
 });
 
-const chatClient = new ChatClient(realtimeClient, { logLevel: LogLevel.Info });
+const chatClient = new ChatClient(realtimeClient, {
+  logLevel: LogLevel.Info,
+});
 const RoomOptionsDefaults: RoomOptions = {
   presence: { enter: true, subscribe: true },
   typing: { timeoutMs: 5000 },
@@ -86,31 +87,30 @@ function Channel() {
     return (
       <div className="h-full w-full flex justify-center items-center">
         <div className="w-full max-w-sm flex flex-col justify-center items-center">
-          <Image src="/warning.svg" alt="" height={96} width={96} />
+          <Image
+            src="/empty/fluent-color--person-warning-48.png"
+            alt=""
+            height={96}
+            width={96}
+          />
           <div className="text-center mt-8">
             <h1 className="text-xl font-bold">No channel selected</h1>
             <p className="text-sm text-secondary-foreground/85">
               Create or select a channel
             </p>
           </div>
-          <div className="mt-4 flex flex-col gap-3">
+          <div className="mt-4 flex items-center gap-3">
             <Channels>
-              <Button size="sm" variant="secondary">
-                <ArrowDownIcon className="w-4 h-4 text-icon" />
-                <span>Select a channel</span>
+              <Button size="sm" variant="default">
+                <ArrowDownIcon className="w-4 h-4" />
+                <span>Channels</span>
               </Button>
             </Channels>
 
             <Button size="sm" variant="outline">
               <PlusSignSquareIcon className="w-4 h-4 text-icon" />
-              <span>Create a channel</span>
+              <span>Create</span>
             </Button>
-            <Link
-              className="text-sm font-medium underline text-center"
-              href="/channels/public"
-            >
-              Public channels
-            </Link>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ const loadVariants = cva("[&>svg]:animate-spin", {
   variants: {
     variant: {
       default:
-        "[&>svg]:fill-primary [&>svg]:text-black/10 dark:[&>svg]:fill-neutral-700 dark:[&>svg]:text-neutral-200",
+        "[&>svg]:fill-blue-600 [&>svg]:text-black/10 dark:[&>svg]:fill-neutral-700 dark:[&>svg]:text-neutral-200",
       dark: "[&>svg]:fill-white [&>svg]:text-white/20",
       light: "[&>svg]:fill-black [&>svg]:text-white/20",
     },
@@ -15,7 +15,7 @@ const loadVariants = cva("[&>svg]:animate-spin", {
       xs: "[&>svg]:h-3 [&>svg]:w-3",
       sm: "[&>svg]:h-4 [&>svg]:w-4",
       md: "[&>svg]:h-5 [&>svg]:w-5",
-      lg: "[&>svg]:h-6 [&>svg]:w-6",
+      lg: "[&>svg]:h-8 [&>svg]:w-8",
     },
   },
   defaultVariants: {

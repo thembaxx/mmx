@@ -160,7 +160,10 @@ function Channels({ children }: Props) {
                               channel?.id === item.id,
                           }
                         )}
-                        onClick={() => setChannel(item)}
+                        onClick={() => {
+                          setChannel(item);
+                          setOpen(false);
+                        }}
                       >
                         <div className="h-6 w-6 flex items-center justify-center mr-3">
                           {!item.iconSrc && (

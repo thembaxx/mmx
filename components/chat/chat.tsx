@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { TypingIndicatorPanel } from "./typing-indicator";
 import { Button } from "../ui/button";
 import EditMessageDialog from "./edit-message-dialog";
+import { Loader2 } from "lucide-react";
 
 const EditIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -302,14 +303,22 @@ function Chat() {
     }
   }, [messages, loading]);
 
+  if (loading)
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center space-y-3">
+        <Loader2 className="h-12 w-12 animate-spin text-blue-500" />
+        <span className="text-sm text-secondary-foreground">Loading</span>
+      </div>
+    );
+
   return (
-    <div className="w-full h-full flex flex-col overflow-hidden">
-      <div className="w-full grow pt-12 pb-8 overflow-y-auto">
+    <div className="w-full h-full flex flex-col overflow-hidden relative">
+      <div className="w-full grow pt-0 pb-30 ">
         {messages.length === 0 && (
           <div className="flex flex-col gap-4 h-full items-center justify-center">
             <div className="p-4 opacity-60 flex flex-col items-center justify-center">
               <Image
-                src="/empty_no_items.svg"
+                src="/empty/fluent-color--people-chat-24.png"
                 alt="No messages"
                 height={192}
                 width={192}
@@ -443,7 +452,7 @@ function Chat() {
           </ul>
         )}
       </div>
-      <footer className="p-4 w-full sticky bottom-0 left-0">
+      <footer className="p-4 w-full fixed bottom-0 left-0">
         <TypingIndicatorPanel />
         <ChatInput />
       </footer>

@@ -41,11 +41,5 @@ export default async function middleware(request: NextRequest) {
 
 // Protect sub-routes
 export const config = {
-  matcher: [
-    "/channels/:path*",
-    "/channel/:path*",
-    "/chat/:path*",
-
-    "/profile/:path*",
-  ],
+  matcher: ["/channels/:path*", "/channel/:path*", "/chat", "/profile/:path*"],
 };
